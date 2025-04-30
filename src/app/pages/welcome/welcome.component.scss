@@ -1,0 +1,63 @@
+.welcome-page-style {
+  background-image: url("../../../assets/8d617e53523f92156749f20eced274505921e476.png");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+
+  justify-content: center;
+}
+h1 {
+  font-family: "Risque";
+  font-weight: 400;
+  font-size: 100px;
+  margin: 0px;
+}
+.ui {
+  font-family: "Protest Riot";
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #4a90e2;
+  position: relative;
+  left: -16px;
+  top: -8px;
+}
+.zoo {
+  font-family: "Rampart One";
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  position: relative;
+  left: -16px;
+  top: -8px;
+  color: black;
+}
+a {
+  color: #000000;
+  text-decoration-color: #000000;
+  text-decoration: underline;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.welcome-para {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+}
+.content-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  justify-content: center;
+}

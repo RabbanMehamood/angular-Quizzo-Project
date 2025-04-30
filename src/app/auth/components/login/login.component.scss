@@ -1,0 +1,124 @@
+.admin-page-css {
+  background-image: url("../../../../../public/8d617e53523f92156749f20eced274505921e476.png");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-login-div {
+  width: 432px;
+  height: 550px;
+  border-radius: 24px;
+  border-width: 1px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+h1 {
+  font-family: "Risque";
+  font-weight: 400;
+  font-size: 100px;
+  margin: 0px;
+}
+.ui {
+  font-family: "Protest Riot";
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #4a90e2;
+  position: relative;
+  left: -16px;
+  top: -8px;
+}
+.zoo {
+  font-family: "Rampart One";
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  position: relative;
+  left: -16px;
+  top: -8px;
+  color: black;
+}
+
+h2 {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #333333;
+}
+.adminp {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #4a90e2;
+}
+.admin-signin {
+  text-align: center;
+}
+
+.admin-signin > p {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #a09f9f;
+}
+
+.username-div {
+  text-align: left;
+  margin-top: 4px;
+}
+label {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+input {
+  padding-left: 15px;
+  width: 382px;
+  margin-top: 10px;
+  height: 55px;
+  border-radius: 10px;
+  background: rgba(220, 220, 220, 0.393);
+  border: none;
+  margin-bottom: 20px;
+  color: black;
+}
+::ng-deep .p-password .p-inputtext {
+  width: 382px;
+  margin-top: 10px;
+  height: 55px;
+  border-radius: 10px;
+  background-color: rgba(220, 220, 220, 0.393);
+  border: none;
+  margin-bottom: 20px;
+  color: black;
+}
+
+::ng-deep .p-button {
+  width: 382px;
+  height: 50px;
+
+  border-radius: 10px;
+  border-width: 1px;
+  background-color: #4a90e2;
+  margin-top: 20px;
+}

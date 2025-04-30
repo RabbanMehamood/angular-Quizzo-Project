@@ -1,0 +1,88 @@
+.question-form-style {
+  background-color: #ffffff;
+  width: 1210px;
+  height: 273px;
+  border-radius: 6px;
+  border-width: 1px;
+  border: 1px solid #e1e1e1;
+  margin: 10px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 13px;
+}
+
+label {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+  margin-bottom: 5px;
+}
+textarea {
+  width: 1173px;
+  height: 84px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #f1f1f1;
+  padding: 10px;
+}
+input {
+  background-color: #f1f1f1;
+  height: 35px;
+  width: 284px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+
+.options {
+  display: grid;
+  align-items: start;
+  grid-template-columns: repeat(4, 300px);
+  grid-template-rows: repeat(3, auto);
+}
+
+.buttons-div :first-child::ng-deep.p-button {
+  color: #2e629f;
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  font-family: "Poppins";
+  width: 124px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  border-radius: 6px;
+  border-width: 1px;
+  border-color: #2e629f;
+  margin-right: 10px;
+}
+.buttons-div :nth-child(2)::ng-deep.p-button {
+  color: rgb(255, 255, 255);
+  background-color: #2e629f;
+  width: 100px;
+  font-family: "Poppins";
+  width: 124px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  border-radius: 6px;
+  border-width: 1px;
+  border-color: #2e629f;
+}
+.buttons-div {
+  grid-row: 2;
+  grid-column: 4;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 15px;
+}

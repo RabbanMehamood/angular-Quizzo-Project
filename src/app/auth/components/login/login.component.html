@@ -1,0 +1,22 @@
+<div class="admin-page-css">
+  <div class="admin-login-div">
+    <div>
+      <h1>Q<span class="ui">uiz</span><span class="zoo">oo</span></h1>
+    </div>
+    <div class="admin-signin">
+      <h2>Sign In</h2>
+      <p>Welcome Back <span class="adminp">Admin!</span></p>
+    </div>
+    <div class="username-div">
+      <label for="username">Username * </label>
+      <br />
+      <input type="text" class="input-style" placeholder="Admin" />
+    </div>
+    <div class="username-div">
+      <label for="username">Password * </label>
+      <br />
+      <p-password [(ngModel)]="value" [toggleMask]="true" placeholder="Admin" />
+    </div>
+    <p-button label="Login" />
+  </div>
+</div>

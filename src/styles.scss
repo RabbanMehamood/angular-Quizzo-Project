@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* Hide horizontal and vertical scrollbars globally */
+
+::-webkit-scrollbar {
+  display: none; /* Webkit browsers (Chrome, Safari, Edge) */
+}
+
+body,
+html {
+  margin: 0px;
+  background-color: rgb(255, 255, 255);
+  /* overflow: hidden; Hide scrollbars in most browsers */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: none; /* Firefox */
+}
