@@ -1,0 +1,29 @@
+.bar-chart-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+  height: 630px;
+  margin: 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+.card {
+  width: 1100px;
+  height: 500px;
+}
+
+.heading {
+  text-align: left !important;
+  width: 1100px;
+  margin-bottom: 60px;
+  margin-top: 30px;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
