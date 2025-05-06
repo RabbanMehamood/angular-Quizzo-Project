@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout/dashboard-layout.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { loginAuthGuard } from './core/login-auth.guard';
+import { LoginComponent } from './auth/components/login/login.component';
+import { UserLayoutComponent } from './user-layout/user-layout.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
     path: '',
     component: WelcomeComponent,
   },
+  { path: 'login', component: LoginComponent },
   {
     path: 'auth',
     canActivate: [loginAuthGuard],
@@ -23,7 +27,6 @@ const routes: Routes = [
     children: [
       {
         path: '',
-
         redirectTo: 'add-manage',
         pathMatch: 'full',
       },
@@ -57,10 +60,40 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'user-layout',
+    component: UserLayoutComponent,
+    data: {
+      title: 'user-layout',
+    },
+    children: [
+      {
+        path: 'register-page',
+        loadChildren: () =>
+          import('./user/registerpage/registerpage.module').then(
+            (m) => m.RegisterpageModule
+          ),
+      },
+      {
+        path: 'exam-question-page',
+        loadChildren: () =>
+          import('./user/exam-question-page/exam-question-page.module').then(
+            (m) => m.ExamQuestionPageModule
+          ),
+      },
+      {
+        path: 'congrats-page',
+        loadChildren: () =>
+          import('./user/congrats-page/congrats-page.module').then(
+            (m) => m.CongratsPageModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule, CommonModule],
 })
 export class AppRoutingModule {}

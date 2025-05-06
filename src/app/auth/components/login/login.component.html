@@ -7,16 +7,30 @@
       <h2>Sign In</h2>
       <p>Welcome Back <span class="adminp">Admin!</span></p>
     </div>
-    <div class="username-div">
-      <label for="username">Username * </label>
-      <br />
-      <input type="text" class="input-style" placeholder="Admin" />
-    </div>
-    <div class="username-div">
-      <label for="username">Password * </label>
-      <br />
-      <p-password [(ngModel)]="value" [toggleMask]="true" placeholder="Admin" />
-    </div>
-    <p-button label="Login" />
+    <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+      <div class="username-div">
+        <label for="username">Username * </label>
+        <br />
+        <input
+          formControlName="username"
+          pInputText
+          type="text"
+          placeholder="Admin"
+        />
+      </div>
+      <div class="username-div">
+        <label for="username">Password * </label>
+        <br />
+        <p-password
+          formControlName="password"
+          [toggleMask]="true"
+          placeholder="Admin"
+        />
+      </div>
+      <p-button type="submit" label="Login" />
+    </form>
+    <a [routerLink]="['/user-layout/register-page']"
+      >Don’t have an account ? <span class="adminp">Register</span></a
+    >
   </div>
 </div>

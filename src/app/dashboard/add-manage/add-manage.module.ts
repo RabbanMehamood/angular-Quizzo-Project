@@ -4,7 +4,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AddManageRoutingModule } from './add-manage-routing.module';
 import { AddManageComponent } from './add-manage.component';
 import { TableModule } from 'primeng/table';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
 import { QuizSummaryTableComponent } from './components/quiz-summary-table/quiz-summary-table.component';
 import { InputTextModule } from 'primeng/inputtext';
@@ -28,6 +28,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
     InputGroupModule,
     InputGroupAddonModule,
     ButtonModule,
+    ReactiveFormsModule,
   ],
 })
 export class AddManageModule {}

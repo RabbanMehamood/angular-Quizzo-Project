@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 /* Hide horizontal and vertical scrollbars globally */
+:root {
+  --font-family: "Poppins", sans-serif;
+}
 
 ::-webkit-scrollbar {
   display: none; /* Webkit browsers (Chrome, Safari, Edge) */
@@ -11,6 +14,9 @@ html {
   margin: 0px;
   background-color: rgb(255, 255, 255);
   /* overflow: hidden; Hide scrollbars in most browsers */
+}
+body {
+  font-family: "Inter", sans-serif;
 }
 
 /* For Firefox */

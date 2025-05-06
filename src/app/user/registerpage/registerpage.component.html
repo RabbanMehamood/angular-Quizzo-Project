@@ -1,0 +1,35 @@
+<div class="question-form-style">
+  <span class="user">User Registration</span>
+  <form>
+    <div class="options">
+      <div>
+        <label for="Name">Name</label><br />
+        <div class="card flex justify-content-center">
+          <input type="text" pInputText [(ngModel)]="value" name="value" />
+        </div>
+      </div>
+      <div>
+        <label for="Age">Age</label><br />
+        <div class="card flex justify-content-center">
+          <input type="text" pInputText [(ngModel)]="value" name="value" />
+        </div>
+      </div>
+      <div>
+        <label for="Email">Email</label><br />
+        <div>
+          <input type="text" pInputText placeholder="sec  " />
+        </div>
+      </div>
+      <div>
+        <label for="Qualifications">Qualifications</label><br />
+        <div class="card flex justify-content-center">
+          <input type="text" pInputText [(ngModel)]="value" name="value" />
+        </div>
+      </div>
+      <div class="buttons-div">
+        <p-button label="Cancel" class="primary" [routerLink]="['']" />
+        <p-button label="Save" />
+      </div>
+    </div>
+  </form>
+</div>

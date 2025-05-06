@@ -1,49 +1,84 @@
 <div class="question-form-style">
-  <form>
+  <form [formGroup]="questionform" (ngSubmit)="onSubmit()">
     <div>
-      <label for="Question">Question</label><br />
-      <textarea pInputTextarea [autoResize]="true"> </textarea>
+      <label for="questionText">Question</label><br />
+      <textarea
+        formControlName="questionText"
+        pInputTextarea
+        [autoResize]="true"
+      >
+      </textarea>
     </div>
     <div class="options">
       <div>
-        <label for="option1">Option1</label><br />
+        <label for="optionA">Option1</label><br />
         <div class="card flex justify-content-center">
-          <input type="text" pInputText [(ngModel)]="value" name="value" />
+          <input
+            formControlName="optionA"
+            type="text"
+            pInputText
+            name="value"
+          />
         </div>
       </div>
       <div>
-        <label for="option1">Option1</label><br />
+        <label for="optionB">Option2</label><br />
         <div class="card flex justify-content-center">
-          <input type="text" pInputText [(ngModel)]="value" name="value" />
+          <input
+            formControlName="optionB"
+            type="text"
+            pInputText
+            name="value"
+          />
         </div>
       </div>
       <div>
-        <label for="option1">Option1</label><br />
+        <label for="optionC">Option3</label><br />
         <div class="card flex justify-content-center">
-          <input type="text" pInputText [(ngModel)]="value" name="value" />
+          <input
+            formControlName="optionC"
+            type="text"
+            pInputText
+            name="value"
+          />
         </div>
       </div>
       <div>
-        <label for="option1">Option1</label><br />
+        <label for="optionD">Option4</label><br />
         <div class="card flex justify-content-center">
-          <input type="text" pInputText [(ngModel)]="value" name="value" />
+          <input
+            formControlName="optionD"
+            type="text"
+            pInputText
+            name="value"
+          />
         </div>
       </div>
       <div>
-        <label for="option1">Option1</label><br />
+        <label for="correctAnswer">Correct Answer</label><br />
         <div class="card flex justify-content-center">
-          <input type="text" pInputText [(ngModel)]="value" name="value" />
+          <input
+            formControlName="correctAnswer"
+            type="text"
+            pInputText
+            name="value"
+          />
         </div>
       </div>
       <div>
-        <label for="option1">Option1</label><br />
+        <label for="timer">Timer</label><br />
         <div>
-          <input type="text" pInputText placeholder="sec  " />
+          <input
+            formControlName="timer"
+            type="text"
+            pInputText
+            placeholder="sec  "
+          />
         </div>
       </div>
       <div class="buttons-div">
         <p-button label="Cancel" class="primary" />
-        <p-button label="Save" />
+        <p-button type="submit" label="Save" />
       </div>
     </div>
   </form>

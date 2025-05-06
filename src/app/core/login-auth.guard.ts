@@ -4,5 +4,7 @@ import { CanActivateFn, Router } from '@angular/router';
 export const loginAuthGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const isLoggedIn = true;
-  return isLoggedIn ? true : router.createUrlTree(['dashboard']);
+  return isLoggedIn
+    ? router.createUrlTree(['login'])
+    : router.createUrlTree(['dashboard']);
 };

@@ -1,0 +1,123 @@
+img {
+  width: 244px;
+  height: 244px;
+}
+.congrats-div-style > p {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #2e629f;
+}
+
+.congrats-div-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.marks-div {
+  display: flex;
+  width: 765px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border-width: 1px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+.marks-div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0px 10px;
+}
+.wrong-answers {
+  width: 59px;
+  height: 59px;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff9673;
+  margin: 0px 10px;
+}
+.wrong-answers > span {
+  font-family: "Poppins";
+  font-weight: 700;
+  color: white;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+span {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.correct-answers {
+  width: 59px;
+  height: 59px;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 10px;
+  background: #88f6a0;
+}
+.correct-answers > span {
+  font-family: "Poppins";
+  font-weight: 700;
+  color: white;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.total-questions {
+  width: 59px;
+  height: 59px;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 10px;
+  background: #7bb3f5;
+}
+.total-questions > span {
+  font-family: "Poppins";
+  font-weight: 700;
+  color: white;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.horizontal-line {
+  width: 150.00000000000017px;
+  height: 1px;
+  border: 1px solid #e1e1e1;
+  transform: rotate(90deg);
+  border-width: 1px;
+  margin: 0px;
+}
+
+.total {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #2e629f;
+  width: 99px;
+  height: 37px;
+}

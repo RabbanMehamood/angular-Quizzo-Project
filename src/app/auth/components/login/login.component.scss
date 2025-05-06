@@ -12,7 +12,7 @@
 
 .admin-login-div {
   width: 432px;
-  height: 550px;
+  height: 585px;
   border-radius: 24px;
   border-width: 1px;
   background-color: aliceblue;
@@ -72,7 +72,7 @@ h2 {
 }
 
 .admin-signin > p {
-  font-family: Poppins;
+  font-family: "Poppins";
   font-weight: 400;
   font-size: 15px;
   line-height: 100%;
@@ -85,7 +85,7 @@ h2 {
   margin-top: 4px;
 }
 label {
-  font-family: Poppins;
+  font-family: "Poppins";
   font-weight: 400;
   font-size: 15px;
   line-height: 100%;
@@ -116,9 +116,33 @@ input {
 ::ng-deep .p-button {
   width: 382px;
   height: 50px;
-
   border-radius: 10px;
   border-width: 1px;
   background-color: #4a90e2;
   margin-top: 20px;
+}
+
+::ng-deep .p-inputtext {
+  width: 382px;
+  margin-top: 10px;
+  height: 55px;
+  border-radius: 10px;
+  background-color: rgba(220, 220, 220, 0.393);
+  border: none;
+  margin-bottom: 20px;
+}
+
+a {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0%;
+  text-decoration-skip-ink: auto;
+  margin-top: 30px;
+  cursor: pointer;
+  color: #a09f9f;
 }

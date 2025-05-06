@@ -1,0 +1,37 @@
+<div class="exam-page-div">
+  <div class="question-options-div">
+    <form>
+      <div class="question-image-div">
+        <div class="question-answer">
+          <p class="question-text">What is the Capital city of Canada?</p>
+          <div *ngFor="let option of options">
+            <label>
+              <input type="checkbox" value="option" />
+              {{ option }}
+            </label>
+          </div>
+        </div>
+        <div>
+          <img src="../../../assets/thinking-boy.png" alt="thinking-boy" />
+        </div>
+      </div>
+
+      <div class="buttons-div">
+        <p-button label="Previous" />
+        <div class="prev-skip-next-div-style">
+          <p-button label="Next" class="primary" />
+          <p-button label="Skip" />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="time-questionlist-div">
+    <div class="time-container-div"></div>
+    <div class="question-list-container">
+      <p>Question List</p>
+      <p>Question 1</p>
+      <p>Question 2</p>
+      <p>Question 3</p>
+    </div>
+  </div>
+</div>

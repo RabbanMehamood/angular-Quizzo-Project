@@ -1,0 +1,129 @@
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 3px 1px 4px 0px #41404040;
+  background: #ffffff;
+  width: 100vw;
+}
+.ellipse {
+  margin-right: 10px;
+  background-color: #d7eff2;
+  display: inline-block;
+  border-radius: 50px;
+  padding: 5px;
+}
+p {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.nav-sections-style {
+  display: flex;
+}
+.sections-style {
+  display: flex;
+  flex-direction: column;
+}
+
+// section {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   width: 1460px;
+//   height: 650px;
+//   margin: 10px;
+//   border: 1px solid #e1e1e1;
+//   border-radius: 6px;
+//   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+// }
+
+.router-component-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  align-items: center;
+  width: 98vw;
+  height: 650px;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+  background: #ffffff;
+}
+.main-div {
+  background: #e1f7f9;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+// stepper container styles
+.stepper-container {
+  display: flex;
+  width: 96vw;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.step {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  margin: 0px 40px;
+}
+
+.step-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  width: 43px;
+  height: 43px;
+  background: #41a676;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 30px;
+  font-weight: bold;
+  margin: auto;
+}
+.outer-circle {
+  width: 48px;
+  height: 48px;
+  background-color: #ffffff;
+  border: 1px solid #41a676;
+  border-radius: 50%;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+.title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.horizontal-line {
+  height: 115px;
+  width: 3px;
+  transform: rotate(90deg);
+  background-color: #41a676 !important;
+  position: relative;
+  /* z-index: 1; */
+  top: -9px;
+  left: 37px;
+}

@@ -42,12 +42,15 @@ p {
 }
 span {
   font-family: "Poppins";
-  //   font-weight: 600;
+  font-weight: 400;
   font-size: 15px;
   line-height: 100%;
   letter-spacing: 0%;
   color: #ffffff;
   margin-left: 10px;
+}
+.active {
+  font-weight: 650;
 }
 
 a {
