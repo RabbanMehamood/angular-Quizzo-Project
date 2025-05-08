@@ -69,16 +69,17 @@
         <label for="timer">Timer</label><br />
         <div>
           <input
-            formControlName="timer"
-            type="text"
+            formControlName="timerInSeconds"
+            type="number"
             pInputText
-            placeholder="sec  "
+            placeholder="secs"
           />
         </div>
       </div>
       <div class="buttons-div">
-        <p-button label="Cancel" class="primary" />
-        <p-button type="submit" label="Save" />
+        <p-button label="Cancel" (onClick)="onReset()" class="primary" />
+        <p-button type="submit" label="Add" *ngIf="!isEditable" />
+        <p-button type="submit" label="Update" *ngIf="isEditable" />
       </div>
     </div>
   </form>

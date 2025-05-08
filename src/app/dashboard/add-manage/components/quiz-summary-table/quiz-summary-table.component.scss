@@ -9,3 +9,15 @@
   box-shadow: 0px 4px 4px 0px #00000040;
   padding: 13px;
 }
+::ng-deep div.p-paginator-bottom.p-paginator.p-component.ng-star-inserted {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  text-align: left;
+  border: 1px solid #e5e7eb;
+  border-width: 0 0 1px 0;
+  padding: 0.5rem 1rem;
+}

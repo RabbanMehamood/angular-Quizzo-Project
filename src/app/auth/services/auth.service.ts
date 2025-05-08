@@ -11,16 +11,52 @@ export class AuthService {
     private readonly _router: Router
   ) {}
 
-  loginUser() {
-    this._api.loginUser$().subscribe({
+  loginAdmin(value: any) {
+    let adminObject = value;
+    console.log(adminObject);
+    // alert(JSON.stringify(value));
+    localStorage.setItem('userRole', 'Admin');
+    localStorage.setItem('password', 'quizzoito');
+    if (
+      adminObject.username === 'Admin' &&
+      adminObject.password === 'quizzoito'
+    ) {
+      this._router.navigate(['dashboard/add-manage']);
+    } else {
+      confirm('Unauthorised Access, Please Login as a User');
+      this._router.navigate(['']);
+    }
+
+    // this._api.loginAdmin$().subscribe({
+    //   next: (res: any) => {
+    //    Success and Authenticated
+    //     localStorage.setItem('userRole', 'Admin'); // or 'User', etc.
+    //   },
+    // });
+  }
+  logoutAsAdmin() {
+    alert('removed local storage key and values');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('password');
+    localStorage.removeItem('userId');
+    this._router.navigate(['']);
+  }
+  loginUser(value) {
+    this._api.loginUser$(value).subscribe({
       next: (res: any) => {
-        this.setAuthenticated(true);
-        if (res.loginType === 'user') {
-          this.redirectToUser();
-        } else {
-          // default
-          this.redirectToAdmin();
-        }
+        console.log(value.id);
+        localStorage.removeItem('userRole');
+        localStorage.removeItem('password');
+        localStorage.setItem('userId', value.id);
+        this._router.navigate(['user-layout/exam-question-page']);
+        // or 'User', etc.
+        // this.setAuthenticated(true);
+        // if (res.loginType === 'user') {
+        //   this.redirectToUser();
+        // } else {
+        //   default
+        //   this.redirectToAdmin();
+        // }
       },
       complete() {},
       error(err) {

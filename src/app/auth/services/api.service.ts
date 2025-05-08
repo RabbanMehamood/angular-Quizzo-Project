@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 export class ApiService {
   constructor(private readonly _http: HttpClient) {}
 
-  loginUser$(): Observable<any> {
+  loginUser$(value): Observable<any> {
+    return this._http.post('http://localhost:8080/users', value);
+  }
+
+  loginAdmin$(value: object) {
     return this._http.post('https://api.example.com/users', {
       userName: 'rabban',
       password: '12344556',
     });
-  }
-
-  loginAdmin$() {
-    return this._http.get('https://api.example.com/users');
   }
 }

@@ -12,7 +12,16 @@ export class QuestionsapiService {
   getQuestionsList(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
   createQuestion(question: any): Observable<any> {
     return this.http.post(this.apiUrl, question);
+  }
+
+  putQuestion(question: any): Observable<any> {
+    return this.http.put(this.apiUrl + '/' + question.id, question);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.apiUrl + '/' + id);
   }
 }

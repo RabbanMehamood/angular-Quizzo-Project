@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { ViewusersService } from '../viewscores/services/viewusers.service';
 
 @Component({
   selector: 'app-bar-chart',
@@ -7,40 +8,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarChartComponent implements OnInit {
   data: any;
-
+  label = [];
+  userscorelist = [];
   options: any;
+  users: any[] = [];
+
+  // instance using inject method, calling in ngonit when ever components gets called using lazy loading and loaded.
+  viewUserScoresService = inject(ViewusersService);
 
   ngOnInit() {
+    this.viewUserScoresService.getUsers().subscribe((res) => {
+      this.users = res;
+      console.log(res);
+      this.label = this.users.map((user) => user.name);
+      this.userscorelist = this.users.map((user) => user.score);
+      console.log({ label: this.label, userscorelist: this.userscorelist });
+      this.setData();
+    });
+  }
+
+  setData() {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue(
       '--text-color-secondary'
     );
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-
     this.data = {
-      labels: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'monday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-        'saturday',
-        'sunday',
-      ],
+      labels: this.label,
       datasets: [
         {
-          label: 'My First dataset',
+          label: 'Users scores dataset',
           backgroundColor: documentStyle.getPropertyValue('--green-400'),
           borderColor: documentStyle.getPropertyValue('--green-500'),
-          data: [65, 59, 80, 81, 56, 55, 40, 40, 30, 20, 10, 89, 59, 60],
+          data: this.userscorelist,
         },
       ],
     };

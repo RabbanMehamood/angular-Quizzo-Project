@@ -7,6 +7,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,8 @@ import {
 export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private readonly _auth: AuthService
+    private readonly _auth: AuthService,
+    private router: Router
   ) {}
   loginform: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -53,9 +55,16 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
-    alert('submit');
+    // alert('submitted');
     console.log(this.loginform.value);
+    // this.goToRoute();
+
+    this._auth.loginAdmin(this.loginform.value);
   }
+
+  // goToRoute() {
+  //   this.router.navigate(['dashboard/add-manage']);
+  // }
 
   onReset(): void {
     this.submitted = false;

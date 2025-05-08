@@ -1,37 +1,127 @@
 <div class="exam-page-div">
   <div class="question-options-div">
-    <form>
+    <form *ngIf="currentQuestion">
       <div class="question-image-div">
         <div class="question-answer">
-          <p class="question-text">What is the Capital city of Canada?</p>
-          <div *ngFor="let option of options">
-            <label>
-              <input type="checkbox" value="option" />
-              {{ option }}
-            </label>
+          <p class="question-text">
+            Q{{ currentQuestion.id }}: {{ currentQuestion.questionText }}
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div class="flex align-items-center">
+              <p-radioButton
+                (onClick)="selectedRadioButton(currentQuestion, $event)"
+                [value]="currentQuestion.optionA"
+                variant="filled"
+              />
+              <label for="ingredient3" class="ml-2 py-4">
+                {{ currentQuestion.optionA }}
+              </label>
+            </div>
+
+            <!-- <p-radioButton [(ngModel)]="checked" variant="filled" />
+            <p-radioButton [(ngModel)]="checked" variant="filled" />
+            <p-radioButton [(ngModel)]="checked" variant="filled" />
+            <p-checkbox
+              [label]="currentQuestion.optionA"
+              name="group"
+              [value]="currentQuestion.optionA"
+            />
+            <p-checkbox
+              [label]="currentQuestion.optionB"
+              name="group"
+              [value]="currentQuestion.optionB"
+            />
+            <p-checkbox
+              [label]="currentQuestion.optionC"
+              name="group"
+              [value]="currentQuestion.optionC"
+            />
+            <p-checkbox
+              [label]="currentQuestion.optionD"
+              name="group"
+              [value]="currentQuestion.optionD"
+            /> -->
           </div>
         </div>
+
         <div>
           <img src="../../../assets/thinking-boy.png" alt="thinking-boy" />
         </div>
       </div>
 
       <div class="buttons-div">
-        <p-button label="Previous" />
+        <p-button
+          label="Previous"
+          (click)="prev()"
+          [disabled]="currentIndex === 0"
+        />
         <div class="prev-skip-next-div-style">
-          <p-button label="Next" class="primary" />
-          <p-button label="Skip" />
+          <p-button
+            label="Next"
+            class="primary"
+            (click)="skip()"
+            [disabled]="currentIndex === questions.length - 1"
+          />
+          <p-button
+            *ngIf="currentIndex !== questions.length - 1"
+            label="Skip"
+            (click)="next()"
+            [disabled]="currentIndex === questions.length - 1"
+          />
+          <p-button
+            *ngIf="currentIndex === questions.length - 1"
+            label="Submit"
+            class="success"
+            (click)="submit()"
+          />
         </div>
       </div>
     </form>
   </div>
   <div class="time-questionlist-div">
-    <div class="time-container-div"></div>
+    <div class="time-container-div">
+      <p class="time-text">Time</p>
+      <svg width="120" height="120">
+        <circle class="background" cx="60" cy="60" r="54"></circle>
+        <circle
+          class="progress"
+          cx="60"
+          cy="60"
+          r="54"
+          [attr.stroke-dasharray]="circumference"
+          [attr.stroke-dashoffset]="strokeDashoffset"
+        ></circle>
+      </svg>
+      <div class="counter">{{ formattedTime }}</div>
+    </div>
     <div class="question-list-container">
-      <p>Question List</p>
-      <p>Question 1</p>
-      <p>Question 2</p>
-      <p>Question 3</p>
+      <p style="padding: 5px">Question List</p>
+      <div class="question-div-scroll">
+        <div *ngFor="let question of questions; let i = index">
+          <div class="question-check-style">
+            <span style="float: left; padding-left: 10px"
+              >Question{{ question.id }}</span
+            >
+            <span
+              style="
+                margin-right: 10px;
+                width: 27px;
+                height: 27px;
+                color: rgb(255, 255, 255);
+                border-radius: 20px;
+                background-color: #41a676;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+              ><i
+                class="pi pi-check"
+                style="font-size: 15px; font-weight: 1000"
+              ></i
+            ></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

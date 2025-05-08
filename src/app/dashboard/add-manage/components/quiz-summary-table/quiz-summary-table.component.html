@@ -5,26 +5,45 @@
     </div>
     <div class="card">
       <p-table
-        [value]="customers"
+        [value]="questions"
         [paginator]="true"
         [rows]="5"
-        [tableStyle]="{ 'min-width': '50rem' }"
+        [tableStyle]="{ 'min-width': '40rem' }"
         [rowsPerPageOptions]="[5, 10, 20]"
+        scrollable="true"
+        scrollHeight="250px"
+        [loading]="loading"
       >
         <ng-template pTemplate="header">
           <tr>
-            <th style="width: 25%">Name</th>
-            <th style="width: 25%">Country</th>
-            <th style="width: 25%">Company</th>
-            <th style="width: 25%">Representative</th>
+            <th>Quiz ID</th>
+            <th>Question Text</th>
+            <th>Correct Answer</th>
+            <th>Timer</th>
+            <th></th>
+            <th></th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-customer>
+        <ng-template pTemplate="body" let-question>
           <tr>
-            <td>{{ customer.name }}</td>
-            <td>{{ customer.country.name }}</td>
-            <td>{{ customer.company }}</td>
-            <td>{{ customer.representative.name }}</td>
+            <td>Q{{ question.id }}</td>
+            <td>{{ question.questionText }}</td>
+            <td>{{ question.correctAnswer }}</td>
+            <td>{{ question.timerInSeconds }}</td>
+            <td
+              style="cursor: pointer"
+              class="animate-me"
+              (click)="edit(question)"
+            >
+              <i class="pi pi-pencil"></i>
+            </td>
+            <td
+              style="cursor: pointer"
+              class="animate-me"
+              (click)="delete(question.id)"
+            >
+              <i class="pi pi-trash"></i>
+            </td>
           </tr>
         </ng-template>
       </p-table>

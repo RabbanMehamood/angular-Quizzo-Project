@@ -18,6 +18,9 @@
   justify-content: flex-start;
 }
 .question-options-div p {
+  word-wrap: break-word;
+  font-family: "Poppins";
+  width: 300px;
   font-family: "Poppins";
   font-weight: 500;
   font-size: 16px;
@@ -44,7 +47,7 @@
   flex-direction: column;
   border-radius: 6px;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   box-shadow: 0px 4px 4px 0px #00000040;
   border: 1px solid #e1e1e1;
 }
@@ -145,7 +148,6 @@ form {
 }
 
 .question-list-container {
-  padding: 10px 15px;
   display: flex;
   flex-direction: column;
 }
@@ -154,4 +156,73 @@ form {
   font-weight: 500;
   font-size: 16px;
   margin: 0px;
+}
+.question-check-style {
+  background: #c6e4d6;
+  width: 100%;
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.question-div-scroll {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.countdown-ring {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  margin: 20px auto;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke-width: 13px;
+  r: 46;
+  cx: 66;
+  cy: 57;
+}
+// circle[_ngcontent-ng-c2217093791] {
+//     fill: none;
+//     stroke-width: 13px;
+//     r: 46;
+//     cx: 66;
+//     cy: 57;
+// }
+
+.background {
+  stroke: #ddd;
+}
+
+.progress {
+  stroke: #41a676;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.counter {
+  position: relative;
+  bottom: 73px;
+}
+.time-text {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+::ng-deep .question-options-div {
+  display: inline-block;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  margin: 3px 10px !important;
 }

@@ -88,11 +88,26 @@ p {
   align-items: center;
 }
 
-.circle {
+.circlew {
+  width: 43px;
+  height: 43px;
+  background: #ffffff;
+  color: #41a676;
+  border: 1px solid #41a676;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 30px;
+  font-weight: bold;
+  margin: auto;
+}
+.circleg {
   width: 43px;
   height: 43px;
   background: #41a676;
-  color: white;
+  color: #ffffff;
+  border: 1px solid #41a676;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -114,6 +129,10 @@ p {
 }
 .title {
   font-weight: bold;
+  font-size: 16px;
+}
+.title-bold {
+  font-weight: normal;
   font-size: 16px;
 }
 

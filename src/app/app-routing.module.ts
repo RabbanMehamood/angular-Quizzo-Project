@@ -5,7 +5,8 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { loginAuthGuard } from './core/login-auth.guard';
 import { LoginComponent } from './auth/components/login/login.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
+import { userAuthGuard } from './core/user-auth.guard';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
           import('./dashboard/add-manage/add-manage.module').then(
             (m) => m.AddManageModule
           ),
+        canActivate: [loginAuthGuard],
       },
       {
         path: 'view-scores',
@@ -43,6 +45,7 @@ const routes: Routes = [
           import('./dashboard/viewscores/viewscores.module').then(
             (m) => m.ViewscoresModule
           ),
+        canActivate: [loginAuthGuard],
       },
       {
         path: 'bar-chart',
@@ -50,6 +53,7 @@ const routes: Routes = [
           import('./dashboard/bar-chart/bar-chart.module').then(
             (m) => m.BarChartModule
           ),
+        canActivate: [loginAuthGuard],
       },
       {
         path: 'pie-chart',
@@ -57,6 +61,7 @@ const routes: Routes = [
           import('./dashboard/pie-chart/pie-chart.module').then(
             (m) => m.PieChartModule
           ),
+        canActivate: [loginAuthGuard],
       },
     ],
   },
@@ -80,6 +85,7 @@ const routes: Routes = [
           import('./user/exam-question-page/exam-question-page.module').then(
             (m) => m.ExamQuestionPageModule
           ),
+        canActivate: [userAuthGuard],
       },
       {
         path: 'congrats-page',
@@ -87,6 +93,7 @@ const routes: Routes = [
           import('./user/congrats-page/congrats-page.module').then(
             (m) => m.CongratsPageModule
           ),
+        canActivate: [userAuthGuard],
       },
     ],
   },

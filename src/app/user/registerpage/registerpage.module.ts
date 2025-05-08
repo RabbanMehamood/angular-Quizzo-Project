@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterpageRoutingModule } from './registerpage-routing.module';
 import { RegisterpageComponent } from './registerpage.component';
@@ -25,6 +26,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
     FormsModule,
     InputGroupModule,
     InputGroupAddonModule,
+    ReactiveFormsModule,
   ],
 })
 export class RegisterpageModule {}

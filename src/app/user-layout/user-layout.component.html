@@ -35,7 +35,7 @@
               />
             </svg>
           </div>
-          <div class="ellipse">
+          <div class="ellipse" (click)="logout()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -58,10 +58,14 @@
         <div class="step" *ngFor="let step of steps; let i = index">
           <div class="step-header">
             <div class="outer-circle">
-              <div class="circle">{{ i + 1 }}</div>
+              <div [ngClass]="step.is_active ? 'circleg' : 'circlew'">
+                {{ i + 1 }}
+              </div>
             </div>
 
-            <div class="title">{{ step.title }}</div>
+            <div [ngClass]="step.is_active ? 'title' : 'title-bold'">
+              {{ step.title }}
+            </div>
           </div>
           <div class="horizontal-line" *ngIf="i === 0 || i === 1"></div>
         </div>

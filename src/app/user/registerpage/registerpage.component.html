@@ -1,34 +1,81 @@
 <div class="question-form-style">
   <span class="user">User Registration</span>
-  <form>
+  <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
     <div class="options">
       <div>
-        <label for="Name">Name</label><br />
+        <label for="name">Name</label><br />
         <div class="card flex justify-content-center">
-          <input type="text" pInputText [(ngModel)]="value" name="value" />
+          <input formControlName="name" type="text" pInputText />
+        </div>
+        <div *ngIf="registerform.get('name')?.invalid && submitted">
+          <small
+            *ngIf="registerform.get('name')?.errors?.['required']"
+            style="color: red"
+            >Name is required.</small
+          >
+          <small
+            *ngIf="registerform.get('name')?.errors?.['lettersOnly']"
+            style="color: red"
+            s
+            >Only letters allowed.</small
+          >
         </div>
       </div>
       <div>
-        <label for="Age">Age</label><br />
+        <label for="age">Age</label><br />
         <div class="card flex justify-content-center">
-          <input type="text" pInputText [(ngModel)]="value" name="value" />
+          <input formControlName="age" type="number" pInputText name="value" />
+        </div>
+        <div *ngIf="registerform.get('age')?.invalid && submitted">
+          <small
+            *ngIf="registerform.get('age')?.errors?.['required']"
+            style="color: red"
+            >Age is required</small
+          >
+          <small
+            *ngIf="registerform.get('age')?.errors?.['number']"
+            style="color: red"
+            >Only Numbers allowed.</small
+          >
         </div>
       </div>
       <div>
         <label for="Email">Email</label><br />
         <div>
-          <input type="text" pInputText placeholder="sec  " />
+          <input
+            formControlName="email"
+            type="email"
+            pInputText
+            placeholder=""
+          />
+        </div>
+        <div *ngIf="registerform.get('email')?.invalid && submitted">
+          <small
+            *ngIf="registerform.get('email')?.errors?.['required']"
+            style="color: red"
+            >Email is required.</small
+          >
+          <small
+            *ngIf="registerform.get('email')?.errors?.['email']"
+            style="color: red"
+            >Must be in email format</small
+          >
         </div>
       </div>
       <div>
-        <label for="Qualifications">Qualifications</label><br />
+        <label for="qualification">Qualifications</label><br />
         <div class="card flex justify-content-center">
-          <input type="text" pInputText [(ngModel)]="value" name="value" />
+          <input
+            formControlName="qualification"
+            type="text"
+            pInputText
+            name="value"
+          />
         </div>
       </div>
       <div class="buttons-div">
-        <p-button label="Cancel" class="primary" [routerLink]="['']" />
-        <p-button label="Save" />
+        <p-button label="Cancel" class="primary" (onClick)="onReset()" />
+        <p-button type="Submit" label="Save" />
       </div>
     </div>
   </form>
