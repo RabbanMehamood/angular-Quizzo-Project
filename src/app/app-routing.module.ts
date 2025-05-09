@@ -7,6 +7,7 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { CommonModule, NgFor } from '@angular/common';
 import { userAuthGuard } from './core/user-auth.guard';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
         canActivate: [userAuthGuard],
       },
     ],
+  },
+  {
+    path: '**',
+    component: NotfoundComponent,
   },
 ];
 

@@ -26,40 +26,43 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   ngOnInit(): void {
-    this.loginform = this.formBuilder.group(
-      {
-        username: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(20),
-          ],
+    this.loginform = this.formBuilder.group({
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(20),
         ],
+      ],
 
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(40),
-          ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(40),
         ],
-      }
-      // {
-      //   validators: [Validation.match('password', 'confirmPassword')],
-      // }
-    );
+      ],
+    });
   }
-
+  get f(): { [key: string]: AbstractControl } {
+    return this.loginform.controls;
+  }
   onSubmit(): void {
     this.submitted = true;
+    if (this.loginform.invalid) {
+      // form is invalid
+      alert('Login Credentials are not of Admin');
+      this.loginform.reset();
+      return;
+    } else if (this.loginform.valid) {
+      // alert('submitted');
+      console.log(this.loginform.value);
+      // this.goToRoute();
 
-    // alert('submitted');
-    console.log(this.loginform.value);
-    // this.goToRoute();
-
-    this._auth.loginAdmin(this.loginform.value);
+      this._auth.loginAdmin(this.loginform.value);
+    }
   }
 
   // goToRoute() {

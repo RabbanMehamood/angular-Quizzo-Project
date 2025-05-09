@@ -19,14 +19,34 @@
           required="required"
         />
       </div>
+      <div *ngIf="loginform.get('username')?.invalid && submitted">
+        <small
+          *ngIf="loginform.get('username')?.errors?.['required']"
+          style="color: red"
+          >Name is required.</small
+        >
+        <small
+          *ngIf="loginform.get('username')?.errors?.['lettersOnly']"
+          style="color: red"
+          s
+          >Only letters allowed.</small
+        >
+      </div>
       <div class="username-div">
-        <label for="username">Password * </label>
+        <label for="password">Password * </label>
         <br />
         <p-password
           formControlName="password"
           [toggleMask]="true"
           placeholder="Admin Password"
         />
+      </div>
+      <div *ngIf="loginform.get('password')?.invalid && submitted">
+        <small
+          *ngIf="loginform.get('password')?.errors?.['required']"
+          style="color: red"
+          >Password is required</small
+        >
       </div>
       <p-button type="submit" label="Login" />
     </form>

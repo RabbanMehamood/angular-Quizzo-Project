@@ -7,40 +7,57 @@
             Q{{ currentQuestion.id }}: {{ currentQuestion.questionText }}
           </p>
           <div style="display: flex; flex-direction: column; gap: 10px">
-            <div class="flex align-items-center">
+            <div class="options-label-style">
               <p-radioButton
-                (onClick)="selectedRadioButton(currentQuestion, $event)"
+                name="options"
+                [(ngModel)]="currentQuestion.selectedOption"
                 [value]="currentQuestion.optionA"
+                (onClick)="selectedRadioButton(currentQuestion, $event)"
                 variant="filled"
               />
-              <label for="ingredient3" class="ml-2 py-4">
+              <label class="ml-2 py-4">
                 {{ currentQuestion.optionA }}
               </label>
             </div>
 
-            <!-- <p-radioButton [(ngModel)]="checked" variant="filled" />
-            <p-radioButton [(ngModel)]="checked" variant="filled" />
-            <p-radioButton [(ngModel)]="checked" variant="filled" />
-            <p-checkbox
-              [label]="currentQuestion.optionA"
-              name="group"
-              [value]="currentQuestion.optionA"
-            />
-            <p-checkbox
-              [label]="currentQuestion.optionB"
-              name="group"
-              [value]="currentQuestion.optionB"
-            />
-            <p-checkbox
-              [label]="currentQuestion.optionC"
-              name="group"
-              [value]="currentQuestion.optionC"
-            />
-            <p-checkbox
-              [label]="currentQuestion.optionD"
-              name="group"
-              [value]="currentQuestion.optionD"
-            /> -->
+            <div class="options-label-style">
+              <p-radioButton
+                name="options"
+                [(ngModel)]="currentQuestion.selectedOption"
+                [value]="currentQuestion.optionB"
+                (onClick)="selectedRadioButton(currentQuestion, $event)"
+                variant="filled"
+              />
+              <label class="ml-2 py-4">
+                {{ currentQuestion.optionB }}
+              </label>
+            </div>
+
+            <div class="options-label-style">
+              <p-radioButton
+                name="options"
+                [(ngModel)]="currentQuestion.selectedOption"
+                [value]="currentQuestion.optionC"
+                (onClick)="selectedRadioButton(currentQuestion, $event)"
+                variant="filled"
+              />
+              <label class="ml-2 py-4">
+                {{ currentQuestion.optionC }}
+              </label>
+            </div>
+
+            <div class="options-label-style">
+              <p-radioButton
+                name="options"
+                [(ngModel)]="currentQuestion.selectedOption"
+                [value]="currentQuestion.optionD"
+                (onClick)="selectedRadioButton(currentQuestion, $event)"
+                variant="filled"
+              />
+              <label class="ml-2 py-4">
+                {{ currentQuestion.optionD }}
+              </label>
+            </div>
           </div>
         </div>
 
