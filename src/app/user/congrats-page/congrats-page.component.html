@@ -5,21 +5,27 @@
   <p>Congratulations you have completed the quiz!!!...</p>
   <div class="marks-div">
     <div>
-      <div class="wrong-answers"><span>5</span></div>
+      <div class="wrong-answers">
+        <span>{{ wrongAnswers }}</span>
+      </div>
       <span>Wrong Answers</span>
     </div>
     <div>
-      <div class="correct-answers"><span>20</span></div>
+      <div class="correct-answers">
+        <span>{{ correctAnswers }}</span>
+      </div>
       <span>Correct Answers</span>
     </div>
     <div>
-      <div class="total-questions"><span>25</span></div>
+      <div class="total-questions">
+        <span>{{ totalQuestions }}</span>
+      </div>
       <span>Total Questions</span>
     </div>
     <div class="horizontal-line"></div>
     <div class="total-marks">
-      <span>Your Scored</span>
-      <span class="total">45/50</span>
+      <span>You Scored</span>
+      <span class="total">{{ score }}/{{ totalScore }}</span>
     </div>
   </div>
 </div>
