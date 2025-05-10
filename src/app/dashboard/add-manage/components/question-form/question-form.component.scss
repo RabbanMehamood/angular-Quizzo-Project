@@ -1,7 +1,7 @@
 .question-form-style {
   background-color: #ffffff;
-  width: 1210px;
-  height: 273px;
+  width: 80vw;
+  height: 35vh;
   border-radius: 6px;
   border-width: 1px;
   border: 1px solid #e1e1e1;
@@ -20,7 +20,7 @@ label {
   margin-bottom: 5px;
 }
 textarea {
-  width: 1173px;
+  width: 99%;
   height: 84px;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -32,7 +32,7 @@ textarea {
 input {
   background-color: #f1f1f1;
   height: 35px;
-  width: 284px;
+  width: 95%;
   margin-top: 5px;
   margin-bottom: 10px;
   margin-right: 5px;
@@ -41,16 +41,16 @@ input {
 .options {
   display: grid;
   align-items: start;
-  grid-template-columns: repeat(4, 300px);
+  grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(3, auto);
 }
 
 .buttons-div :first-child::ng-deep.p-button {
   color: #2e629f;
   background-color: rgb(255, 255, 255);
-  width: 100px;
+
   font-family: "Poppins";
-  width: 124px;
+
   height: 30px;
   font-weight: 500;
   font-size: 13px;
@@ -64,9 +64,9 @@ input {
 .buttons-div :nth-child(2)::ng-deep.p-button {
   color: rgb(255, 255, 255);
   background-color: #2e629f;
-  width: 100px;
+
   font-family: "Poppins";
-  width: 124px;
+
   height: 30px;
   font-weight: 500;
   font-size: 13px;
@@ -79,9 +79,10 @@ input {
 .buttons-div {
   grid-row: 2;
   grid-column: 4;
+  padding-right: 10px;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   position: relative;
   top: 15px;

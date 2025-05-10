@@ -9,9 +9,16 @@
 
 body,
 html {
+  padding: 0px;
   margin: 0px;
   background-color: rgb(255, 255, 255);
 }
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   font-family: "Inter", sans-serif;
 }

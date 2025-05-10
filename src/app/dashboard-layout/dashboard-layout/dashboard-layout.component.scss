@@ -1,4 +1,6 @@
 .dashboard-header {
+  width: 100vw;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,6 +24,8 @@ p {
 }
 .nav-sections-style {
   display: flex;
+  height: 80vh;
+  width: 100vw;
 }
 .sections-style {
   display: flex;
@@ -33,8 +37,8 @@ p {
 }
 .sidebar-css {
   padding-top: 25px;
-  width: 250px;
-  height: 665px;
+  width: 25vh;
+  height: 100%;
   background-color: #4a90e2;
   display: flex;
   flex-direction: column;
