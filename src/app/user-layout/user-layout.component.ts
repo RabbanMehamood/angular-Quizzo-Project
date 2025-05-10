@@ -25,6 +25,7 @@ export class UserLayoutComponent implements OnInit {
     },
   ];
   currentUrl: string = '';
+  sidebarVisible: boolean = false;
 
   constructor(private router: Router, private _auth: AuthService) {}
   logout() {
@@ -44,5 +45,8 @@ export class UserLayoutComponent implements OnInit {
       this.steps[1].is_active = true;
       this.steps[2].is_active = true;
     }
+  }
+  makeSidebarTrue() {
+    this.sidebarVisible = true;
   }
 }

@@ -86,3 +86,72 @@ input {
   position: relative;
   top: 15px;
 }
+@media (min-width: 577px) and (max-width: 768px) {
+  .question-form-style {
+    background-color: #ffffff;
+    width: 420px;
+    height: 420px;
+    border-radius: 6px;
+    border-width: 1px;
+    border: 1px solid #e1e1e1;
+    margin: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+    padding: 13px;
+    align-items: center;
+  }
+  form {
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+  .options {
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+  }
+  input[_ngcontent-ng-c3438410777] {
+    background-color: #f1f1f1;
+    height: 35px;
+    width: 380px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+  }
+}
+@media (max-width: 576px) {
+  input {
+    background-color: #f1f1f1;
+    height: 35px;
+    width: 240px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+  }
+  .question-form-style {
+    background-color: #ffffff;
+    width: 280px;
+    height: 400px;
+    border-radius: 6px;
+    border-width: 1px;
+    border: 1px solid #e1e1e1;
+    margin: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+    padding: 13px;
+    align-items: center;
+  }
+  form {
+    margin: 0px;
+    gap: 0px;
+  }
+  .options {
+    gap: 0px;
+  }
+  .user {
+    font-family: "Poppins";
+    text-align: center;
+    font-weight: 500;
+    margin: 0px;
+    font-size: 18px;
+    display: inline-block;
+    width: 100%;
+  }
+}

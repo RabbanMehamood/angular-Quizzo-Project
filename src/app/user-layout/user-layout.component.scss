@@ -8,6 +8,9 @@
   background: #ffffff;
   width: 100vw;
 }
+.dashboard-header-mobile {
+  display: none;
+}
 .ellipse {
   margin-right: 10px;
   background-color: #d7eff2;
@@ -30,27 +33,14 @@ p {
   flex-direction: column;
 }
 
-// section {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   width: 1460px;
-//   height: 650px;
-//   margin: 10px;
-//   border: 1px solid #e1e1e1;
-//   border-radius: 6px;
-//   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
-// }
-
 .router-component-style {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 
   align-items: center;
-  width: 98vw;
-  height: 650px;
+  width: 90%;
+  height: 85vh;
   border: 1px solid #e1e1e1;
   border-radius: 6px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
@@ -145,4 +135,74 @@ p {
   /* z-index: 1; */
   top: -9px;
   left: 37px;
+}
+@media (max-width: 576px) {
+  div .main-div {
+    background: #e1f7f9;
+    height: 100vh;
+    width: 570px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+  .dashboard-header {
+    display: none;
+  }
+  .mobile-header-style {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+  }
+  ::ng-deep div.p-sidebar-content.ng-tns-c4029148367-1 .ng-star-inserted {
+    position: relative;
+    top: -58px;
+  }
+  .dashboard-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 3px 1px 4px 0px #41404040;
+    background: #ffffff;
+    width: 100vw;
+  }
+
+  .router-component-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 99%;
+    height: 80vh;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+    background: #ffffff;
+  }
+  .stepper-container {
+    display: flex;
+    width: 96%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+  }
+  .horizontal-line {
+    height: 100px;
+    width: 3px;
+    transform: rotate(90deg);
+    background-color: #41a676 !important;
+    position: relative;
+    top: -9px;
+    left: 37px;
+  }
+  .step {
+    padding: 20px 0;
+    display: flex;
+    margin: 0px 20px;
+    align-items: center;
+  }
 }

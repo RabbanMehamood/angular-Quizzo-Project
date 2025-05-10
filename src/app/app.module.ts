@@ -11,6 +11,7 @@ import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { ButtonModule } from 'primeng/button';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonModule,
     ReactiveFormsModule,
     FormsModule,
+    SidebarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
