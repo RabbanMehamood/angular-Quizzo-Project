@@ -1,11 +1,8 @@
 .dashboard-header {
   width: 100vw;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
   box-shadow: 3px 1px 4px 0px #41404040;
 }
 .ellipse {
@@ -24,8 +21,11 @@ p {
 }
 .nav-sections-style {
   display: flex;
+  align-content: center;
+  gap: 10px;
   height: 90vh;
-  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 .sections-style {
   display: flex;
@@ -37,7 +37,6 @@ p {
 }
 .sidebar-css {
   padding-top: 25px;
-  width: 25vh;
   height: 100%;
   background-color: #4a90e2;
   display: flex;
@@ -61,5 +60,20 @@ a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  margin-left: 24px;
+  margin: 0px 10px;
+}
+
+.router-outlet-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  /* General tablet layout */
+}
+
+/* Tablets (Landscape only) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  /* Optional fine-tuning */
 }
