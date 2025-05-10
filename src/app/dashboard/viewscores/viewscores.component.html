@@ -3,9 +3,11 @@
     <p-table
       [value]="users"
       [paginator]="true"
-      [rows]="12"
+      [rows]="15"
       [tableStyle]="{ 'min-width': '40rem' }"
       [rowsPerPageOptions]="[5, 10, 20]"
+      scrollable="true"
+      scrollHeight="550px"
     >
       <ng-template pTemplate="header">
         <tr>

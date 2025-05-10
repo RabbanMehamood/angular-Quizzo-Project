@@ -2,14 +2,18 @@
   border: 1px solid #e1e1e1;
   box-shadow: 0px 4px 4px 0px #00000040;
   border-radius: 6px;
-  margin: 10px;
-  width: 1280px;
+  margin: 12px;
+  width: 1310px;
+  height: 715px;
 }
 ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
   text-align: left;
   border: 1px solid #e5e7eb;
   border-width: 0 0 1px 0;
   padding: 0rem 1rem;
+}
+::ng-deep .p-datatable {
+  height: 500px;
 }
 ::ng-deep button.p-ripple.p-element.p-button.p-component {
   border: none;
@@ -28,8 +32,9 @@ p-component-overlay-enter-animation animation {
     border: 1px solid #e1e1e1;
     box-shadow: 0px 4px 4px 0px #00000040;
     border-radius: 6px;
-    margin: 10px;
+
     width: 600px;
+    height: 655px;
   }
 }
 @media (min-width: 1024px) and (max-width: 1340px) {
@@ -37,8 +42,9 @@ p-component-overlay-enter-animation animation {
     border: 1px solid #e1e1e1;
     box-shadow: 0px 4px 4px 0px #00000040;
     border-radius: 6px;
-    margin: 10px;
+
     width: 800px;
+    height: 655px;
   }
 }
 

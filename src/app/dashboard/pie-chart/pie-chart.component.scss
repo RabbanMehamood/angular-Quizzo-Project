@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 1200px;
-  height: 630px;
+  width: 1310px;
+  height: 715px;
   margin: 15px;
   border: 1px solid #e1e1e1;
   border-radius: 6px;
@@ -15,10 +15,9 @@
   height: 500px;
 }
 .heading {
+  width: 100%;
   text-align: left !important;
-  width: 500px;
-  margin-bottom: 60px;
-  margin-top: 30px;
+  padding: 15px 20px;
   font-family: "Poppins";
   font-weight: 500;
   font-size: 20px;
