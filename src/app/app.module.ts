@@ -8,10 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout/dashboard-layout.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
-import { ButtonModule } from 'primeng/button';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarModule } from 'primeng/sidebar';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,7 @@ import { SidebarModule } from 'primeng/sidebar';
   ],
   imports: [
     BrowserModule,
+    ConfirmPopupModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -29,6 +34,8 @@ import { SidebarModule } from 'primeng/sidebar';
     ReactiveFormsModule,
     FormsModule,
     SidebarModule,
+    ToastModule,
+    RippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -116,6 +116,46 @@
       <div class="question-div-scroll">
         <div *ngFor="let question of questions; let i = index">
           <div class="question-check-style">
+            <span style="float: left; padding-left: 10px">
+              Question {{ question.id }} ({{ question.questionStatus }})
+            </span>
+
+            <span
+              style="
+                margin-right: 10px;
+                width: 27px;
+                height: 27px;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 15px;
+                font-weight: 1000;
+                color: #fff;
+              "
+              [ngStyle]="{
+                backgroundColor:
+                  question.questionStatus === 'answered'
+                    ? '#41a676'
+                    : question.questionStatus === 'skipped'
+                    ? '#ff8000'
+                    : '#ccc'
+              }"
+            >
+              <i
+                class="pi"
+                [ngClass]="{
+                  'pi-check': question.questionStatus === 'answered',
+                  'pi-times': question.questionStatus === 'skipped',
+                  'pi-circle-off': question.questionStatus === 'untouched'
+                }"
+              ></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- <div *ngFor="let question of questions; let i = index">
+          <div class="question-check-style">
             <span style="float: left; padding-left: 10px"
               >Question{{ question.id }}</span
             >
@@ -137,7 +177,7 @@
               ></i
             ></span>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

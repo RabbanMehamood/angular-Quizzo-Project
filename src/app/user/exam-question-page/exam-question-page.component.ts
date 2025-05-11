@@ -50,7 +50,10 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
 
   loadQuestions() {
     this.questionsapiService.getQuestionsList().subscribe((response) => {
-      this.questions = response;
+      this.questions = response.map((q: any) => ({
+        ...q,
+        questionStatus: 'untouched', // Add new key
+      }));
       localStorage.setItem('totalQuestions', `${this.questions.length}`);
       this.startTimer();
       this.totalScore = this.questions.length * 2;
@@ -108,7 +111,6 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
   }
 
   next() {
-    this.selectedRadioButton(this.currentQuestion, event);
     if (this.currentIndex < this.questions.length - 1) {
       this.currentIndex++;
       this.startTimer();
@@ -123,22 +125,23 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
   }
 
   skip() {
+    const currentQuestion = this.currentQuestion;
+    if (currentQuestion.questionStatus !== 'answered') {
+      currentQuestion.questionStatus = 'skipped';
+      this.skipped++;
+    }
     this.next();
-    this.skipped = this.skipped + 1;
-    this.startTimer();
   }
+
+  // skip() {
+  //   this.next();
+  //   this.skipped = this.skipped + 1;
+  //   this.startTimer();
+  // }
 
   submit() {
     this.totalTimeSpent = Math.floor((Date.now() - this.startTime) / 1000);
     this.score = this.correctAnswers * 2;
-
-    // const answered = this.questions.filter(
-    //   (q) => q.status === 'answered'
-    // ).length;
-    // const skipped = this.questions.filter((q) => q.status === 'skipped').length;
-    // const score = this.questions.filter(
-    //   (q) => q.status === 'answered' && q.selectedAnswer === q.correctAnswer
-    // ).length;
     console.log(this.answered, this.skipped, this.score, this.totalScore);
     this.userScoreUpdateService
       .updateUserScore(this.userId, this.score)
@@ -154,41 +157,23 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
     localStorage.setItem('score', `${this.score}`);
     localStorage.setItem('correctAnswers', `${this.correctAnswers}`);
     this.router.navigate(['user-layout/congrats-page']);
-    // Navigate and pass data (you can use a service or Router's state)
-    // this.router.navigate(['user-layout/congrats-page'], {
-    //   state: {
-    //     total: this.questions.length,
-    //     correct: this.correctAnswers,
-    //     // answered,
-    //     skippedones: this.skipped,
-    //     // skipped,
-    //     // score,
-    //     score: this.score,
-    //     totalscore: this.totalScore,
-    //     timeSpent: this.totalTimeSpent,
-    //   },
-    // });
   }
   get currentQuestion() {
     return this.questions[this.currentIndex];
   }
 
   questionBook = [];
-  selectedRadioButton(currentQuestion, $event) {
+  selectedRadioButton(currentQuestion: any, $event: any) {
     const answer = $event.value;
+
     if (currentQuestion.correctAnswer === answer) {
-      this.correctAnswers = this.correctAnswers + 1;
-      this.answered = this.answered + 1;
-      // this.questionBook[currentQuestion.id] = {
-      //   isCorrect: true,
-      //   // isSkipped: false,
-      // };
-    } else if (currentQuestion.correctAnswer !== answer) {
-      this.skipped = this.skipped + 1;
+      this.correctAnswers++;
     }
-    $event.value = '';
-    console.log(this.correctAnswers, this.skipped);
-    // console.log({ questionBook: this.questionBook });
-    // console.log(this.questionBook[currentQuestion.id]['isSkipped']);
+
+    // Mark question as answered
+    currentQuestion.questionStatus = 'answered';
+    this.answered++;
+
+    console.log(this.correctAnswers, this.skipped, currentQuestion);
   }
 }

@@ -1,6 +1,6 @@
 <div class="question-summary-style">
   <div class="quiz-summary-style">
-    <div style="margin: 20px 0px">
+    <div style="margin: 10px 0px">
       <div>Quiz Summary</div>
     </div>
     <div class="card">
@@ -35,14 +35,34 @@
               class="animate-me"
               (click)="edit(question)"
             >
-              <i class="pi pi-pencil"></i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#75767C"
+              >
+                <path
+                  d="M154-154v-142l490-490.5q10-10.5 21.75-15t24.75-4.5q13 0 25 4.75t23 14.75l48 47.5q10 10.5 14.75 22.25T806-691.5q0 13-4.75 25t-14.75 22L296-154H154Zm537.5-490 47.5-47.5-47.5-47.5-47.5 47.5 47.5 47.5Z"
+                />
+              </svg>
             </td>
             <td
               style="cursor: pointer"
               class="animate-me"
               (click)="delete(question.id)"
             >
-              <i class="pi pi-trash"></i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#75767C"
+              >
+                <path
+                  d="M315-154q-27.64 0-47.32-19.68T248-221v-472h-47v-67h185v-46h189v46h185v67h-47v471.57q0 28.37-19.68 47.9Q673.64-154 646-154H315Zm74-137.5h67v-331h-67v331Zm116 0h67v-331h-67v331Z"
+                />
+              </svg>
             </td>
           </tr>
         </ng-template>

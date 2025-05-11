@@ -10,6 +10,9 @@ import { InputText, InputTextModule } from 'primeng/inputtext';
 import { Button, ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { ToastModule } from 'primeng/toast';
+
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   declarations: [RegisterpageComponent],
@@ -27,6 +30,8 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
     InputGroupModule,
     InputGroupAddonModule,
     ReactiveFormsModule,
+    ToastModule,
+    RippleModule,
   ],
 })
 export class RegisterpageModule {}

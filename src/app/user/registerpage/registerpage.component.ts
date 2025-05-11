@@ -9,11 +9,14 @@ import {
 import { Router } from '@angular/router';
 import { ViewusersService } from '../../dashboard/viewscores/services/viewusers.service';
 import { ApiService } from '../../auth/services/api.service';
+import { MessageService } from 'primeng/api';
 import { AuthService } from '../../auth/services/auth.service';
+
 @Component({
   selector: 'app-registerpage',
   templateUrl: './registerpage.component.html',
   styleUrl: './registerpage.component.scss',
+  providers: [MessageService],
 })
 export class RegisterpageComponent {
   submitted: boolean = false;
@@ -31,18 +34,17 @@ export class RegisterpageComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private _usersCount: ViewusersService,
-    private _auth: AuthService
-  ) {
-    // console.log(this.generatedId);
-  }
+    private _auth: AuthService,
+    private messageService: MessageService
+  ) {}
+
   ngOnInit(): void {
     this._usersCount.getUsers().subscribe({
       next: (response) => {
         this.generatedId = response.length + 1;
-        console.log(this.generatedId);
       },
     });
-    console.log(this.generatedId);
+
     this.registerform = this.formBuilder.group({
       name: ['', [Validators.required]],
       age: ['', [Validators.required]],
@@ -50,32 +52,34 @@ export class RegisterpageComponent {
       qualification: [''],
     });
   }
+
   get f(): { [key: string]: AbstractControl } {
     return this.registerform.controls;
   }
+
   onSubmit(): void {
     this.submitted = true;
-    if (this.registerform.invalid) {
-      // form is invalid
-      return;
-    } else {
-      console.log(this.generatedId);
-      alert('submit');
+    if (this.registerform.invalid) return;
 
-      console.log(this.registerform.valid);
-      this.userObject = {
-        id: this.generatedId,
-        ...this.registerform.value,
-      };
-      this._auth.loginUser(this.userObject);
-      console.log(this.userObject);
-      this.goToRoute();
-    }
+    this.userObject = {
+      id: this.generatedId,
+      ...this.registerform.value,
+    };
+
+    this._auth.loginUser(this.userObject);
+
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Registered',
+      detail: 'Registration successful, redirecting to exam page...',
+      life: 3000, // Show for 2 seconds
+    });
+
+    setTimeout(() => {
+      this.router.navigate(['user-layout/exam-question-page']);
+    }, 3000);
   }
 
-  goToRoute() {
-    this.router.navigate(['user-layout/exam-question-page']);
-  }
   onReset(): void {
     this.submitted = false;
     this.registerform.reset();

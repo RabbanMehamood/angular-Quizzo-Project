@@ -6,6 +6,11 @@
   width: 1310px;
   height: 715px;
 }
+::ng-deep .p-button-label {
+  font-family: "Poppins" !important;
+  font-weight: 400 !important;
+  color: #4b5563;
+}
 ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
   text-align: left;
   border: 1px solid #e5e7eb;
@@ -27,14 +32,116 @@
 p-component-overlay-enter-animation animation {
   background-color: rgba(134, 53, 53, 0.442) !important;
 }
+//paginator style overriding
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #4a90e2 !important;
+  border-color: #eff6ff !important;
+  color: #ffffff !important;
+}
+
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+  background-color: transparent !important;
+  border: none !important;
+  color: #6b7280 !important;
+  min-width: 2rem !important;
+  height: 3rem !important;
+  margin: 0.143rem !important;
+  transition: box-shadow 0.2s !important;
+  border-radius: 0px !important;
+}
+
+::ng-deep .p-link {
+  font-family: var(--font-family) !important;
+  font-feature-settings: var(--font-feature-settings, normal) !important;
+  font-size: 1rem !important;
+  border-radius: none !important;
+}
+
+.p-paginator-page,
+.p-paginator-next,
+.p-paginator-last,
+.p-paginator-first,
+.p-paginator-prev,
+.p-paginator-current {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  -webkit-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+  border-radius: 6px !important;
+  border: 1px solid #e1e1e1 !important;
+}
+::ng-deep .p-paginator .p-paginator-first {
+  background-color: transparent;
+  border: 0 none !important;
+  color: #6b7280;
+  min-width: 2rem !important;
+  height: 3rem;
+  margin: 0rem !important;
+  transition: box-shadow 0.2s;
+  border-radius: 0px !important;
+}
+::ng-deep .p-paginator .p-paginator-prev {
+  background-color: transparent;
+  border: 0 none !important;
+  color: #6b7280;
+  min-width: 2rem !important;
+  height: 3rem;
+  margin: 0rem !important;
+  transition: box-shadow 0.2s;
+  border-radius: 0px !important;
+}
+::ng-deep .p-paginator .p-paginator-next {
+  background-color: transparent;
+  border: 0 none !important;
+  color: #6b7280;
+  min-width: 2rem !important;
+  height: 3rem;
+  margin: 0rem !important;
+  transition: box-shadow 0.2s;
+  border-radius: 0px !important;
+}
+::ng-deep .p-paginator .p-paginator-last {
+  background-color: transparent;
+  border: 0 none !important;
+  color: #6b7280;
+  min-width: 2rem !important;
+  height: 3rem;
+  margin: 0rem !important;
+  transition: box-shadow 0.2s;
+  border-radius: 0px !important;
+}
+
+// media queries
 @media (min-width: 768px) and (max-width: 1024px) {
   .view-scores-style {
     border: 1px solid #e1e1e1;
     box-shadow: 0px 4px 4px 0px #00000040;
     border-radius: 6px;
-
     width: 600px;
-    height: 655px;
+    height: 550px;
+  }
+  ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 0px 5px;
+    border: 1px solid #e5e7eb;
+    border-width: 0 0 1px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #374151;
+    background: #f9fafb;
+    transition: box-shadow 0.2s;
+  }
+  ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    text-align: left;
+    border: 1px solid #e5e7eb;
+    border-width: 0 0 1px 0;
+    font-size: 15px;
+    padding: 0px 5px;
   }
 }
 @media (min-width: 1024px) and (max-width: 1340px) {
@@ -42,7 +149,6 @@ p-component-overlay-enter-animation animation {
     border: 1px solid #e1e1e1;
     box-shadow: 0px 4px 4px 0px #00000040;
     border-radius: 6px;
-
     width: 800px;
     height: 655px;
   }

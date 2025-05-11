@@ -12,7 +12,7 @@
 
 .admin-login-div {
   width: 432px;
-  height: 585px;
+  height: 615px;
   border-radius: 24px;
   border-width: 1px;
   background-color: aliceblue;
@@ -99,7 +99,7 @@ input {
   border-radius: 10px;
   background: rgba(220, 220, 220, 0.393);
   border: none;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: black;
 }
 ::ng-deep .p-password .p-inputtext {
@@ -252,7 +252,7 @@ a {
     border-radius: 10px;
     background: rgba(220, 220, 220, 0.393);
     border: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: black;
   }
   ::ng-deep .p-password .p-inputtext {
@@ -283,7 +283,7 @@ a {
     border-radius: 10px;
     background-color: rgba(220, 220, 220, 0.393);
     border: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   form {
     display: flex;

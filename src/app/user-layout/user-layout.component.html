@@ -1,3 +1,14 @@
+<p-toast></p-toast>
+<p-confirmPopup>
+  <ng-template pTemplate="content" let-message>
+    <div
+      class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border p-3 mb-3"
+    >
+      <i [class]="message.icon" class="text-6xl text-primary-500"></i>
+      <p>{{ message.message }}</p>
+    </div>
+  </ng-template>
+</p-confirmPopup>
 <div class="main-div">
   <header>
     <div class="w-full">
@@ -35,7 +46,7 @@
               />
             </svg>
           </div>
-          <div class="ellipse" (click)="logout()">
+          <div class="ellipse" (click)="logout($event)">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -86,7 +97,7 @@
                   />
                 </svg>
               </div>
-              <div class="ellipse" (click)="logout()">
+              <div class="ellipse" (click)="logout($event)">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24px"

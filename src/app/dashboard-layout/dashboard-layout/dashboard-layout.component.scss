@@ -70,12 +70,18 @@ a {
   flex-direction: column;
   align-items: center;
 }
+.header-mobile {
+  display: none;
+}
 
 @media (min-width: 601px) and (max-width: 900px) {
   .nav-links {
     display: flex;
     align-items: center;
     padding: 10px 0px;
+  }
+  .header-mobile {
+    display: none;
   }
 }
 
@@ -85,5 +91,17 @@ a {
     display: flex;
     align-items: center;
     padding: 10px 0px;
+  }
+  .header-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-non-mobile {
+    display: none;
+  }
+  .header-mobile {
+    width: 100vw;
   }
 }

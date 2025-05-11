@@ -1,7 +1,7 @@
 .question-form-style {
   background-color: #ffffff;
   width: 550px;
-  height: 510px;
+  height: 485px;
   border-radius: 6px;
   border-width: 1px;
   border: 1px solid #e1e1e1;
@@ -19,7 +19,6 @@
 }
 form {
   margin-left: 10px;
-  margin-top: 30px;
 }
 
 label {
@@ -41,7 +40,7 @@ input {
 
 .options {
   display: flex;
-  gap: 15px;
+
   flex-direction: column;
 }
 
@@ -90,7 +89,7 @@ input {
   .question-form-style {
     background-color: #ffffff;
     width: 420px;
-    height: 420px;
+    height: 484px;
     border-radius: 6px;
     border-width: 1px;
     border: 1px solid #e1e1e1;
@@ -153,5 +152,14 @@ input {
     font-size: 18px;
     display: inline-block;
     width: 100%;
+  }
+  .buttons-div {
+    grid-row: 2;
+    grid-column: 4;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 10px;
   }
 }

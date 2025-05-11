@@ -79,7 +79,11 @@
       <div class="buttons-div">
         <p-button label="Cancel" (onClick)="onReset()" class="primary" />
         <p-button type="submit" label="Add" *ngIf="!isEditable" />
-        <p-button type="submit" label="Update" *ngIf="isEditable" />
+        <p-button
+          type="submit"
+          label="Update"        
+          *ngIf="isEditable"
+        />
       </div>
     </div>
   </form>

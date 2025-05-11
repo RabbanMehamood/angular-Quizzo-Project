@@ -1,6 +1,13 @@
 @import "primeicons/primeicons.css";
 :root {
   --font-family: "Poppins", sans-serif;
+  --violet-500: #8e24aa;
+  --text-color: #ffffff;
+  --blue-500: #006ac3;
+  --orange-500: #ff8000;
+  --teal-500: #41a676;
+  --violet-500: #bd4df5;
+  --lime-500: #9ad720;
 }
 
 ::-webkit-scrollbar {
@@ -26,4 +33,20 @@ body {
 /* For Firefox */
 * {
   scrollbar-width: none; /* Firefox */
+}
+
+.bg-panel {
+  background-color: #4a90e2;
+  color: white;
+  padding: 1.25rem;
+  border-radius: 6px;
+}
+
+.p-overlaypanel .p-overlaypanel-content {
+  padding: 0px !important ;
+}
+.p-overlaypanel {
+  border: 0 none;
+  border-radius: 6px;
+  box-shadow: none !important;
 }

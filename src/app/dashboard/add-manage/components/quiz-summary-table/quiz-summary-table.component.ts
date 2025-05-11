@@ -27,6 +27,7 @@ export class QuizSummaryTableComponent implements OnInit {
       this.questions = response;
       console.log('this is response:', response);
     });
+
     this.loading = false;
   }
   edit(question: any) {

@@ -11,31 +11,52 @@ export class AuthService {
     private readonly _router: Router
   ) {}
 
-  loginAdmin(value: any) {
-    let adminObject = value;
-    console.log(adminObject);
-    // alert(JSON.stringify(value));
-    localStorage.setItem('userRole', 'Admin');
-    localStorage.setItem('password', 'quizzoito');
-    if (
-      adminObject.username === 'Admin' &&
-      adminObject.password === 'quizzoito'
-    ) {
-      this._router.navigate(['dashboard/add-manage']);
-    } else {
-      confirm('Unauthorised Access, Please Login as a User');
-      this._router.navigate(['']);
-    }
+  // loginAdmin(value: any) {
+  //   let adminObject = value;
+  //   console.log(adminObject);
+  //   // alert(JSON.stringify(value));
+  //   localStorage.setItem('userRole', 'Admin');
+  //   localStorage.setItem('password', 'quizzoito');
+  //   if (
+  //     adminObject.username === 'Admin' &&
+  //     adminObject.password === 'quizzoito'
+  //   ) {
+  //     this._router.navigate(['dashboard/add-manage']);
+  //   } else {
+  //     confirm('Unauthorised Access, Please Login as a User');
+  //     this._router.navigate(['']);
+  //   }
+  //   // this._api.loginAdmin$().subscribe({
+  //   //   next: (res: any) => {
+  //   //    Success and Authenticated
+  //   //     localStorage.setItem('userRole', 'Admin'); // or 'User', etc.
+  //   //   },
+  //   // });
+  // }
 
-    // this._api.loginAdmin$().subscribe({
-    //   next: (res: any) => {
-    //    Success and Authenticated
-    //     localStorage.setItem('userRole', 'Admin'); // or 'User', etc.
-    //   },
-    // });
+  loginAdmin(value: any): boolean {
+    const { username, password } = value;
+
+    if (username === 'Admin' && password === 'quizzoito') {
+      localStorage.setItem('userRole', 'Admin');
+      localStorage.setItem('password', 'quizzoito');
+      return true;
+    } else {
+      return false;
+    }
   }
+
   logoutAsAdmin() {
-    alert('removed local storage key and values');
+    // alert('removed local storage key and values');
+    localStorage.clear();
+    // localStorage.removeItem('userRole');
+    // localStorage.removeItem('password');
+    // localStorage.removeItem('userId');
+    this._router.navigate(['']);
+  }
+
+  logoutAsUser() {
+    localStorage.clear();
     localStorage.removeItem('userRole');
     localStorage.removeItem('password');
     localStorage.removeItem('userId');
@@ -48,7 +69,6 @@ export class AuthService {
         localStorage.removeItem('userRole');
         localStorage.removeItem('password');
         localStorage.setItem('userId', value.id);
-        this._router.navigate(['user-layout/exam-question-page']);
         // or 'User', etc.
         // this.setAuthenticated(true);
         // if (res.loginType === 'user') {

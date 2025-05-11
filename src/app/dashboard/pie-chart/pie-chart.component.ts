@@ -13,17 +13,7 @@ export class PieChartComponent implements OnInit {
   userscorelist = [];
   options: any;
   // users: any[] = [];
-  users: any = [
-    { name: 'Megha', score: 75 },
-    { name: 'Raj', score: 80 },
-    { name: 'Aditi', score: 78 },
-    { name: 'Priya', score: 92 },
-    { name: 'Ravi', score: 45 },
-    { name: 'Alok', score: 60 },
-    { name: 'Sneha', score: 95 },
-    { name: 'Deepak', score: 67 },
-    { name: 'Anjali', score: 38 },
-  ];
+  users: any = [];
   // instance using inject method, calling in ngonit when ever components gets called using lazy loading and loaded.
   viewUserScoresService = inject(ViewusersService);
   categories = [
@@ -31,19 +21,21 @@ export class PieChartComponent implements OnInit {
     'Good (70–89%)',
     'Average (50–69%)',
     'Poor (<50%)',
+    'Fail (<35%)',
   ];
-  categoryCounts = [90, 70, 50, 40];
+  categoryCounts = [90, 70, 50, 40, 30];
   categoryUsers: Record<string, string[]> = {
     'Excellent (90–100%)': [],
     'Good (70–89%)': [],
     'Average (50–69%)': [],
     'Poor (<50%)': [],
+    'Fail (<35%)': [],
   };
 
-  populateChartData() {
-    for (const user of this.users) {
+  populateChartData(userdata: any[]) {
+    for (const user of userdata) {
       const { name, score } = user;
-      console.log({ name });
+      // console.log({ name });
 
       if (score >= 90) {
         this.categoryCounts[0]++;
@@ -54,61 +46,81 @@ export class PieChartComponent implements OnInit {
       } else if (score >= 50) {
         this.categoryCounts[2]++;
         this.categoryUsers[this.categories[2]].push(name);
-      } else {
+      } else if (score >= 35) {
         this.categoryCounts[3]++;
         this.categoryUsers[this.categories[3]].push(name);
+      } else if (score >= 0) {
+        this.categoryCounts[4]++;
+        this.categoryUsers[this.categories[4]].push(name);
       }
+      // } else if (score <= 34) {
+      //
+      // }
     }
+    console.log(this.categoryCounts, this.categoryUsers);
   }
 
   ngOnInit() {
     this.viewUserScoresService.getUsers().subscribe((res) => {
       this.users = res;
-      console.log(res);
-      this.label = this.users.map((user) => user.name);
-      this.userscorelist = this.users.map((user) => user.score);
-      console.log({ label: this.label, userscorelist: this.userscorelist });
+
       this.setData();
-      this.populateChartData();
+      this.populateChartData(this.users);
+      // console.log({ label: this.label, userscorelist: this.userscorelist });
+
+      // console.log(res);
+      this.label = this.users.map((user) => user.name);
     });
   }
   setData() {
     const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
-    // const counts = this.getCategoryCounts([
-    //   95, 88, 76, 45, 82, 67, 91, 59, 73, 30, 99, 65,
-    // ]);
+    documentStyle.getPropertyValue('--text-color');
 
     this.data = {
       labels: this.categories,
       datasets: [
         {
           data: this.categoryCounts,
-          // backgroundColor: [
-          //   documentStyle.getPropertyValue('--blue-800'),
-          //   documentStyle.getPropertyValue('--yellow-500'),
-          //   documentStyle.getPropertyValue('--green-500'),
-          // ],
-          // hoverBackgroundColor: [
-          //   documentStyle.getPropertyValue('--blue-400'),
-          //   documentStyle.getPropertyValue('--yellow-400'),
-          //   documentStyle.getPropertyValue('--green-400'),
-          // ],
+          backgroundColor: [
+            documentStyle.getPropertyValue('--blue-800'),
+            documentStyle.getPropertyValue('--orange-500'),
+            documentStyle.getPropertyValue('--teal-500'),
+            documentStyle.getPropertyValue('--violet-500'),
+            documentStyle.getPropertyValue('--lime-500'),
+          ],
+          hoverBackgroundColor: [
+            documentStyle.getPropertyValue('--blue-400'),
+            documentStyle.getPropertyValue('--orange-400'),
+            documentStyle.getPropertyValue('--teal-400'),
+            documentStyle.getPropertyValue('--violet-500'),
+            documentStyle.getPropertyValue('--lime-500'),
+          ],
         },
       ],
     };
 
     this.options = {
-      cutout: '40%', // Donut size
+      cutout: '50%', // Donut size
       plugins: {
         tooltip: {
+          backgroundColor: '#eefeff', // Tooltip background (dark gray)
+          titleColor: '#000000', // Title text color (e.g., "Excellent (90–100%)")
+          bodyColor: '#333333',
+          borderColor: '#aaa', // Optional: border around tooltip
+          borderWidth: 1,
+          bodyFont: {
+            size: 13,
+            weight: 'normal',
+          },
+          cornerRadius: 8,
+          padding: 15,
           callbacks: {
             label: (context: any) => {
               const label = context.label;
               console.log({ label });
 
               const users = this.categoryUsers[label] || [];
-              return [`Users:`, ...users];
+              return [...users];
             },
           },
         },
@@ -122,17 +134,4 @@ export class PieChartComponent implements OnInit {
       },
     };
   }
-
-  // getCategoryCounts(scores: number[]): number[] {
-  //   const counts = [0, 0, 0, 0]; // Excellent, Good, Average, Poor
-
-  //   for (const score of scores) {
-  //     if (score >= 90) counts[0]++;
-  //     else if (score >= 70) counts[1]++;
-  //     else if (score >= 50) counts[2]++;
-  //     else counts[3]++;
-  //   }
-
-  //   return counts;
-  // }
 }

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth/services/auth.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
+
 @Component({
   selector: 'app-user-layout',
   templateUrl: './user-layout.component.html',
-  styleUrl: './user-layout.component.scss',
+  styleUrls: ['./user-layout.component.scss'],
+  providers: [ConfirmationService, MessageService],
 })
 export class UserLayoutComponent implements OnInit {
   steps = [
@@ -27,10 +30,13 @@ export class UserLayoutComponent implements OnInit {
   currentUrl: string = '';
   sidebarVisible: boolean = false;
 
-  constructor(private router: Router, private _auth: AuthService) {}
-  logout() {
-    this._auth.logoutAsAdmin();
-  }
+  constructor(
+    private router: Router,
+    private _auth: AuthService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {}
+
   ngOnInit(): void {
     const url = this.router.url;
     this.currentUrl = url;
@@ -46,7 +52,34 @@ export class UserLayoutComponent implements OnInit {
       this.steps[2].is_active = true;
     }
   }
-  makeSidebarTrue() {
+
+  logout(event: Event): void {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure you want to log out?',
+      icon: 'pi pi-sign-out',
+      accept: () => {
+        this._auth.logoutAsAdmin();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Logged Out',
+          detail: 'You have been successfully logged out',
+          life: 3000,
+        });
+        this.router.navigate(['']);
+      },
+      reject: () => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Cancelled',
+          detail: 'You remained logged in',
+          life: 2000,
+        });
+      },
+    });
+  }
+
+  makeSidebarTrue(): void {
     this.sidebarVisible = true;
   }
 }

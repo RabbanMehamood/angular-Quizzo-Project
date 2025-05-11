@@ -38,7 +38,6 @@ export class QuestionFormComponent implements OnInit {
         console.log(this.counter);
       },
     });
-
     this._editQuestion();
   }
 
@@ -95,6 +94,7 @@ export class QuestionFormComponent implements OnInit {
             this.isEditable = true;
           },
         });
+      this.onReset();
     }
   }
 
