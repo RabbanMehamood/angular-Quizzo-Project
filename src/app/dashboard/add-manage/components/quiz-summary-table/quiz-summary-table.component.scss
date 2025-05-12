@@ -23,6 +23,12 @@
   padding: 0.5rem 1rem;
 }
 
+//scrollable height
+::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
+  position: relative;
+  min-height: 300px !important;
+}
+
 //paginator style overriding
 ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
   background: #4a90e2 !important;
@@ -111,7 +117,7 @@
   max-height: 300px !important;
 }
 // media queries
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 766px) and (max-width: 1024px) {
   .quiz-summary-style {
     background-color: #ffffff;
     height: 45vh;
@@ -123,6 +129,12 @@
     box-shadow: 0px 4px 4px 0px #00000040;
     padding: 5px;
   }
+  ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
+    position: relative;
+    min-height: 169px !important;
+    height: 170px !important;
+  }
+
   ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
     text-align: left;
     font-size: 12px;
@@ -141,10 +153,7 @@
     background: #f9fafb;
     transition: box-shadow 0.2s;
   }
-  ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
-    position: relative;
-    max-height: 200px !important;
-  }
+
   //paginator style overriding
   ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
     background: #4a90e2 !important;
@@ -228,10 +237,6 @@
     transition: box-shadow 0.2s;
     border-radius: 0px !important;
   }
-  ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
-    position: relative;
-    max-height: 300px !important;
-  }
 }
 @media (min-width: 1024px) and (max-width: 1340px) {
   .quiz-summary-style {
@@ -247,7 +252,15 @@
   }
   ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
     position: relative;
-    max-height: 330px !important;
+    min-height: 350px !important;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 76px) {
+  ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
+    position: relative;
+
+    min-height: 200px !important;
   }
 }
 ::ng-deep .p-table {
