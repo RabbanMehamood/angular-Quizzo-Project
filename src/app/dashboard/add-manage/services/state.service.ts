@@ -5,14 +5,14 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class StateService {
-  private messageSource = new Subject<string>();
+  private messageSource = new Subject<Object>();
   message$ = this.messageSource.asObservable();
 
   // bEHAVIOUR SUBJECT TAKES EXPECTED ARGUMENT ATLEAST 1
   // private messageSource2 = new BehaviorSubject<string>('9089');
   // message2$ = this.messageSource.asObservable();
 
-  sendMessage(message: string) {
+  sendMessage(message: Object) {
     this.messageSource.next(message);
   }
 }

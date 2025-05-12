@@ -17,8 +17,10 @@ export class QuestionsapiService {
     return this.http.post(this.apiUrl, question);
   }
 
-  putQuestion(question: any): Observable<any> {
-    return this.http.put(this.apiUrl + '/' + question.id, question);
+  putQuestion(question: any, id: any): Observable<any> {
+    console.log(question.id);
+
+    return this.http.put(this.apiUrl + '/' + id, question);
   }
 
   delete(id: number): Observable<any> {

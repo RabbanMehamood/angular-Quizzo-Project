@@ -12,6 +12,7 @@ import { StateService } from '../../services/state.service';
 export class QuestionFormComponent implements OnInit {
   isEditable: boolean = false;
   counter: number = 0;
+  editQuestionId: any;
   questionform: FormGroup = new FormGroup({
     questionText: new FormControl(''),
     optionA: new FormControl(''),
@@ -46,6 +47,7 @@ export class QuestionFormComponent implements OnInit {
       next: (question: any) => {
         if (question) {
           this._setFromValue(question);
+          this._editQuestion = question.id;
           this.isEditable = true;
         }
       },
@@ -74,7 +76,8 @@ export class QuestionFormComponent implements OnInit {
       // insert / Add
       this.counter = this.counter + 1;
       const postValue = this.questionform.value;
-      alert(JSON.stringify(this.questionform.value, null, 2));
+      console.log(postValue);
+      alert(JSON.stringify(this.questionform.value));
       this.questionApiService
         .createQuestion({ ...postValue, id: this.counter })
         .subscribe({
@@ -85,13 +88,15 @@ export class QuestionFormComponent implements OnInit {
     } else {
       // only for update
       const postValue = this.questionform.value;
+      console.log(postValue);
+      console.log(this.editQuestionId);
       alert(JSON.stringify(this.questionform.value, null, 2));
       this.questionApiService
-        .putQuestion({ ...postValue, id: this.counter })
+        .putQuestion(postValue, this.editQuestionId)
         .subscribe({
           next: (res: any) => {
             console.log({ res });
-            this.isEditable = true;
+            this.isEditable = false;
           },
         });
       this.onReset();

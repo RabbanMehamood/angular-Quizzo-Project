@@ -6,6 +6,10 @@
   width: 1310px;
   height: 715px;
 }
+::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
+  position: relative;
+  min-height: 621px !important;
+}
 ::ng-deep .p-button-label {
   font-family: "Poppins" !important;
   font-weight: 400 !important;
@@ -125,6 +129,10 @@ p-component-overlay-enter-animation animation {
     width: 600px;
     height: 550px;
   }
+  ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
+    position: relative;
+    min-height: 400px !important;
+  }
   ::ng-deep .p-datatable .p-datatable-thead > tr > th {
     text-align: left;
     padding: 0px 5px;
@@ -150,7 +158,11 @@ p-component-overlay-enter-animation animation {
     box-shadow: 0px 4px 4px 0px #00000040;
     border-radius: 6px;
     width: 800px;
-    height: 655px;
+    height: 750px;
+  }
+  ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
+    position: relative;
+    min-height: 650px !important;
   }
 }
 
