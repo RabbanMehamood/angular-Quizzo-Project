@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { QuestionsapiService } from '../../services/questionsapi.service';
 import { StateService } from '../../services/state.service';
 
@@ -14,13 +19,32 @@ export class QuestionFormComponent implements OnInit {
   counter: number = 0;
   editQuestionId: any;
   questionform: FormGroup = new FormGroup({
-    questionText: new FormControl(''),
-    optionA: new FormControl(''),
-    optionB: new FormControl(''),
-    optionC: new FormControl(''),
-    optionD: new FormControl(''),
-    correctAnswer: new FormControl(''),
-    timerInSeconds: new FormControl(20),
+    id: new FormControl(''),
+    questionText: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+    ]),
+    optionA: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    optionB: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    optionC: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    optionD: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    correctAnswer: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    timerInSeconds: new FormControl(20, [Validators.required]),
   });
 
   submitted = false;
@@ -42,27 +66,26 @@ export class QuestionFormComponent implements OnInit {
     this._editQuestion();
   }
 
+  /**
+   * Set values for forms
+   */
   private _editQuestion() {
     this._stateService.message$.subscribe({
       next: (question: any) => {
         if (question) {
-          this._setFromValue(question);
-          this._editQuestion = question.id;
+          this.questionform.setValue({
+            id: question.id,
+            questionText: question.questionText,
+            optionA: question.optionA,
+            optionB: question.optionB,
+            optionC: question.optionC,
+            optionD: question.optionD,
+            correctAnswer: question.correctAnswer,
+            timerInSeconds: question.timerInSeconds,
+          });
           this.isEditable = true;
         }
       },
-    });
-  }
-
-  private _setFromValue(question: any) {
-    this.questionform.setValue({
-      questionText: question.questionText,
-      optionA: question.optionA,
-      optionB: question.optionB,
-      optionC: question.optionC,
-      optionD: question.optionD,
-      correctAnswer: question.correctAnswer,
-      timerInSeconds: question.timerInSeconds,
     });
   }
 
@@ -71,6 +94,8 @@ export class QuestionFormComponent implements OnInit {
     if (this.questionform.invalid) {
       return;
     }
+
+    console.log({ isEditable: this.isEditable });
 
     if (!this.isEditable) {
       // insert / Add
@@ -82,26 +107,27 @@ export class QuestionFormComponent implements OnInit {
         .createQuestion({ ...postValue, id: this.counter })
         .subscribe({
           next: (res: any) => {
+            this._stateService.sendEditUpdateMessage(true);
             console.log({ res });
-          },
-        });
-    } else {
-      // only for update
-      const postValue = this.questionform.value;
-      console.log(postValue);
-      console.log(this.editQuestionId);
-      alert(JSON.stringify(this.questionform.value, null, 2));
-      this.questionApiService
-        .putQuestion(postValue, this.editQuestionId)
-        .subscribe({
-          next: (res: any) => {
-            console.log({ res });
-            this.isEditable = false;
           },
         });
       this.onReset();
+    } else {
+      // only for update
+      const postValue = this.questionform.value;
+      alert(JSON.stringify(this.questionform.value, null, 2));
+      this.questionApiService.putQuestion(postValue, postValue.id).subscribe({
+        next: (res: any) => {
+          console.log({ res });
+          this._stateService.sendEditUpdateMessage(true);
+          this.isEditable = false;
+        },
+      });
+      this.onReset();
     }
   }
+
+  updateList() {}
 
   onReset(): void {
     this.submitted = false;

@@ -18,6 +18,16 @@ export class QuizSummaryTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadquestiondata();
+
+    this._stateService.updateMsg$.subscribe({
+      next: (res: any) => {
+        if (res) {
+          // true
+          // Call Get Question
+          this.loadquestiondata();
+        }
+      },
+    });
   }
 
   loadquestiondata() {
@@ -30,6 +40,7 @@ export class QuizSummaryTableComponent implements OnInit {
 
     this.loading = false;
   }
+
   edit(question: any) {
     console.log('Question Id to edit:', question);
     this._stateService.sendMessage(question);

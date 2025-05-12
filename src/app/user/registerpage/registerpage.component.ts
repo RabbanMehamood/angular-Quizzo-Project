@@ -49,7 +49,7 @@ export class RegisterpageComponent {
       name: ['', [Validators.required]],
       age: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      qualification: [''],
+      qualification: ['', [Validators.required]],
     });
   }
 
