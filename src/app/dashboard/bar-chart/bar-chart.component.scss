@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 40px;
   width: 1310px;
   height: 715px;
   margin: 15px;
@@ -51,10 +52,10 @@
   .bar-chart-div {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
     width: 800px;
-    height: 550px;
+    height: 750px;
     border: 1px solid #e1e1e1;
     border-radius: 6px;
     box-shadow: 0px 4px 4px 0px #00000040;

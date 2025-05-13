@@ -1,3 +1,4 @@
+<p-toast />
 <div class="question-form-style">
   <form [formGroup]="questionform" (ngSubmit)="onSubmit()">
     <div>
@@ -85,18 +86,14 @@
       </div>
       <div class="buttons-div">
         <p-button label="Cancel" (onClick)="onReset()" class="primary" />
+
         <p-button
           type="submit"
           label="Add"
           *ngIf="!isEditable"
-          [disabled]="!questionform"
+          [disabled]="!questionform.valid"
         />
-        <p-button
-          type="submit"
-          label="Update"
-          *ngIf="isEditable"
-          [disabled]="!questionform"
-        />
+        <p-button type="submit" label="Update" *ngIf="isEditable" />
       </div>
     </div>
   </form>

@@ -62,9 +62,7 @@ input {
 .buttons-div :nth-child(2)::ng-deep.p-button {
   color: rgb(255, 255, 255);
   background-color: #2e629f;
-
   font-family: "Poppins";
-
   height: 30px;
   font-weight: 500;
   font-size: 13px;
@@ -84,6 +82,19 @@ input {
   align-items: center;
   position: relative;
   top: 15px;
+}
+.disablestyle {
+  color: rgb(181 176 176 / 87%);
+  background-color: #42648b;
+  font-family: "Poppins";
+  height: 30px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  border-radius: 6px;
+  border-width: 1px;
+  border-color: #2e629f;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

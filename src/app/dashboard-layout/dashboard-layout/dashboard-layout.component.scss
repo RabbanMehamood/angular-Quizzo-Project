@@ -5,6 +5,11 @@
   align-items: center;
   box-shadow: 3px 1px 4px 0px #41404040;
 }
+svg {
+  position: relative;
+  top: 1.5px;
+  cursor: pointer;
+}
 .ellipse {
   margin-right: 10px;
   background-color: #d7eff2;

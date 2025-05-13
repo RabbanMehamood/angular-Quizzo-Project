@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(20),
         ],
       ],
-
       password: [
         '',
         [

@@ -345,20 +345,20 @@ circle {
   .question-options-div p {
     word-wrap: break-word;
     font-family: "Poppins";
-    width: 268px;
+    width: 250px;
     font-family: "Poppins";
     font-weight: 500;
     font-size: 0.6rem;
-    /* line-height: 100%; */
+
     letter-spacing: 0%;
   }
   .question-options-div label {
     display: inline-block;
+    padding: 3px !important;
     font-family: "Poppins";
     font-weight: 400;
     font-size: 0.6rem;
     line-height: 100%;
-    margin: 5px 0px;
   }
 
   .time-container-div {

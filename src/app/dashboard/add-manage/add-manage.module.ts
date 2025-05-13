@@ -7,10 +7,14 @@ import { TableModule } from 'primeng/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuizSummaryTableComponent } from './components/quiz-summary-table/quiz-summary-table.component';
 import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
+
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,9 @@ import { QuestionFormComponent } from './components/question-form/question-form.
     InputGroupAddonModule,
     ButtonModule,
     ReactiveFormsModule,
+    ToastModule,
+    ConfirmDialogModule,
+    ConfirmPopupModule,
   ],
 })
 export class AddManageModule {}

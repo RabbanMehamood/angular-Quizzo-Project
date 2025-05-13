@@ -7,17 +7,20 @@ import {
 } from '@angular/forms';
 import { QuestionsapiService } from '../../services/questionsapi.service';
 import { StateService } from '../../services/state.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-question-form',
   templateUrl: './question-form.component.html',
   styleUrl: './question-form.component.scss',
   standalone: false,
+  providers: [MessageService],
 })
 export class QuestionFormComponent implements OnInit {
   isEditable: boolean = false;
   counter: number = 0;
   editQuestionId: any;
+  formValid: boolean = true;
   questionform: FormGroup = new FormGroup({
     id: new FormControl(''),
     questionText: new FormControl('', [
@@ -52,7 +55,8 @@ export class QuestionFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private questionApiService: QuestionsapiService,
-    private readonly _stateService: StateService
+    private readonly _stateService: StateService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -94,15 +98,31 @@ export class QuestionFormComponent implements OnInit {
     if (this.questionform.invalid) {
       return;
     }
+    const formOptions = this.questionform.value;
+    console.log(formOptions);
+    if (
+      formOptions.optionA.toLowerCase() === formOptions.optionB.toLowerCase() ||
+      formOptions.optionA.toLowerCase() === formOptions.optionC.toLowerCase() ||
+      formOptions.optionA.toLowerCase() === formOptions.optionD.toLowerCase()
+    ) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Warn',
+        detail: 'Options Duplicacy Not Allowed',
+        life: 2000,
+      });
+      return;
+    }
 
     console.log({ isEditable: this.isEditable });
 
     if (!this.isEditable) {
       // insert / Add
-      this.counter = this.counter + 1;
+      this.counter++;
       const postValue = this.questionform.value;
-      console.log(postValue);
-      alert(JSON.stringify(this.questionform.value));
+
+      // console.log(postValue);
+      // alert(JSON.stringify(this.questionform.value));
       this.questionApiService
         .createQuestion({ ...postValue, id: this.counter })
         .subscribe({
@@ -111,23 +131,33 @@ export class QuestionFormComponent implements OnInit {
             console.log({ res });
           },
         });
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Question Added Successfully.',
+        life: 2000,
+      });
       this.onReset();
     } else {
       // only for update
       const postValue = this.questionform.value;
-      alert(JSON.stringify(this.questionform.value, null, 2));
+      // alert(JSON.stringify(this.questionform.value, null, 2));
       this.questionApiService.putQuestion(postValue, postValue.id).subscribe({
         next: (res: any) => {
           console.log({ res });
           this._stateService.sendEditUpdateMessage(true);
           this.isEditable = false;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Question Updated Successfully.',
+            life: 2000,
+          });
         },
       });
       this.onReset();
     }
   }
-
-  updateList() {}
 
   onReset(): void {
     this.submitted = false;
