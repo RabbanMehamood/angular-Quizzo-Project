@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ViewusersService } from '../viewscores/services/viewusers.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bar-chart',
@@ -15,8 +16,9 @@ export class BarChartComponent implements OnInit {
 
   // instance using inject method, calling in ngonit when ever components gets called using lazy loading and loaded.
   viewUserScoresService = inject(ViewusersService);
-
+  router = inject(Router);
   ngOnInit() {
+    localStorage.setItem('currentPath', `${this.router.url}`);
     this.viewUserScoresService.getUsers().subscribe((res) => {
       this.users = res;
       console.log(res);

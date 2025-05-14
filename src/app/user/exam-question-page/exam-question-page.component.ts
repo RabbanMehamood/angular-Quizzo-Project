@@ -39,6 +39,7 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    localStorage.setItem('currentPath', `${this.router.url}`);
     // this.startTime = Date.now();
     this.loadQuestions();
   }

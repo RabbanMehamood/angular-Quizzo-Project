@@ -8,13 +8,16 @@ import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { CommonModule, NgFor } from '@angular/common';
 import { userAuthGuard } from './core/user-auth.guard';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { blockLoginGuard } from './core/block-login.guard';
+import { blockUserLoginpageGuard } from './core/block-user-loginpage.guard';
+import { WildcardComponent } from './pages/notfound/wildcard/wildcard.component';
 
 const routes: Routes = [
   {
     path: '',
     component: WelcomeComponent,
   },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [blockLoginGuard] },
   {
     path: 'auth',
     canActivate: [loginAuthGuard],
@@ -75,6 +78,7 @@ const routes: Routes = [
     children: [
       {
         path: 'register-page',
+        canActivate: [blockUserLoginpageGuard],
         loadChildren: () =>
           import('./user/registerpage/registerpage.module').then(
             (m) => m.RegisterpageModule
@@ -100,7 +104,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: NotfoundComponent,
+    component: WildcardComponent,
   },
 ];
 

@@ -96,4 +96,7 @@ export class AuthService {
   redirectToUser() {
     this._router.navigate(['/user']);
   }
+  isAdminAuthenticated(): boolean {
+    return !!localStorage.getItem('userRole');
+  }
 }

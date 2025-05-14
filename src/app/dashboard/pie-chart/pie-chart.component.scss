@@ -32,6 +32,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .pie-chart-div {
     display: flex;
+    gap: 0px;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;

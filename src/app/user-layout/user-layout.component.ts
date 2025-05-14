@@ -38,6 +38,7 @@ export class UserLayoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    localStorage.setItem('currentPath', `${this.router.url}`);
     const url = this.router.url;
     this.currentUrl = url;
 

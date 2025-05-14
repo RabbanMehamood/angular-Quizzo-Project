@@ -40,6 +40,7 @@
           formControlName="password"
           [toggleMask]="true"
           placeholder="Admin Password"
+          [feedback]="false"
         />
       </div>
       <div *ngIf="loginform.get('password')?.invalid && submitted">

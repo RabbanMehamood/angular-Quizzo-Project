@@ -13,7 +13,12 @@
 ::-webkit-scrollbar {
   display: none; /* Webkit browsers (Chrome, Safari, Edge) */
 }
-
+.sidebar-css {
+  background-color: #4a90e2;
+}
+body.dark-mode .sidebar-css {
+  background-color: #000000;
+}
 body,
 html {
   padding: 0px;

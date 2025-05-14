@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ViewusersService } from '../viewscores/services/viewusers.service';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
@@ -59,8 +60,9 @@ export class PieChartComponent implements OnInit {
     }
     console.log(this.categoryCounts, this.categoryUsers);
   }
-
+  router = inject(Router);
   ngOnInit() {
+    localStorage.setItem('currentPath', `${this.router.url}`);
     this.viewUserScoresService.getUsers().subscribe((res) => {
       this.users = res;
 

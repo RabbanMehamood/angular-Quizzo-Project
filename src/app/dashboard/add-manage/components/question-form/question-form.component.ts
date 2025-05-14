@@ -99,16 +99,31 @@ export class QuestionFormComponent implements OnInit {
       return;
     }
     const formOptions = this.questionform.value;
+    const options = [
+      formOptions.optionA?.trim().toLowerCase(),
+      formOptions.optionB?.trim().toLowerCase(),
+      formOptions.optionC?.trim().toLowerCase(),
+      formOptions.optionD?.trim().toLowerCase(),
+    ];
+    const uniqueOptions = new Set(options);
     console.log(formOptions);
-    if (
-      formOptions.optionA.toLowerCase() === formOptions.optionB.toLowerCase() ||
-      formOptions.optionA.toLowerCase() === formOptions.optionC.toLowerCase() ||
-      formOptions.optionA.toLowerCase() === formOptions.optionD.toLowerCase()
-    ) {
+    if (options.length !== uniqueOptions.size) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Warn',
         detail: 'Options Duplicacy Not Allowed',
+        life: 2000,
+      });
+      return;
+    }
+    const correctAnswer = options.some(
+      (option) => option.trim() === this.questionform.value.correctAnswer.trim()
+    );
+    if (correctAnswer) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Warn',
+        detail: 'Correct Answer Must be from given options',
         life: 2000,
       });
       return;
@@ -141,6 +156,47 @@ export class QuestionFormComponent implements OnInit {
     } else {
       // only for update
       const postValue = this.questionform.value;
+
+      const editOptions = [
+        postValue.optionA?.trim().toLowerCase(),
+        postValue.optionB?.trim().toLowerCase(),
+        postValue.optionC?.trim().toLowerCase(),
+        postValue.optionD?.trim().toLowerCase(),
+      ];
+      const uniqueOptions = new Set(editOptions);
+      console.log(formOptions);
+      if (options.length !== uniqueOptions.size) {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Warn',
+          detail: 'Options Duplicacy Not Allowed',
+          life: 2000,
+        });
+        return;
+      }
+      const editCorrectAnswer = editOptions.some(
+        (option) => option.trim() === postValue.correctAnswer.trim()
+      );
+      if (!editCorrectAnswer) {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Warn',
+          detail: 'Correct Answer Must be from given options',
+          life: 2000,
+        });
+        return;
+      }
+
+      console.log(formOptions);
+      if (options.length !== uniqueOptions.size) {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Warn',
+          detail: 'Options Duplicacy Not Allowed',
+          life: 2000,
+        });
+        return;
+      }
       // alert(JSON.stringify(this.questionform.value, null, 2));
       this.questionApiService.putQuestion(postValue, postValue.id).subscribe({
         next: (res: any) => {
