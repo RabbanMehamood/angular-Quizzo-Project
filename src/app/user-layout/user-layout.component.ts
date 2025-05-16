@@ -83,4 +83,8 @@ export class UserLayoutComponent implements OnInit {
   makeSidebarTrue(): void {
     this.sidebarVisible = true;
   }
+  toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    console.log('Dark Mode activated');
+  }
 }

@@ -16,8 +16,220 @@
 .sidebar-css {
   background-color: #4a90e2;
 }
+label {
+  color: #000000;
+}
+.question-form-style {
+  background-color: #ffffff;
+}
+
+.dashboard-header {
+  background-color: #ffffff;
+}
+p {
+  color: #000000;
+}
+.nav-sections-style {
+  background-color: #ffffff;
+}
+.heading {
+  color: #000000;
+}
+input {
+  background-color: #f1f1f1;
+}
+textarea {
+  background-color: #f1f1f1;
+}
+.quiz-summary-style {
+  background-color: white;
+  color: black;
+}
+
+.p-datatable-tbody > tr {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+  transition: background-color 0.5s ease, color 0.5s ease !important;
+}
+
+body:not(.dark-mode) .p-datatable-thead th {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+  transition: background-color 0.5s ease, color 0.5s ease !important;
+}
+.p-paginator {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+}
+.p-dropdown {
+  background-color: #f9fafb !important;
+  color: #374151 !important;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+ul {
+  background-color: #f9fafb;
+}
+
+.stepper-container {
+  background-color: #ffffff;
+}
+
+.counter {
+  color: rgb(0, 0, 0);
+}
+.question-check-style {
+  background: #c6e4d6 !important;
+}
+ul {
+  background-color: #4a90e2;
+}
+.bg-panel {
+  background-color: #4a90e2 !important;
+  color: white !important;
+}
+.p-confirm-popup .p-confirm-popup-content {
+  display: flex;
+  align-items: center;
+  background-color: #4a90e2;
+  border: 2px solid rgb(245, 245, 245);
+  border-radius: 6px;
+}
+.p-confirm-popup .p-confirm-popup-content > p {
+  color: white !important;
+}
+.p-confirm-popup .p-confirm-popup-footer {
+  background-color: #4a90e2;
+  color: white;
+  border: 2px solid rgb(245, 245, 245);
+  border-radius: 6px;
+}
+
+.p-button.p-button-outlined {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid;
+}
+//--------------------------------------------------------------------------------------------------------------------------------------body-dark-mode
+
 body.dark-mode .sidebar-css {
+  background-color: #18181b;
+}
+body.dark-mode label {
+  color: #ffffff;
+}
+body.dark-mode .question-form-style {
+  background-color: #18181b;
+}
+body.dark-mode .dashboard-header {
+  background-color: #18181b;
+}
+body.dark-mode p {
+  color: #fffefe;
+}
+body.dark-mode .nav-sections-style {
+  background-color: #3e3e48;
+}
+body.dark-mode .heading {
+  color: #fffefe;
+}
+body.dark-mode input {
   background-color: #000000;
+  color: white;
+}
+body.dark-mode textarea {
+  background-color: #000000;
+  color: white;
+}
+
+body.dark-mode .quiz-summary-style {
+  background-color: #3e3e48;
+  color: white;
+}
+
+body.dark-mode .p-datatable-thead th {
+  background-color: #000000 !important;
+  color: white !important;
+  transition: background-color 0.5s ease, color 0.5s ease !important;
+}
+
+body.dark-mode .p-datatable-tbody > tr {
+  background-color: #000000 !important;
+  color: white !important;
+}
+
+body.dark-mode .p-paginator {
+  background-color: #000000 !important;
+  color: white !important;
+}
+body.dark-mode .p-dropdown {
+  background-color: #000000 !important;
+  color: white !important;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+body.dark-mode span {
+  color: white;
+}
+body.dark-mode button.p-ripple.p-element.p-button.p-component {
+  background-color: #000000 !important;
+}
+
+body.dark-mode ul {
+  background-color: #000000;
+}
+
+body.dark-mode .stepper-container {
+  background-color: #3e3e48;
+}
+body.dark-mode .router-component-style {
+  background-color: #3e3e48;
+}
+body.dark-mode .main-div {
+  background-color: #3e3e48;
+}
+body.dark-mode .question-options-div {
+  background-color: black;
+}
+body.dark-mode .time-container-div {
+  background-color: black;
+}
+body.dark-mode .counter {
+  color: white;
+}
+body.dark-mode .question-check-style {
+  background: #030303 !important;
+}
+body.dark-mode .title {
+  color: white;
+}
+body.dark-mode .title-bold {
+  color: white;
+}
+body.dark-mode .p-confirm-popup .p-confirm-popup-content {
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  border: 2px solid rgb(245, 245, 245);
+  border-radius: 6px;
+}
+body.dark-mode .p-confirm-popup .p-confirm-popup-footer {
+  background-color: black;
+  color: white;
+  border: 2px solid rgb(245, 245, 245);
+  border-radius: 6px;
+}
+
+body.dark-mode .p-button.p-button-outlined {
+  background-color: #493939 !important;
+  color: #000000 !important;
+  border: 1px solid;
+}
+body.dark-mode .bg-panel {
+  background-color: #000000 !important;
+  color: white !important;
+  border: 1px solid white;
 }
 body,
 html {

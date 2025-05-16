@@ -12,6 +12,24 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class QuizSummaryTableComponent implements OnInit {
   questions: any[] = [];
   loading: boolean = false;
+  totalRecords = 100;
+  rows = 10;
+  first = 0;
+  goToPageNumber: number;
+  onPage(event: any) {
+    this.first = event.first;
+  }
+
+  goToPage() {
+    const totalPages = Math.ceil(this.totalRecords / this.rows);
+    const targetPage = this.goToPageNumber;
+
+    if (targetPage && targetPage >= 1 && targetPage <= totalPages) {
+      this.first = (targetPage - 1) * this.rows;
+    } else {
+      alert('Invalid page number.');
+    }
+  }
   constructor(
     private questionsapiService: QuestionsapiService,
     private readonly _stateService: StateService,

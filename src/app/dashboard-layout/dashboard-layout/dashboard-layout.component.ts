@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DarkmodeService } from '../../auth/services/darkmode.service';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -14,7 +15,8 @@ export class DashboardLayoutComponent {
     private router: Router,
     private _auth: AuthService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private darkModeStatus: DarkmodeService
   ) {}
   confirmLogout(event: Event) {
     this.confirmationService.confirm({

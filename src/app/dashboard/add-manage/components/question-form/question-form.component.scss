@@ -8,7 +8,6 @@ label {
   margin-bottom: 5px;
 }
 .question-form-style {
-  background-color: #ffffff;
   width: 1310px;
   border-radius: 6px;
   border-width: 1px;
@@ -46,9 +45,7 @@ input {
 .buttons-div :first-child::ng-deep.p-button {
   color: #2e629f;
   background-color: rgb(255, 255, 255);
-
   font-family: "Poppins";
-
   height: 30px;
   font-weight: 500;
   font-size: 13px;
@@ -59,6 +56,7 @@ input {
   border-color: #2e629f;
   margin-right: 10px;
 }
+
 .buttons-div :nth-child(2)::ng-deep.p-button {
   color: rgb(255, 255, 255);
   background-color: #2e629f;

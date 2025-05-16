@@ -54,14 +54,14 @@ export class BarChartComponent implements OnInit {
       plugins: {
         legend: {
           labels: {
-            color: textColor,
+            color: '',
           },
         },
       },
       scales: {
         x: {
           ticks: {
-            color: textColorSecondary,
+            color: 'black',
             font: {
               weight: 500,
             },
@@ -74,7 +74,7 @@ export class BarChartComponent implements OnInit {
         },
         y: {
           ticks: {
-            color: textColorSecondary,
+            color: 'black',
           },
           grid: {
             display: false,

@@ -165,7 +165,7 @@ export class QuestionFormComponent implements OnInit {
       ];
       const uniqueOptions = new Set(editOptions);
       console.log(formOptions);
-      if (options.length !== uniqueOptions.size) {
+      if (editOptions.length !== uniqueOptions.size) {
         this.messageService.add({
           severity: 'warn',
           summary: 'Warn',
@@ -175,9 +175,26 @@ export class QuestionFormComponent implements OnInit {
         return;
       }
       const editCorrectAnswer = editOptions.some(
-        (option) => option.trim() === postValue.correctAnswer.trim()
+        (option) =>
+          option.trim() === postValue.correctAnswer.toLowerCase().trim()
       );
-      if (!editCorrectAnswer) {
+      if (editCorrectAnswer) {
+        // alert(JSON.stringify(this.questionform.value, null, 2));
+        this.questionApiService.putQuestion(postValue, postValue.id).subscribe({
+          next: (res: any) => {
+            console.log({ res });
+            this._stateService.sendEditUpdateMessage(true);
+            this.isEditable = false;
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Question Updated Successfully.',
+              life: 2000,
+            });
+          },
+        });
+        this.onReset();
+      } else {
         this.messageService.add({
           severity: 'warn',
           summary: 'Warn',
@@ -186,32 +203,6 @@ export class QuestionFormComponent implements OnInit {
         });
         return;
       }
-
-      console.log(formOptions);
-      if (options.length !== uniqueOptions.size) {
-        this.messageService.add({
-          severity: 'warn',
-          summary: 'Warn',
-          detail: 'Options Duplicacy Not Allowed',
-          life: 2000,
-        });
-        return;
-      }
-      // alert(JSON.stringify(this.questionform.value, null, 2));
-      this.questionApiService.putQuestion(postValue, postValue.id).subscribe({
-        next: (res: any) => {
-          console.log({ res });
-          this._stateService.sendEditUpdateMessage(true);
-          this.isEditable = false;
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Question Updated Successfully.',
-            life: 2000,
-          });
-        },
-      });
-      this.onReset();
     }
   }
 
