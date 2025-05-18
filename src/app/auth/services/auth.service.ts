@@ -11,29 +11,6 @@ export class AuthService {
     private readonly _router: Router
   ) {}
 
-  // loginAdmin(value: any) {
-  //   let adminObject = value;
-  //   console.log(adminObject);
-  //   // alert(JSON.stringify(value));
-  //   localStorage.setItem('userRole', 'Admin');
-  //   localStorage.setItem('password', 'quizzoito');
-  //   if (
-  //     adminObject.username === 'Admin' &&
-  //     adminObject.password === 'quizzoito'
-  //   ) {
-  //     this._router.navigate(['dashboard/add-manage']);
-  //   } else {
-  //     confirm('Unauthorised Access, Please Login as a User');
-  //     this._router.navigate(['']);
-  //   }
-  //   // this._api.loginAdmin$().subscribe({
-  //   //   next: (res: any) => {
-  //   //    Success and Authenticated
-  //   //     localStorage.setItem('userRole', 'Admin'); // or 'User', etc.
-  //   //   },
-  //   // });
-  // }
-
   loginAdmin(value: any): boolean {
     const { username, password } = value;
 

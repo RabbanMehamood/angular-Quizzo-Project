@@ -10,9 +10,10 @@ import { userAuthGuard } from './core/user-auth.guard';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { blockLoginGuard } from './core/block-login.guard';
 import { blockUserLoginpageGuard } from './core/block-user-loginpage.guard';
-import { WildcardComponent } from './pages/notfound/wildcard/wildcard.component';
+import { WildcardComponent } from './pages/wildcard/wildcard.component';
 
 const routes: Routes = [
+  { path: 'notfound', component: NotfoundComponent },
   {
     path: '',
     component: WelcomeComponent,
@@ -105,6 +106,10 @@ const routes: Routes = [
   {
     path: '**',
     component: WildcardComponent,
+  },
+  {
+    path: 'notfound',
+    component: NotfoundComponent,
   },
 ];
 

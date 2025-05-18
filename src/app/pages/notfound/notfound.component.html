@@ -1,23 +1,387 @@
-<div class="card flex justify-content-center gap-2">
-  <p-toast />
-  <p-confirmDialog />
-  <p-button
-    (onClick)="confirm2($event, 2)"
-    label=""
-    severity="danger"
-    [outlined]="true"
-    [style]="{ padding: '0px', border: 'none' }"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-      fill="#75767C"
+<div>
+  <div class="card">
+    <p-table
+      #dt
+      [value]="users"
+      [tableStyle]="{ 'min-width': '60rem' }"
+      [paginator]="true"
+      [rows]="rows"
+      [first]="first"
+      [paginatorPosition]="'bottom'"
+      [scrollHeight]="'calc(100vh - 300px)'"
+      (onPage)="onPageChange($event)"
+      [responsiveLayout]="'scroll'"
     >
-      <path
-        d="M315-154q-27.64 0-47.32-19.68T248-221v-472h-47v-67h185v-46h189v46h185v67h-47v471.57q0 28.37-19.68 47.9Q673.64-154 646-154H315Zm74-137.5h67v-331h-67v331Zm116 0h67v-331h-67v331Z"
-      />
-    </svg>
-  </p-button>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="username" style="width: 14%">
+            Name
+            <p-sortIcon class="customSortIcon" field="username"></p-sortIcon>
+          </th>
+          <th pSortableColumn="fname" style="width: 14%">
+            First Name
+            <p-sortIcon class="customSortIcon" field="fname"></p-sortIcon>
+          </th>
+          <th pSortableColumn="lname" style="width: 14%">
+            LastName
+            <p-sortIcon class="customSortIcon" field="lname"></p-sortIcon>
+          </th>
+          <th pSortableColumn="email" style="width: 18%">
+            Email ID
+            <p-sortIcon class="customSortIcon" field="email"></p-sortIcon>
+          </th>
+          <th pSortableColumn="status" style="width: 12%">
+            Status
+            <p-sortIcon class="customSortIcon" field="status"></p-sortIcon>
+          </th>
+          <th pSortableColumn="isAdmin" style="width: 11%">
+            Is Admin
+            <p-sortIcon class="customSortIcon" field="isAdmin"></p-sortIcon>
+          </th>
+          <th pSortableColumn="datetime" style="width: 26%">
+            Created Date Time
+            <p-sortIcon class="customSortIcon" field="datetime"></p-sortIcon>
+          </th>
+          <th style="width: 5%"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr (click)="showDailog(user, 'view')" style="cursor: pointer">
+          <td>{{ user.username }}</td>
+          <td>{{ user.fname }}</td>
+          <td>{{ user.lname }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <p-tag [value]="user.status" ngClass="tag-active" />
+          </td>
+          <td>{{ user.isAdmin ? "Yes" : "No" }}</td>
+          <td>{{ user.datetime | date : "MM/dd/yyy hh:mm a" }}</td>
+          <td>
+            <p-button
+              icon="pi"
+              (click)="confirmDelete(user); $event.stopPropagation()"
+            >
+              <ng-template pTemplate="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#75767C"
+                >
+                  <path
+                    d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm72-144h72v-336h-72v336Zm120 0h72v-336h-72v336Z"
+                  />
+                </svg>
+              </ng-template>
+            </p-button>
+          </td>
+        </tr>
+      </ng-template>
+      <hr />
+      <ng-template pTemplate="paginatorright">
+        <div class="paginator-custom">
+          <span class="go-to-page">
+            <input
+              #pageInput
+              id="pageInput"
+              type="number"
+              [(ngModel)]="curPageInput"
+              [min]="1"
+              [max]="maxPage"
+              class="go-input"
+            />
+            <button
+              type="button"
+              pButton
+              label="Go"
+              style="color: black"
+              (click)="goToPage(dt)"
+            ></button>
+          </span>
+        </div>
+      </ng-template>
+    </p-table>
+  </div>
 </div>
+
+<p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '25rem' }">
+  <ng-template pTemplate="header">
+    <div>User Details</div>
+  </ng-template>
+  <form #userForm="ngForm" (ngSubmit)="saveUser(userForm)">
+    <div class="form-grid">
+      <div class="input-box">
+        <label>User Name *</label>
+        <input
+          pInputText
+          name="userName"
+          [(ngModel)]="newUser.username"
+          maxlength="20"
+          pattern="^[a-zA-Z0-9]*"
+          required
+          [disabled]="mode === 'view' || mode === 'edit'"
+        />
+      </div>
+      <div class="input-box">
+        <label>First Name *</label>
+        <input
+          pInputText
+          name="firstName"
+          [(ngModel)]="newUser.fname"
+          required
+          maxlength="30"
+          pattern="^[a-zA-Z0-9]*"
+          [disabled]="mode === 'view'"
+        />
+      </div>
+      <div class="input-box">
+        <label>Last Name</label>
+        <input
+          pInputText
+          name="lastName"
+          [(ngModel)]="newUser.lname"
+          maxlength="20"
+          pattern="^[a-zA-Z0-9]*"
+          [disabled]="mode === 'view'"
+        />
+      </div>
+      <div class="input-box">
+        <div class="gender">
+          <label>Gender</label>
+          <div class="gender-option">
+            <p-dropdown
+              [options]="genders"
+              [(ngModel)]="newUser.gender"
+              name="gender"
+              optionLabel="label"
+              optionValue="gender"
+              [disabled]="mode === 'view'"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="input-box">
+        <label>DOB</label>
+        <p-calendar
+          [(ngModel)]="newUser.dob"
+          [iconDisplay]="'input'"
+          [showIcon]="true"
+          name="dob"
+          inputId="templatedisplay"
+          [disabled]="mode === 'view'"
+          appendTo="body"
+        >
+          <ng-template #inputicon let-clickCallBack="clickCallBack">
+            <i
+              class="fa-solid fa-calendar-days"
+              (click)="clickCallBack($event)"
+            ></i>
+          </ng-template>
+        </p-calendar>
+      </div>
+      <div class="input-box">
+        <label>Email ID *</label>
+        <input
+          pInputText
+          name="email"
+          [(ngModel)]="newUser.email"
+          type="email"
+          maxlength="100"
+          [disabled]="mode === 'view'"
+          required
+          email
+        />
+      </div>
+
+      <div class="input-box">
+        <label>Address Field 1 *</label>
+        <textarea
+          id="address1"
+          class="no-resize"
+          pInputTextarea
+          rows="3"
+          [(ngModel)]="newUser.address1"
+          name="address1"
+          [disabled]="mode === 'view'"
+          maxlength="100"
+          required=""
+        ></textarea>
+      </div>
+      <div class="input-box">
+        <label>Address Field 2</label>
+        <textarea
+          id="address2"
+          class="no-resize"
+          pInputTextarea
+          rows="3"
+          [(ngModel)]="newUser.address2"
+          name="address2"
+          [disabled]="mode === 'view'"
+          maxlength="100"
+        ></textarea>
+      </div>
+      <div class="input-box">
+        <label>Country</label>
+        <p-dropdown
+          [options]="countries"
+          [(ngModel)]="newUser.country"
+          (onChange)="onCountryChange($event)"
+          name="country"
+          optionLabel="label"
+          optionValue="value"
+          appendTo="body"
+          [disabled]="mode === 'view'"
+        />
+      </div>
+
+      <div class="input-box">
+        <label>State</label>
+        <p-dropdown
+          id="state"
+          [options]="states"
+          [(ngModel)]="newUser.state"
+          name="state"
+          [disabled]="mode === 'view'"
+          appendTo="body"
+        />
+      </div>
+      <div class="input-box">
+        <label>Zipcode</label>
+        <input
+          pInputText
+          name="zipcode"
+          [(ngModel)]="newUser.zipcode"
+          [disabled]="mode === 'view'"
+          maxlength="20"
+          appendTo="body"
+        />
+      </div>
+      <div class="input-box">
+        <label>Time Zone</label>
+        <p-dropdown
+          [options]="timezones"
+          [(ngModel)]="newUser.timezone"
+          name="timezone"
+          [disabled]="mode === 'view'"
+          appendTo="body"
+        />
+      </div>
+
+      <div class="input-box">
+        <label>Locale</label>
+        <p-dropdown
+          [options]="locales"
+          [(ngModel)]="newUser.locale"
+          name="locale"
+          [disabled]="mode === 'view'"
+          appendTo="body"
+        />
+      </div>
+
+      <div class="input-box">
+        <label>Upload User Image</label>
+        <div class="upload">
+          <p-button
+            class="p-button-upload"
+            label="Upload"
+            (click)="fileInput.click()"
+            severity="secondary"
+            [disabled]="mode === 'view'"
+          >
+          </p-button>
+          <span *ngIf="uploadedFileName"
+            >{{ uploadedFileName }}
+            <p-button
+              type="button"
+              icon="pi"
+              class="remove-btn"
+              [disabled]="mode === 'view'"
+              (click)="removeImage()"
+            >
+              <ng-template pTemplate="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#75767C"
+                >
+                  <path
+                    d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm72-144h72v-336h-72v336Zm120 0h72v-336h-72v336Z"
+                  />
+                </svg>
+              </ng-template>
+            </p-button>
+          </span>
+          <input
+            type="file"
+            accept="image/*"
+            #fileInput
+            (change)="onImageUpload($event)"
+            hidden
+            [disabled]="mode === 'view'"
+          />
+        </div>
+      </div>
+
+      <div class="input-box ad">
+        <div class="input-box chec">
+          <label>Is Admin</label>
+          <p-checkbox
+            [(ngModel)]="newUser.isAdmin"
+            binary="true"
+            name="isadmin"
+            [disabled]="mode === 'view'"
+          ></p-checkbox>
+        </div>
+        <div class="input-box per" *ngIf="newUser.isAdmin">
+          <label for="permission"> Assign Permission</label>
+          <p-dropdown
+            name="permisions"
+            [options]="permissions"
+            [(ngModel)]="newUser.permissions"
+            (onChange)="onPermissionChange()"
+            appendTo="body"
+            display="chip"
+            optionLabel="label"
+            optionValue="value"
+            [disabled]="mode === 'view'"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      label="Back"
+      *ngIf="mode === 'view'"
+      class="p-button-secondary-ss"
+      [text]="true"
+      (click)="visible = false"
+    />
+    <p-button
+      label="Edit"
+      *ngIf="mode === 'view'"
+      (click)="switchToEditMode()"
+      class="p-button-primary"
+    />
+    <p-button
+      label="Cancel"
+      *ngIf="mode !== 'view'"
+      class="p-button-secondary-ss"
+      [text]="true"
+      (click)="onCancel()"
+    />
+    <p-button
+      label="Save"
+      type="submit"
+      class="p-button-primary"
+      *ngIf="mode !== 'view'"
+      (click)="saveUser(userForm)"
+    />
+  </ng-template>
+</p-dialog>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

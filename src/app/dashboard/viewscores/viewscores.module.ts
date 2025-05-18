@@ -11,6 +11,9 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ChipsModule } from 'primeng/chips';
+
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [ViewscoresComponent],
   imports: [
@@ -27,6 +30,7 @@ import { ChipsModule } from 'primeng/chips';
     ButtonModule,
     InputTextModule,
     ChipsModule,
+    FormsModule,
   ],
 })
 export class ViewscoresModule {}

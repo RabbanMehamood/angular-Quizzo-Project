@@ -37,6 +37,64 @@ p-component-overlay-enter-animation animation {
   background-color: rgba(134, 53, 53, 0.442) !important;
 }
 //paginator style overriding
+::ng-deep .p-paginator-bottom.p-paginator.p-component {
+  width: fit-content;
+  height: 30px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 0px;
+  margin-top: 34px;
+  margin-left: 870px;
+}
+::ng-deep .p-paginator .p-dropdown {
+  margin-left: 0rem;
+  margin-right: 0rem;
+  height: 3rem;
+}
+::ng-deep .p-dropdown {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 6px;
+}
+.p-button {
+  margin: 0;
+  height: 30px;
+  display: inline-flex;
+  cursor: pointer;
+  color: white !important;
+  width: 35px;
+  -webkit-user-select: none;
+  user-select: none;
+  align-items: center;
+  vertical-align: bottom;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  padding: 0px;
+  margin-right: 1px;
+}
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+  background-color: transparent !important;
+  border: none !important;
+  color: #6b7280 !important;
+  min-width: 2rem !important;
+  height: 2rem !important;
+  margin: 0rem !important;
+  transition: box-shadow 0.2s !important;
+  border-radius: 0px !important;
+}
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #4a90e2 !important;
+  border-color: #eff6ff !important;
+  height: 2rem !important;
+  color: #ffffff !important;
+}
 ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
   background: #4a90e2 !important;
   border-color: #eff6ff !important;
@@ -129,6 +187,7 @@ p-component-overlay-enter-animation animation {
     width: 600px;
     height: 550px;
   }
+
   ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
     position: relative;
     min-height: 400px !important;
@@ -151,6 +210,113 @@ p-component-overlay-enter-animation animation {
     font-size: 15px;
     padding: 0px 5px;
   }
+
+  //paginator style overriding
+  ::ng-deep .p-paginator-bottom.p-paginator.p-component {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-left: 230px;
+  }
+  ::ng-deep .p-paginator .p-dropdown {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    height: 3rem;
+  }
+  ::ng-deep .p-dropdown {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+      box-shadow 0.2s;
+    border-radius: 6px;
+  }
+
+  ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: transparent !important;
+    border: none !important;
+    color: #6b7280 !important;
+    min-width: 2rem !important;
+    margin: 0rem !important;
+    transition: box-shadow 0.2s !important;
+    border-radius: 0px !important;
+  }
+  ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #4a90e2 !important;
+    border-color: #eff6ff !important;
+    color: #ffffff !important;
+  }
+
+  ::ng-deep .p-link {
+    font-family: var(--font-family) !important;
+    font-feature-settings: var(--font-feature-settings, normal) !important;
+    font-size: 1rem !important;
+    border-radius: none !important;
+  }
+
+  .p-paginator-page,
+  .p-paginator-next,
+  .p-paginator-last,
+  .p-paginator-first,
+  .p-paginator-prev,
+  .p-paginator-current {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    -webkit-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px !important;
+    border: 1px solid #e1e1e1 !important;
+  }
+  ::ng-deep .p-paginator .p-paginator-first {
+    background-color: transparent;
+    border: 0 none !important;
+    color: #6b7280;
+    min-width: 2rem !important;
+    height: 2rem;
+    margin: 0rem !important;
+    transition: box-shadow 0.2s;
+    border-radius: 0px !important;
+  }
+  ::ng-deep .p-paginator .p-paginator-prev {
+    background-color: transparent;
+    border: 0 none !important;
+    color: #6b7280;
+    min-width: 2rem !important;
+    height: 3rem;
+    margin: 0rem !important;
+    transition: box-shadow 0.2s;
+    border-radius: 0px !important;
+  }
+  ::ng-deep .p-paginator .p-paginator-next {
+    background-color: transparent;
+    border: 0 none !important;
+    color: #6b7280;
+    min-width: 2rem !important;
+    height: 3rem;
+    margin: 0rem !important;
+    transition: box-shadow 0.2s;
+    border-radius: 0px !important;
+  }
+  ::ng-deep .p-paginator .p-paginator-last {
+    background-color: transparent;
+    border: 0 none !important;
+    color: #6b7280;
+    min-width: 2rem !important;
+    height: 3rem;
+    margin: 0rem !important;
+    transition: box-shadow 0.2s;
+    border-radius: 0px !important;
+  }
 }
 @media (min-width: 1024px) and (max-width: 1340px) {
   .view-scores-style {
@@ -164,6 +330,47 @@ p-component-overlay-enter-animation animation {
     position: relative;
     min-height: 650px !important;
   }
+
+  //paginator styling
+  ::ng-deep .p-paginator-bottom.p-paginator.p-component {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 435px;
+  }
+  ::ng-deep .p-paginator .p-dropdown {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    height: 3rem;
+  }
+  ::ng-deep .p-dropdown {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+      box-shadow 0.2s;
+    border-radius: 6px;
+  }
+
+  ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: transparent !important;
+    border: none !important;
+    color: #6b7280 !important;
+    min-width: 2rem !important;
+    margin: 0rem !important;
+    transition: box-shadow 0.2s !important;
+    border-radius: 0px !important;
+  }
+  ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #4a90e2 !important;
+    border-color: #eff6ff !important;
+    color: #ffffff !important;
+  }
 }
 
 ::ng-deep .p-paginator {
@@ -171,4 +378,87 @@ p-component-overlay-enter-animation animation {
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
+}
+@media (max-width: 586px) {
+  ::ng-deep .p-paginator-bottom.p-paginator.p-component {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-left: 81px;
+  }
+
+  /* Container box resize */
+  .view-scores-style {
+    width: 38% !important;
+    height: 90% !important;
+    margin: 8px !important;
+    padding: 8px;
+    overflow-x: auto;
+  }
+
+  /* Scrollable datatable wrapper minimum height */
+  ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
+    min-height: 300px !important;
+  }
+
+  /* General table height */
+  ::ng-deep .p-datatable {
+    height: auto !important;
+  }
+
+  /* Button adjustments */
+  ::ng-deep button.p-ripple.p-element.p-button.p-component {
+    font-size: 0.875rem;
+    padding: 4px 8px !important;
+    margin: 4px;
+  }
+
+  /* Paginator repositioning */
+  ::ng-deep .p-paginator-bottom.p-paginator.p-component {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-left: 0 !important;
+    margin-top: 12px !important;
+    padding: 8px;
+    border: none !important;
+  }
+
+  /* Dropdown adjustments inside paginator */
+  ::ng-deep .p-paginator .p-dropdown {
+    height: 2.5rem !important;
+    font-size: 0.875rem;
+  }
+
+  /* Paginator page buttons */
+  ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    min-width: 1.75rem !important;
+    height: 2.5rem !important;
+    font-size: 0.875rem;
+  }
+
+  /* Prev/Next/First/Last buttons */
+  ::ng-deep .p-paginator .p-paginator-prev,
+  ::ng-deep .p-paginator .p-paginator-next,
+  ::ng-deep .p-paginator .p-paginator-first,
+  ::ng-deep .p-paginator .p-paginator-last {
+    min-width: 1.75rem !important;
+    height: 2.5rem !important;
+  }
+
+  /* Paginator links font adjustment */
+  ::ng-deep .p-link {
+    font-size: 0.875rem !important;
+  }
+
+  /* Table cell padding */
+  ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.5rem !important;
+    font-size: 0.9rem;
+  }
 }

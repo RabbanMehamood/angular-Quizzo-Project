@@ -12,24 +12,14 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class QuizSummaryTableComponent implements OnInit {
   questions: any[] = [];
   loading: boolean = false;
-  totalRecords = 100;
-  rows = 10;
+
+  // ✅ Pagination properties
+  totalRecords = 0;
+  rows = 5;
   first = 0;
   goToPageNumber: number;
-  onPage(event: any) {
-    this.first = event.first;
-  }
+  maxPage: number = 1;
 
-  goToPage() {
-    const totalPages = Math.ceil(this.totalRecords / this.rows);
-    const targetPage = this.goToPageNumber;
-
-    if (targetPage && targetPage >= 1 && targetPage <= totalPages) {
-      this.first = (targetPage - 1) * this.rows;
-    } else {
-      alert('Invalid page number.');
-    }
-  }
   constructor(
     private questionsapiService: QuestionsapiService,
     private readonly _stateService: StateService,
@@ -39,12 +29,11 @@ export class QuizSummaryTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
     this.loadquestiondata();
     this._stateService.updateMsg$.subscribe({
       next: (res: any) => {
         if (res) {
-          // true
-          // Call Get Question
           this.loadquestiondata();
         }
       },
@@ -54,8 +43,31 @@ export class QuizSummaryTableComponent implements OnInit {
   loadquestiondata() {
     this.questionsapiService.getQuestionsList().subscribe((response) => {
       this.questions = response;
+
+      // ✅ Setup pagination
+      this.totalRecords = this.questions.length;
+      this.maxPage = Math.ceil(this.totalRecords / this.rows);
+      this.goToPageNumber = 1;
+
       console.log('this is response:', response);
     });
+  }
+
+  onPage(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.maxPage = Math.ceil(this.totalRecords / this.rows);
+    this.goToPageNumber = event.page + 1;
+  }
+
+  goToPage() {
+    const targetPage = this.goToPageNumber;
+
+    if (targetPage >= 1 && targetPage <= this.maxPage) {
+      this.first = (targetPage - 1) * this.rows;
+    } else {
+      alert('Invalid page number.');
+    }
   }
 
   edit(question: any) {
@@ -73,11 +85,9 @@ export class QuizSummaryTableComponent implements OnInit {
       rejectButtonStyleClass: 'p-button-text p-button-text',
       acceptIcon: 'none',
       rejectIcon: 'none',
-
       accept: () => {
         this._questionApiService.delete(id).subscribe({
-          next: (response: any) => {
-            console.log(response);
+          next: () => {
             setTimeout(() => {
               this.loadquestiondata();
             }, 2000);
@@ -100,12 +110,4 @@ export class QuizSummaryTableComponent implements OnInit {
       },
     });
   }
-  // delete(id: number) {
-  //   console.log(`question id to delete: ${id}`);
-  //   this._questionApiService.delete(id).subscribe({
-  //     next: (response: any) => {
-  //       console.log(response);
-  //     },
-  //   });
-  // }
 }

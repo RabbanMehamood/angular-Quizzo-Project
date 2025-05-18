@@ -7,12 +7,13 @@
       <p-table
         [value]="questions"
         [paginator]="true"
-        [rows]="5"
+        [rows]="rows"
+        [first]="first"
         [tableStyle]="{ 'min-width': '40rem' }"
-        [rowsPerPageOptions]="[5, 10, 20, 30, 40]"
         scrollable="true"
         scrollHeight="250px"
         [loading]="loading"
+        (onPage)="onPage($event)"
       >
         <ng-template pTemplate="header">
           <tr>
@@ -24,6 +25,7 @@
             <th></th>
           </tr>
         </ng-template>
+
         <ng-template pTemplate="body" let-question>
           <tr>
             <td>Q{{ question.id }}</td>
@@ -35,6 +37,7 @@
               class="animate-me"
               (click)="edit(question)"
             >
+              <!-- Edit SVG -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
@@ -59,6 +62,7 @@
                   [outlined]="true"
                   [style]="{ padding: '0px', border: 'none' }"
                 >
+                  <!-- Delete SVG -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -74,6 +78,31 @@
               </div>
             </td>
           </tr>
+        </ng-template>
+
+        <!-- ✅ Custom Paginator Input -->
+        <ng-template pTemplate="paginatorright">
+          <div
+            class="paginator-custom"
+            style="display: flex; align-items: center"
+          >
+            <input
+              type="number"
+              [(ngModel)]="goToPageNumber"
+              [min]="1"
+              [max]="maxPage"
+              style="width: 35px; height: 30px; margin-right: 0.5rem"
+              class="p-inputtext p-component"
+              placeholder="Page"
+            />
+            <button
+              pButton
+              type="button"
+              label="Go"
+              class="p-button-sm"
+              (click)="goToPage()"
+            ></button>
+          </div>
         </ng-template>
       </p-table>
     </div>

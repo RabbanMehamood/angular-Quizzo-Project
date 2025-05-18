@@ -1,6 +1,6 @@
-.question-form-style {
-  background-color: #ffffff;
+.register-form-style {
   width: 550px;
+  display: inline-table;
   height: 485px;
   border-radius: 6px;
   border-width: 1px;
@@ -86,10 +86,9 @@ input {
   top: 15px;
 }
 @media (min-width: 577px) and (max-width: 768px) {
-  .question-form-style {
-    background-color: #ffffff;
+  .register-form-style {
     width: 420px;
-    height: 484px;
+    height: 430px;
     border-radius: 6px;
     border-width: 1px;
     border: 1px solid #e1e1e1;
@@ -107,7 +106,7 @@ input {
     gap: 0px;
     flex-direction: column;
   }
-  input[_ngcontent-ng-c3438410777] {
+  input {
     background-color: #f1f1f1;
     height: 35px;
     width: 380px;
@@ -125,8 +124,7 @@ input {
     margin-bottom: 10px;
     margin-right: 5px;
   }
-  .question-form-style {
-    background-color: #ffffff;
+  .register-form-style {
     width: 280px;
     height: 400px;
     border-radius: 6px;

@@ -43,6 +43,7 @@ export class BarChartComponent implements OnInit {
           label: 'Users scores dataset',
           backgroundColor: documentStyle.getPropertyValue('--green-400'),
           borderColor: documentStyle.getPropertyValue('--green-500'),
+          color: '#5c5c5c',
           data: this.userscorelist,
         },
       ],
@@ -61,7 +62,7 @@ export class BarChartComponent implements OnInit {
       scales: {
         x: {
           ticks: {
-            color: 'black',
+            color: '#5c5c5c',
             font: {
               weight: 500,
             },
@@ -74,7 +75,7 @@ export class BarChartComponent implements OnInit {
         },
         y: {
           ticks: {
-            color: 'black',
+            color: '#5c5c5c',
           },
           grid: {
             display: false,

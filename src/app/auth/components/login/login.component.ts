@@ -18,6 +18,7 @@ import {
   providers: [MessageService],
 })
 export class LoginComponent implements OnInit {
+  //instance creation using contructor method.
   constructor(
     private formBuilder: FormBuilder,
     private readonly _auth: AuthService,
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
   });
   submitted = false;
 
+  //functions, variables to run after component loads
   ngOnInit(): void {
     localStorage.clear();
     localStorage.setItem('currentPath', `${this.router.url}`);
@@ -89,69 +91,8 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-
-  // onSubmit(): void {
-  //   this.submitted = true;
-
-  //   if (this.loginform.invalid) {
-  //     this.messageService.add({
-  //       severity: 'error',
-  //       summary: 'Not Authorized',
-  //       detail: 'Login Credentials are not valid Admin credentials',
-  //     });
-  //     this.loginform.reset();
-  //     return;
-  //   }
-
-  //   if (this.loginform.valid) {
-  //     this._auth.loginAdmin(this.loginform.value).subscribe(
-  //       (res) => {
-  //         // You can add login checks here if needed
-  //         this.messageService.add({
-  //           severity: 'success',
-  //           summary: 'Login Successful',
-  //           detail: 'Successfully logged in as Admin',
-  //         });
-  //         // optionally navigate
-  //         // this.router.navigate(['/dashboard']);
-  //       },
-  //       (error) => {
-  //         this.messageService.add({
-  //           severity: 'error',
-  //           summary: 'Login Failed',
-  //           detail: 'Incorrect credentials or server error',
-  //         });
-  //       }
-  //     );
-  //   }
-  // }
-
-  // onSubmit(): void {
-  //   this.submitted = true;
-  //   if (this.loginform.invalid) {
-  //  this.messageService.add({
-  //       severity: 'error',
-  //       summary: 'Not Authorized',
-  //       detail: 'Login Credentials are not valid Admin credentials',
-  //     });
-  //     this.loginform.reset();
-  //     return;
-  //   } else if (this.loginform.valid) {
-
-  //     // this.goToRoute();
-
-  //
-  //   }
-  // }
-
   onReset(): void {
     this.submitted = false;
     this.loginform.reset();
   }
-  /**
-   * On login form submit, check for the auth verification
-   */
-  // onSubmit() {
-  //   this._auth.loginUser();
-  // }
 }

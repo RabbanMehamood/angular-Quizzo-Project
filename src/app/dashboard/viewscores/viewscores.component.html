@@ -1,12 +1,17 @@
 <div class="view-scores-style">
   <div class="card">
     <p-table
+      #dt
       [value]="users"
       [paginator]="true"
-      [rows]="10"
+      [rows]="rows"
+      [first]="first"
+      [paginatorPosition]="'bottom'"
       [tableStyle]="{ 'min-width': '40rem' }"
-      [rowsPerPageOptions]="[5, 10, 20, 30, 40]"
+      [scrollHeight]="'calc(100vh - 300px)'"
       scrollable="true"
+      (onPage)="onPageChange($event)"
+      [responsiveLayout]="'scroll'"
       scrollHeight="450px"
     >
       <ng-template pTemplate="header">
@@ -80,6 +85,33 @@
             </div>
           </td>
         </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+        <div class="paginator-custom">
+          <span class="go-to-page">
+            <input
+              #pageInput
+              id="pageInput"
+              type="number"
+              [(ngModel)]="curPageInput"
+              [min]="1"
+              style="
+                width: 35px;
+                height: 30px;
+                text-align: center !important;
+                padding: 0px;
+              "
+              [max]="maxPage"
+            />
+            <button
+              type="button"
+              pButton
+              label="Go"
+              style="color: black"
+              (click)="goToPage(dt)"
+            ></button>
+          </span>
+        </div>
       </ng-template>
     </p-table>
   </div>

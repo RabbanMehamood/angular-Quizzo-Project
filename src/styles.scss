@@ -30,7 +30,7 @@ p {
   color: #000000;
 }
 .nav-sections-style {
-  background-color: #ffffff;
+  background-color: #efefefc7;
 }
 .heading {
   color: #000000;
@@ -89,18 +89,25 @@ ul {
   background-color: #4a90e2 !important;
   color: white !important;
 }
+.p-confirm-popup {
+  background: #090c2d;
+  color: #ffffff;
+  border: 0 none;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
 .p-confirm-popup .p-confirm-popup-content {
   display: flex;
   align-items: center;
-  background-color: #4a90e2;
+  background-color: #2e629f;
   border: 2px solid rgb(245, 245, 245);
   border-radius: 6px;
 }
-.p-confirm-popup .p-confirm-popup-content > p {
+.p-confirm-popup .p-confirm-popup-content p {
   color: white !important;
 }
 .p-confirm-popup .p-confirm-popup-footer {
-  background-color: #4a90e2;
+  background-color: #2e629f;
   color: white;
   border: 2px solid rgb(245, 245, 245);
   border-radius: 6px;
@@ -110,6 +117,21 @@ ul {
   background-color: #ffffff !important;
   color: #000000 !important;
   border: 1px solid;
+}
+.p-button.p-button-outlined {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid;
+}
+register-form-style {
+  background-color: white;
+  color: black;
+}
+.dashboard-header-mobile {
+  background-color: white;
+}
+.marks-div {
+  background-color: white;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------body-dark-mode
 
@@ -126,7 +148,7 @@ body.dark-mode .dashboard-header {
   background-color: #18181b;
 }
 body.dark-mode p {
-  color: #fffefe;
+  color: #fffefe !important;
 }
 body.dark-mode .nav-sections-style {
   background-color: #3e3e48;
@@ -144,7 +166,7 @@ body.dark-mode textarea {
 }
 
 body.dark-mode .quiz-summary-style {
-  background-color: #3e3e48;
+  background-color: #18181b;
   color: white;
 }
 
@@ -193,7 +215,7 @@ body.dark-mode .question-options-div {
   background-color: black;
 }
 body.dark-mode .time-container-div {
-  background-color: black;
+  background-color: #00000000;
 }
 body.dark-mode .counter {
   color: white;
@@ -220,7 +242,10 @@ body.dark-mode .p-confirm-popup .p-confirm-popup-footer {
   border: 2px solid rgb(245, 245, 245);
   border-radius: 6px;
 }
-
+body.dark-mode .register-form-style {
+  background-color: black !important;
+  color: white !important;
+}
 body.dark-mode .p-button.p-button-outlined {
   background-color: #493939 !important;
   color: #000000 !important;
@@ -230,6 +255,25 @@ body.dark-mode .bg-panel {
   background-color: #000000 !important;
   color: white !important;
   border: 1px solid white;
+}
+body.dark-mode .dashboard-header-mobile {
+  background-color: black;
+}
+body.dark-mode .marks-div {
+  background-color: rgb(0, 0, 0);
+}
+body.dark-mode .p-button.p-button-text {
+  background-color: transparent;
+  color: #ffd9bd;
+  border-color: #ffffff;
+}
+body.dark-mode .pie-chart-div {
+  background-color: #18181b;
+  color: white;
+}
+body.dark-mode .bar-chart-div {
+  background-color: #18181b;
+  color: white;
 }
 body,
 html {
