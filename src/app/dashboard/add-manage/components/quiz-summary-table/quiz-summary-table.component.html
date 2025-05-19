@@ -62,7 +62,7 @@
                   [outlined]="true"
                   [style]="{ padding: '0px', border: 'none' }"
                 >
-                  <!-- Delete SVG -->
+                 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -80,7 +80,6 @@
           </tr>
         </ng-template>
 
-        <!-- ✅ Custom Paginator Input -->
         <ng-template pTemplate="paginatorright">
           <div
             class="paginator-custom"
@@ -91,21 +90,14 @@
               [(ngModel)]="goToPageNumber"
               [min]="1"
               [max]="maxPage"
-              style="
-                width: 35px;
-                height: 30px;
-                margin-right: 0.5rem;
-                border: 1px solid #e1e1e1;
-                text-align: center;
-                border-radius: 6px;
-              "
+              class="page-input-style"
               placeholder="Page"
             />
             <button
               pButton
               type="button"
               label="Go"
-              class="p-button-sm"
+              class="go-input-style"
               (click)="goToPage()"
             ></button>
           </div>

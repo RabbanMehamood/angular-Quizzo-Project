@@ -6,6 +6,33 @@
   width: 1310px;
   height: 715px;
 }
+.page-input-style {
+  width: 35px;
+  height: 30px;
+  margin-right: 0.5rem;
+  border: 1px solid #e1e1e1;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  right: 56px;
+  background-color: white;
+}
+::ng-deep .p-button-label {
+  font-weight: 400;
+  font-family: "Poppins" !important;
+}
+::ng-deep .go-input-style {
+  padding: 0px !important;
+  width: 35px;
+  font-family: "Poppins" !important;
+  height: 30px;
+  border: 1px solid #e1e1e1;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  right: -85px;
+  font-weight: 400 !important;
+}
 
 ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
   position: relative;
@@ -48,7 +75,7 @@ p-component-overlay-enter-animation animation {
   border-radius: 6px;
   padding: 0px;
   margin-top: 50px;
-  margin-left: 975px;
+  margin-left: 925px;
 }
 ::ng-deep .p-paginator .p-dropdown {
   margin-left: 0rem;
@@ -92,7 +119,7 @@ p-component-overlay-enter-animation animation {
 ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
   background: #4a90e2 !important;
   border-color: #eff6ff !important;
-  height: 2rem !important;
+  height: 1.8rem !important;
   color: #ffffff !important;
 }
 ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
@@ -222,7 +249,7 @@ p-component-overlay-enter-animation animation {
     border-radius: 6px;
     padding: 0px;
     margin-top: 114px;
-    margin-left: 290px;
+    margin-left: 230px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -249,6 +276,7 @@ p-component-overlay-enter-animation animation {
   ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
     background: #4a90e2 !important;
     border-color: #eff6ff !important;
+    height: 1.8rem !important;
     color: #ffffff !important;
   }
 
@@ -342,7 +370,7 @@ p-component-overlay-enter-animation animation {
     border-radius: 6px;
     padding: 0px;
     margin-top: 60px;
-    margin-left: 455px;
+    margin-left: 430px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -368,6 +396,7 @@ p-component-overlay-enter-animation animation {
   }
   ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
     background: #4a90e2 !important;
+    height: 1.8rem !important;
     border-color: #eff6ff !important;
     color: #ffffff !important;
   }

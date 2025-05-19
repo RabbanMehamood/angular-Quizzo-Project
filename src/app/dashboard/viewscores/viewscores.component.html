@@ -87,32 +87,23 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="paginatorright">
-        <div class="paginator-custom">
-          <span class="go-to-page">
-            <input
-              #pageInput
-              id="pageInput"
-              type="number"
-              [(ngModel)]="curPageInput"
-              [min]="1"
-              style="
-                width: 35px;
-                height: 30px;
-                text-align: center !important;
-                padding: 0px;
-                border: 1px solid #e1e1e1;
-                border-radius: 6px;
-              "
-              [max]="maxPage"
-            />
-            <button
-              type="button"
-              pButton
-              label="Go"
-              style="color: rgb(255, 255, 255) !important"
-              (click)="goToPage(dt)"
-            ></button>
-          </span>
+        <div style="display: flex; align-items: center">
+          <input
+            #pageInput
+            id="pageInput"
+            type="number"
+            [(ngModel)]="curPageInput"
+            [min]="1"
+            class="page-input-style"
+            [max]="maxPage"
+          />
+          <button
+            type="button"
+            pButton
+            label="Go"
+            class="go-input-style"
+            (click)="goToPage(dt)"
+          ></button>
         </div>
       </ng-template>
     </p-table>

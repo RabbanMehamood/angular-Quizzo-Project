@@ -11,12 +11,36 @@
   padding: 13px;
 }
 
-.p-button.p-button-sm {
-  font-size: 0.875rem;
-  height: 30px;
-  padding: 0px;
+.page-input-style {
   width: 35px;
-  text-align: center !important;
+  height: 30px;
+  margin-right: 0.5rem;
+  border: 1px solid #e1e1e1;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  right: 38px;
+  background-color: #00000000;
+}
+::ng-deep .p-button-label {
+  font-weight: 400;
+  font-family: "Poppins" !important;
+}
+::ng-deep .go-input-style {
+  padding: 0px !important;
+  width: 35px;
+  font-family: "Poppins" !important;
+  height: 30px;
+  margin-right: 0.5rem;
+  border: 1px solid #e1e1e1;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  right: -5px;
+  font-weight: 400 !important;
+}
+::ng-deep .p-paginator {
+  background-color: white !important;
 }
 ::ng-deep .p-paginator-bottom.p-paginator.p-component {
   width: fit-content;
@@ -29,7 +53,7 @@
   border-radius: 6px;
   padding: 0px;
   margin-top: 34px;
-  margin-left: 970px;
+  margin-left: 965px;
 }
 ::ng-deep .p-paginator .p-dropdown {
   margin-left: 0rem;
@@ -45,18 +69,19 @@
 }
 
 ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
-  background-color: transparent !important;
+  background-color: #00000000 !important;
   border: none !important;
   color: #6b7280 !important;
   min-width: 2rem !important;
   margin: 0rem !important;
-  height: 2rem;
+  height: 1.8rem;
   transition: box-shadow 0.2s !important;
   border-radius: 0px !important;
 }
 ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
   background: #4a90e2 !important;
   border-color: #eff6ff !important;
+  height: 1.8rem !important;
   color: #ffffff !important;
 }
 //scrollable height
@@ -182,6 +207,7 @@
   ::ng-deep .p-paginator-bottom.p-paginator.p-component {
     width: fit-content;
     display: flex;
+    background-color: #00000000;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
@@ -216,6 +242,7 @@
   ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
     background: #4a90e2 !important;
     border-color: #eff6ff !important;
+    height: 1.8rem !important;
     color: #ffffff !important;
   }
 
@@ -304,6 +331,7 @@
   ::ng-deep .p-paginator-bottom.p-paginator.p-component {
     width: fit-content;
     display: flex;
+    background-color: #00000000;
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;
@@ -311,7 +339,7 @@
     border-radius: 6px;
     padding: 0px;
     margin-top: 30px;
-    margin-left: 420px;
+    margin-left: 458px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -337,6 +365,7 @@
   }
   ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
     background: #4a90e2 !important;
+    height: 1.8rem !important;
     border-color: #eff6ff !important;
     color: #ffffff !important;
   }
@@ -374,6 +403,7 @@
   ::ng-deep .p-paginator-bottom.p-paginator.p-component {
     width: fit-content;
     height: 30px;
+    background-color: #00000000;
     display: flex;
     align-content: center;
     justify-content: center;
