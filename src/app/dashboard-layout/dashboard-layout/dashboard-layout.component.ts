@@ -3,14 +3,17 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DarkmodeService } from '../../auth/services/darkmode.service';
+import { Sidebar, SidebarModule } from 'primeng/sidebar';
 
 @Component({
   selector: 'app-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrl: './dashboard-layout.component.scss',
-  providers: [ConfirmationService, MessageService],
+  providers: [ConfirmationService, MessageService, Sidebar],
 })
 export class DashboardLayoutComponent {
+  sidebarVisible: boolean = false;
+
   constructor(
     private router: Router,
     private _auth: AuthService,

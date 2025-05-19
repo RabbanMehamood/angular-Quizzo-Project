@@ -133,6 +133,13 @@ register-form-style {
 .marks-div {
   background-color: white;
 }
+.p-sidebar-left {
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 100%;
+  background: rgb(39, 13, 13);
+}
 //--------------------------------------------------------------------------------------------------------------------------------------body-dark-mode
 
 body.dark-mode .sidebar-css {
@@ -274,6 +281,13 @@ body.dark-mode .pie-chart-div {
 body.dark-mode .bar-chart-div {
   background-color: #18181b;
   color: white;
+}
+body.dark-mode .p-sidebar-left {
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 100%;
+  background: black;
 }
 body,
 html {

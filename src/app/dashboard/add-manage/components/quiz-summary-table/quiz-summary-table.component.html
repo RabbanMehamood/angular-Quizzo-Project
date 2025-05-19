@@ -91,8 +91,14 @@
               [(ngModel)]="goToPageNumber"
               [min]="1"
               [max]="maxPage"
-              style="width: 35px; height: 30px; margin-right: 0.5rem"
-              class="p-inputtext p-component"
+              style="
+                width: 35px;
+                height: 30px;
+                margin-right: 0.5rem;
+                border: 1px solid #e1e1e1;
+                text-align: center;
+                border-radius: 6px;
+              "
               placeholder="Page"
             />
             <button

@@ -43,7 +43,7 @@ export class BarChartComponent implements OnInit {
           label: 'Users scores dataset',
           backgroundColor: documentStyle.getPropertyValue('--green-400'),
           borderColor: documentStyle.getPropertyValue('--green-500'),
-          color: '#5c5c5c',
+          color: '#000000',
           data: this.userscorelist,
         },
       ],
@@ -55,7 +55,8 @@ export class BarChartComponent implements OnInit {
       plugins: {
         legend: {
           labels: {
-            color: '',
+            color: '#5c5c5c',
+            
           },
         },
       },

@@ -28,7 +28,7 @@ p {
   display: flex;
   align-content: center;
   gap: 10px;
-  height: 100vh;
+  height: fit-content;
   max-width: 100%;
 }
 .sections-style {
@@ -43,9 +43,7 @@ p {
 }
 .sidebar-css {
   padding-top: 25px;
-  height: 102%;
   width: 20vw;
-  // background-color: #4a90e2;
   display: flex;
   flex-direction: column;
 }
@@ -102,15 +100,35 @@ a {
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 586px) {
   .header-non-mobile {
     display: none;
   }
   .sidebar-css {
     display: none;
   }
+  ::ng-deep .p-datatable {
+    height: 80vh !important;
+  }
   .header-mobile {
     display: block;
     width: 100vw;
+  }
+  .mobile-sidebar-css {
+    background-color: #204166;
+    height: 100vh;
+    display: block;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding-top: 15px;
+  }
+  .mobile-header-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  ::ng-deep .p-button {
+    margin-right: 10px !important;
   }
 }

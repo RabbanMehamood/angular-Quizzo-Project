@@ -183,13 +183,13 @@
     width: fit-content;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+    justify-content: center;
+    flex-wrap: nowrap;
     border: 1px solid #e1e1e1;
     border-radius: 6px;
     padding: 0px;
-    margin-top: 40px;
-    margin-left: 284px;
+    margin-top: 10px;
+    margin-left: 280px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -311,7 +311,7 @@
     border-radius: 6px;
     padding: 0px;
     margin-top: 30px;
-    margin-left: 460px;
+    margin-left: 420px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -342,13 +342,66 @@
   }
 }
 
-@media (min-width: 520px) and (max-width: 76px) {
+@media (min-width: 520px) and (max-width: 768px) {
   ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
     position: relative;
-
     min-height: 200px !important;
   }
 }
+@media (min-width: 320px) and (max-width: 510px) {
+  .quiz-summary-style {
+    background-color: #ffffff;
+    height: 45vh;
+    width: 300px;
+    height: 430px;
+    border-radius: 6px;
+    border-width: 1px;
+    border: 1px solid #e1e1e1;
+    margin: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+    padding: 13px;
+  }
+  ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: transparent !important;
+    border: none !important;
+    color: #6b7280 !important;
+    min-width: 1.1rem !important;
+    margin: 0rem !important;
+    height: 1.8rem;
+    transition: box-shadow 0.2s !important;
+    border-radius: 0px !important;
+  }
+  ::ng-deep .p-paginator-bottom.p-paginator.p-component {
+    width: fit-content;
+    height: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 0px;
+    margin-top: 34px;
+    margin-left: 0px;
+  }
+  ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    text-align: left;
+    border: 1px solid #e5e7eb;
+    border-width: 0 0 1px 0;
+    padding: 0rem 0rem;
+  }
+  ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 0rem 0rem;
+    border: 1px solid #e5e7eb;
+    border-width: 0 0 1px 0;
+    font-weight: 700;
+    font-size: 0.8rem !important;
+    background: #f9fafb;
+    /* transition: box-shadow 0.2s; */
+  }
+}
+
 ::ng-deep .p-table {
   height: 400px;
 }

@@ -13,9 +13,9 @@ export class QuizSummaryTableComponent implements OnInit {
   questions: any[] = [];
   loading: boolean = false;
 
-  // ✅ Pagination properties
+  
   totalRecords = 0;
-  rows = 5;
+  rows = 7;
   first = 0;
   goToPageNumber: number;
   maxPage: number = 1;
@@ -44,7 +44,6 @@ export class QuizSummaryTableComponent implements OnInit {
     this.questionsapiService.getQuestionsList().subscribe((response) => {
       this.questions = response;
 
-      // ✅ Setup pagination
       this.totalRecords = this.questions.length;
       this.maxPage = Math.ceil(this.totalRecords / this.rows);
       this.goToPageNumber = 1;

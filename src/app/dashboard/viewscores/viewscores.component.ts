@@ -14,7 +14,7 @@ export class ViewscoresComponent implements OnInit {
   // Table + Paginator properties
   users: any[] = [];
   first = 0;
-  rows = 10;
+  rows = 15;
   totalRecords = 0;
   curPageInput: number = 1;
   maxPage: number = 1;
@@ -31,7 +31,7 @@ export class ViewscoresComponent implements OnInit {
     this.viewUserScoresService.getUsers().subscribe((res) => {
       this.users = res;
 
-      // ✅ Calculate pagination values
+      // Calculate pagination values
       this.totalRecords = this.users.length;
       this.maxPage = Math.ceil(this.totalRecords / this.rows);
 
@@ -39,7 +39,6 @@ export class ViewscoresComponent implements OnInit {
     });
   }
 
-  // Show dialog box
   showDialog() {
     this.visible = true;
   }
@@ -49,12 +48,10 @@ export class ViewscoresComponent implements OnInit {
     this.first = event.first;
     this.rows = event.rows;
 
-    // ✅ Recalculate max pages in case rows per page changed
     this.maxPage = Math.ceil(this.totalRecords / this.rows);
     this.curPageInput = event.page + 1;
   }
 
-  // Handle custom go-to-page input
   goToPage(table: any) {
     const targetPage = this.curPageInput;
 
@@ -62,7 +59,6 @@ export class ViewscoresComponent implements OnInit {
       this.first = (targetPage - 1) * this.rows;
       table.first = this.first;
 
-      // ✅ Ensure PrimeNG updates the view correctly
       table.paginate({
         first: this.first,
         rows: this.rows,
@@ -74,7 +70,6 @@ export class ViewscoresComponent implements OnInit {
     }
   }
 
-  // Mock method for showing messages (replace with toast/snackbar if needed)
   showMessage(
     summary: string,
     detail: string,

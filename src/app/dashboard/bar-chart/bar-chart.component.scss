@@ -69,3 +69,20 @@
     height: 420px;
   }
 }
+
+@media (max-width: 586px) {
+  .bar-chart-div {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    width: 298px;
+    overflow: hidden;
+    overflow: scroll;
+    height: 535px;
+    margin: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+    align-items: flex-start;
+  }
+}

@@ -1,5 +1,5 @@
 <div class="view-scores-style">
-  <div class="card">
+  <div class="card-view">
     <p-table
       #dt
       [value]="users"
@@ -100,6 +100,8 @@
                 height: 30px;
                 text-align: center !important;
                 padding: 0px;
+                border: 1px solid #e1e1e1;
+                border-radius: 6px;
               "
               [max]="maxPage"
             />
@@ -107,7 +109,7 @@
               type="button"
               pButton
               label="Go"
-              style="color: black"
+              style="color: rgb(255, 255, 255) !important"
               (click)="goToPage(dt)"
             ></button>
           </span>
