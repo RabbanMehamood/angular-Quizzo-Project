@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DarkmodeService } from '../../auth/services/darkmode.service';
 import { Sidebar, SidebarModule } from 'primeng/sidebar';
+import { NotificationServiceService } from '../notification-service.service';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -11,16 +12,23 @@ import { Sidebar, SidebarModule } from 'primeng/sidebar';
   styleUrl: './dashboard-layout.component.scss',
   providers: [ConfirmationService, MessageService, Sidebar],
 })
-export class DashboardLayoutComponent {
+export class DashboardLayoutComponent implements OnInit {
   sidebarVisible: boolean = false;
-
+  notifications: any;
   constructor(
     private router: Router,
     private _auth: AuthService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private darkModeStatus: DarkmodeService
+    private darkModeStatus: DarkmodeService,
+    private getNotifications: NotificationServiceService
   ) {}
+  ngOnInit(): void {
+    this.getNotifications.notificationsMessage.subscribe((data) => {
+      console.log(data);
+      this.notifications = data;
+    });
+  }
   confirmLogout(event: Event) {
     this.confirmationService.confirm({
       target: event.target as HTMLElement,

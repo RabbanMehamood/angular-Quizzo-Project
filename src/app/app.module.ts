@@ -26,6 +26,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { BadgeModule } from 'primeng/badge';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     DropdownModule,
     MultiSelectModule,
     ConfirmDialogModule,
-    
+    BadgeModule,
+    OverlayPanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

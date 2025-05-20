@@ -76,13 +76,13 @@
           <p-button
             label="Next"
             class="primary"
-            (click)="skip()"
+            (click)="next()"
             [disabled]="currentIndex === questions.length - 1"
           />
           <p-button
             *ngIf="currentIndex !== questions.length - 1"
             label="Skip"
-            (click)="next()"
+            (click)="skip()"
             [disabled]="currentIndex === questions.length - 1"
           />
           <p-button
@@ -112,74 +112,54 @@
       <div class="counter">{{ formattedTime }}</div>
     </div>
     <div class="question-list-container">
-      <p class="question-list-contaier-p-style" style="padding: 5px">
-        Question List
-      </p>
+      <p style="margin-left: 10px">Question List</p>
       <div class="question-div-scroll">
-        <div *ngFor="let question of questions; let i = index">
-          <div class="question-check-style">
-            <span style="float: left; padding-left: 10px">
-              Question {{ question.id }} ({{ question.questionStatus }})
-            </span>
-
-            <span
-              style="
-                margin-right: 10px;
-                width: 27px;
-                height: 27px;
-                border-radius: 20px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 15px;
-                font-weight: 1000;
-                color: #fff;
-              "
-              [ngStyle]="{
-                backgroundColor:
-                  question.questionStatus === 'answered'
-                    ? '#41a676'
-                    : question.questionStatus === 'skipped'
-                    ? '#ff8000'
-                    : '#ccc'
-              }"
-            >
-              <i
-                class="pi"
-                [ngClass]="{
-                  'pi-check': question.questionStatus === 'answered',
-                  'pi-times': question.questionStatus === 'skipped',
-                  'pi-circle-off': question.questionStatus === 'untouched'
-                }"
-              ></i>
-            </span>
-          </div>
-        </div>
-
-        <!-- <div *ngFor="let question of questions; let i = index">
-          <div class="question-check-style">
-            <span style="float: left; padding-left: 10px"
-              >Question{{ question.id }}</span
-            >
-            <span
-              style="
-                margin-right: 10px;
-                width: 27px;
-                height: 27px;
-                color: rgb(255, 255, 255);
-                border-radius: 20px;
-                background-color: #41a676;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-              ><i
-                class="pi pi-check"
-                style="font-size: 15px; font-weight: 1000"
-              ></i
-            ></span>
-          </div>
-        </div> -->
+        <ul
+          [ngStyle]="{
+            'list-style-type': 'none',
+            padding: '0px',
+            margin: '0px',
+            backgroundColor: 'white'
+          }"
+        >
+          <li
+            *ngFor="let question of questions; let i = index"
+            class="question-status-style"
+            [ngStyle]="{
+              backgroundColor:
+                question.questionStatus === 'answered'
+                  ? '#c6e4d6'
+                  : question.questionStatus === 'skipped'
+                  ? '#ffe0d5'
+                  : '#ffffff'
+            }"
+          >
+            Question {{ i + 1 }}
+            <div [ngSwitch]="question.questionStatus">
+              <ng-template ngSwitchCase="answered">
+                <span
+                  ><i
+                    class="pi pi-check"
+                    style="
+                      color: white;
+                      font-size: 13px;
+                      margin: 0px;
+                      border-radius: 20px;
+                      padding: 4px;
+                      font-weight: 700;
+                      background: green;
+                      text-align: center;
+                    "
+                  ></i
+                ></span>
+              </ng-template>
+              <ng-template ngSwitchCase="skipped"
+                ><span style="font-style: italic">skipped</span></ng-template
+              >
+              <ng-template ngSwitchDefault> </ng-template>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

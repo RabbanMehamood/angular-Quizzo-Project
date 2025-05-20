@@ -22,7 +22,9 @@ label {
 .question-form-style {
   background-color: #ffffff;
 }
-
+li {
+  color: black;
+}
 .dashboard-header {
   background-color: #ffffff;
 }
@@ -79,8 +81,8 @@ ul {
 .counter {
   color: rgb(0, 0, 0);
 }
-.question-check-style {
-  background: #c6e4d6 !important;
+.question-status-style {
+  background: #ffffff;
 }
 ul {
   background-color: #4a90e2;
@@ -147,6 +149,9 @@ body.dark-mode .sidebar-css {
 }
 body.dark-mode label {
   color: #ffffff;
+}
+body.dark-mode li {
+  color: white;
 }
 body.dark-mode .question-form-style {
   background-color: #18181b;
@@ -227,7 +232,7 @@ body.dark-mode .time-container-div {
 body.dark-mode .counter {
   color: white;
 }
-body.dark-mode .question-check-style {
+body.dark-mode .question-status-style {
   background: #030303 !important;
 }
 body.dark-mode .title {

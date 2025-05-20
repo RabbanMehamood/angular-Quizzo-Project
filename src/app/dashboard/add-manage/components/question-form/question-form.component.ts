@@ -8,6 +8,7 @@ import {
 import { QuestionsapiService } from '../../services/questionsapi.service';
 import { StateService } from '../../services/state.service';
 import { MessageService } from 'primeng/api';
+import { NotificationServiceService } from '../../../../dashboard-layout/notification-service.service';
 
 @Component({
   selector: 'app-question-form',
@@ -56,7 +57,8 @@ export class QuestionFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private questionApiService: QuestionsapiService,
     private readonly _stateService: StateService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private sendNotification: NotificationServiceService
   ) {}
 
   ngOnInit(): void {
@@ -119,7 +121,7 @@ export class QuestionFormComponent implements OnInit {
     const correctAnswer = options.some(
       (option) => option.trim() === this.questionform.value.correctAnswer.trim()
     );
-    if (correctAnswer) {
+    if (!correctAnswer) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Warn',
@@ -144,6 +146,7 @@ export class QuestionFormComponent implements OnInit {
           next: (res: any) => {
             this._stateService.sendEditUpdateMessage(true);
             console.log({ res });
+            this.sendNotification.added(postValue);
           },
         });
       this.messageService.add({
@@ -184,6 +187,7 @@ export class QuestionFormComponent implements OnInit {
           next: (res: any) => {
             console.log({ res });
             this._stateService.sendEditUpdateMessage(true);
+            this.sendNotification.edited(postValue);
             this.isEditable = false;
             this.messageService.add({
               severity: 'success',

@@ -16,7 +16,7 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
   // questions array got from the api, and current index of the question, and countdown timer
   // and formatted time for the countdown timer
   questions: any[] = [];
-  currentIndex = 1;
+  currentIndex = 0;
   countdown: number = 0;
   formattedTime: string = '00:00';
   interval: any;
