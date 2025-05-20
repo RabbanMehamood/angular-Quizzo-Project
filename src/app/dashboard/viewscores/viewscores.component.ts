@@ -14,7 +14,7 @@ export class ViewscoresComponent implements OnInit {
   // Table + Paginator properties
   users: any[] = [];
   first = 0;
-  rows = 15;
+  rows = 17;
   totalRecords = 0;
   curPageInput: number = 1;
   maxPage: number = 1;

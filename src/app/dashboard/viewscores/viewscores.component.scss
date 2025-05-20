@@ -17,6 +17,9 @@
   right: 56px;
   background-color: white;
 }
+:ng-deep .p-paginator-right-content {
+  position: absolute !important;
+}
 ::ng-deep .p-button-label {
   font-weight: 400;
   font-family: "Poppins" !important;
@@ -412,6 +415,36 @@ p-component-overlay-enter-animation animation {
   .card-view {
     height: 84vh;
   }
+  .view-scores-style {
+    width: 37% !important;
+    height: 95% !important;
+    margin: 8px !important;
+    padding: 8px;
+    overflow-x: auto;
+  }
+  .page-input-style {
+    width: 35px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    right: 30px;
+    background-color: white;
+  }
+  .go-input-style {
+    padding: 0px !important;
+    width: 35px;
+    font-family: "Poppins" !important;
+    height: 30px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    right: -10px;
+    font-weight: 400 !important;
+  }
   ::ng-deep .view-scores-style {
     width: 38% !important;
     height: 95% !important;
@@ -429,18 +462,6 @@ p-component-overlay-enter-animation animation {
     border-color: #eff6ff !important;
     height: 1.8rem !important;
     color: #ffffff !important;
-  }
-  ::ng-deep .p-paginator-bottom.p-paginator.p-component {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    border: 1px solid #e1e1e1;
-    border-radius: 6px;
-    padding: 0px;
-    margin-top: 20px;
-    margin-left: 81px;
   }
 
   /* Scrollable datatable wrapper minimum height */
@@ -462,7 +483,7 @@ p-component-overlay-enter-animation animation {
 
   /* Paginator repositioning */
   ::ng-deep .p-paginator-bottom.p-paginator.p-component {
-    width: 100% !important;
+    width: 66% !important;
     justify-content: center !important;
     margin-left: 0 !important;
     margin-top: 155px !important;

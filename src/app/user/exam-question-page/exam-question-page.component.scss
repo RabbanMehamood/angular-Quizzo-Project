@@ -5,6 +5,42 @@
   width: 100vw;
   justify-content: center;
 }
+
+/* Make the radio box square like a checkbox */
+::ng-deep .p-radiobutton-box {
+  border-radius: 2px; /* square corners */
+  background-color: transparent; /* background will change when selected */
+  border: 2px solid #194f72; /* border to simulate checkbox */
+  width: 20px;
+  height: 20px;
+}
+
+/* When selected, set background */
+::ng-deep .p-radiobutton-box.p-highlight {
+  background-color: #194f72;
+  border-color: #194f72;
+}
+
+/* Hide default radio dot */
+::ng-deep .p-radiobutton-icon {
+  background: none !important;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Add white tick mark */
+::ng-deep .p-radiobutton-icon::before {
+  content: "✔";
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
+
 .question-options-div {
   width: 1015px;
   height: 510px;

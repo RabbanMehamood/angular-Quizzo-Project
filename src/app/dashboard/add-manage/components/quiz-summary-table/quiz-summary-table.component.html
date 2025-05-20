@@ -62,7 +62,6 @@
                   [outlined]="true"
                   [style]="{ padding: '0px', border: 'none' }"
                 >
-                 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -81,17 +80,14 @@
         </ng-template>
 
         <ng-template pTemplate="paginatorright">
-          <div
-            class="paginator-custom"
-            style="display: flex; align-items: center"
-          >
+          <div style="display: flex; align-items: center">
             <input
+              #pageInput
               type="number"
               [(ngModel)]="goToPageNumber"
               [min]="1"
               [max]="maxPage"
               class="page-input-style"
-              placeholder="Page"
             />
             <button
               pButton

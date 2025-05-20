@@ -1,5 +1,6 @@
 .dashboard-header {
-  width: 100%;
+  // width: 100%;
+  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +43,7 @@ p {
 }
 .sidebar-css {
   padding-top: 25px;
-  width: 20vw;
+  width: 330px;
   display: flex;
   flex-direction: column;
 }
@@ -68,6 +69,7 @@ a {
 }
 
 .router-outlet-style {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -111,12 +113,14 @@ a {
   }
   .header-mobile {
     display: block;
-    width: 100vw;
+    width: 100%;
+    flex: 1;
   }
   .mobile-sidebar-css {
     background-color: #204166;
     height: 100vh;
     display: block;
+    width: 100%;
     border-radius: 6px;
     margin-top: 10px;
     padding-top: 15px;
