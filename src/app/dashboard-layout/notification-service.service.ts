@@ -22,8 +22,8 @@ export class NotificationServiceService {
     this.changesObject.edited.push(`Question${question.id} is Updated`);
     this.notifications.next(this.changesObject);
   }
-  deleted(question: any) {
-    this.changesObject.deleted.push(`Question${question.id} is Deleted`);
+  deleted(questionId: any) {
+    this.changesObject.deleted.push(`Question${questionId} is Deleted`);
     this.notifications.next(this.changesObject);
   }
 }

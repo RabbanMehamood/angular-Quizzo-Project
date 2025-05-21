@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionsapiService } from '../../services/questionsapi.service';
 import { StateService } from '../../services/state.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { NotificationServiceService } from '../../../../dashboard-layout/notification-service.service';
 
 @Component({
   selector: 'app-quiz-summary-table',
@@ -13,7 +14,6 @@ export class QuizSummaryTableComponent implements OnInit {
   questions: any[] = [];
   loading: boolean = false;
 
-  
   totalRecords = 0;
   rows = 7;
   first = 0;
@@ -25,11 +25,11 @@ export class QuizSummaryTableComponent implements OnInit {
     private readonly _stateService: StateService,
     private readonly _questionApiService: QuestionsapiService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private sendNotification: NotificationServiceService
   ) {}
 
   ngOnInit(): void {
-    
     this.loadquestiondata();
     this._stateService.updateMsg$.subscribe({
       next: (res: any) => {
@@ -98,6 +98,7 @@ export class QuizSummaryTableComponent implements OnInit {
           detail: 'Record deleted',
           life: 1000,
         });
+        this.sendNotification.deleted(id);
       },
       reject: () => {
         this.messageService.add({

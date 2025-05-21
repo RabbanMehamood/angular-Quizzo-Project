@@ -8,7 +8,7 @@
       [first]="first"
       [paginatorPosition]="'bottom'"
       [tableStyle]="{ 'min-width': '40rem' }"
-      [scrollHeight]="'calc(100vh - 300px)'"
+      [scrollHeight]="'calc(100vh - 170px)'"
       scrollable="true"
       (onPage)="onPageChange($event)"
       [responsiveLayout]="'scroll'"
@@ -47,33 +47,33 @@
                     >Participant Details</span
                   >
                   <ul class="list-none p-0 m-0 flex flex-column gap-3">
-                    <li class="flex align-items-center gap-2">
+                    <li class="flex align-items-center gap-2 text-900">
                       <span class="font-medium"
                         >Participant Name: {{ user.name }}</span
                       >
                     </li>
-                    <li class="flex align-items-center gap-2">
+                    <li class="flex align-items-center gap-2 text-900">
                       <span class="font-medium"
                         >Participant Age: {{ user.age }}</span
                       >
                     </li>
-                    <li class="flex align-items-center gap-2">
+                    <li class="flex align-items-center gap-2 text-900">
                       <span class="font-medium"
                         >Participant Email: {{ user.email }}</span
                       >
                     </li>
-                    <li class="flex align-items-center gap-2">
+                    <li class="flex align-items-center gap-2 text-900">
                       <span class="font-medium"
                         >Participant Score: {{ user.score }}</span
                       >
                     </li>
-                    <li class="flex align-items-center gap-2">
+                    <li class="flex align-items-center gap-2 text-900">
                       <span class="font-medium"
                         >Exam Submission On :
                         {{ user.submissionTime | date : "mediumDate" }}</span
                       >
                     </li>
-                    <li class="flex align-items-center gap-2">
+                    <li class="flex align-items-center gap-2 text-900">
                       <span class="font-medium"
                         >Exam Submission Time :
                         {{ user.submissionTime | date : "mediumTime" }}</span

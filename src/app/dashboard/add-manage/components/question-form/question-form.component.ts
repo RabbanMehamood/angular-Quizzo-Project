@@ -119,7 +119,7 @@ export class QuestionFormComponent implements OnInit {
       return;
     }
     const correctAnswer = options.some(
-      (option) => option.trim() === this.questionform.value.correctAnswer.trim()
+      (option) => option.trim() === this.questionform.value.correctAnswer.trim().toLowerCase()
     );
     if (!correctAnswer) {
       this.messageService.add({

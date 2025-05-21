@@ -43,23 +43,23 @@
         </svg>
         <p-overlayPanel #op>
           <div class="bg-panel">
-            <span class="font-medium text-900 block mb-2">
+            <span class="font-medium text-900 block mb-4">
               Notification Details:-
             </span>
             <ul class="list-none p-0 m-0 flex flex-column gap-3">
               <li class="flex align-items-center gap-2">
                 <span class="font-medium"
-                  >Question Updated:{{ notifications.edited.length }}</span
+                  >Questions Updated:{{ notifications.edited.length }}</span
                 >
               </li>
               <li class="flex align-items-center gap-2">
                 <span class="font-medium"
-                  >Question Added:{{ notifications.added.length }}</span
+                  >Questions Added:{{ notifications.added.length }}</span
                 >
               </li>
               <li class="flex align-items-center gap-2">
                 <span class="font-medium"
-                  >Question Deleted:{{ notifications.deleted.length }}</span
+                  >Questions Deleted:{{ notifications.deleted.length }}</span
                 >
               </li>
             </ul>
@@ -108,7 +108,11 @@
             <div
               class="ellipse"
               pBadge
-              value="7"
+              [value]="
+                notifications.added.length +
+                notifications.edited.length +
+                notifications.deleted.length
+              "
               severity="warning"
               (click)="op.toggle($event)"
             >

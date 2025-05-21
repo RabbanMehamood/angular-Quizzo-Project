@@ -6,6 +6,9 @@
   width: 1310px;
   height: 715px;
 }
+::ng-deep .p-component {
+  font-size: 13px !important;
+}
 .page-input-style {
   width: 35px;
   height: 30px;
@@ -77,8 +80,8 @@ p-component-overlay-enter-animation animation {
   border: 1px solid #e1e1e1;
   border-radius: 6px;
   padding: 0px;
-  margin-top: 50px;
-  margin-left: 890px;
+  margin-top: 40px;
+  margin-left: 930px;
 }
 ::ng-deep .p-paginator .p-dropdown {
   margin-left: 0rem;
@@ -227,7 +230,7 @@ p-component-overlay-enter-animation animation {
     padding: 0px 5px;
     border: 1px solid #e5e7eb;
     border-width: 0 0 1px 0;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     color: #374151;
     background: #f9fafb;
@@ -237,7 +240,7 @@ p-component-overlay-enter-animation animation {
     text-align: left;
     border: 1px solid #e5e7eb;
     border-width: 0 0 1px 0;
-    font-size: 15px;
+    font-size: 13px;
     padding: 0px 5px;
   }
 
@@ -252,7 +255,7 @@ p-component-overlay-enter-animation animation {
     border-radius: 6px;
     padding: 0px;
     margin-top: 114px;
-    margin-left: 200px;
+    margin-left: 230px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -373,7 +376,7 @@ p-component-overlay-enter-animation animation {
     border-radius: 6px;
     padding: 0px;
     margin-top: 60px;
-    margin-left: 400px;
+    margin-left: 430px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -521,6 +524,6 @@ p-component-overlay-enter-animation animation {
   /* Table cell padding */
   ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
     padding: 0.5rem !important;
-    font-size: 0.9rem;
+    font-size: 13px;
   }
 }

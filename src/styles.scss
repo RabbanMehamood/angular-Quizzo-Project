@@ -8,6 +8,7 @@
   --teal-500: #41a676;
   --violet-500: #bd4df5;
   --lime-500: #9ad720;
+  --barcolor-500: #76e28e;
 }
 
 ::-webkit-scrollbar {
@@ -23,7 +24,7 @@ label {
   background-color: #ffffff;
 }
 li {
-  color: black;
+  color: rgb(0, 0, 0);
 }
 .dashboard-header {
   background-color: #ffffff;
