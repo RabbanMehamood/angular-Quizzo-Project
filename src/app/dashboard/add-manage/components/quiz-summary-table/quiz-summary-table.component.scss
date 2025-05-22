@@ -54,7 +54,7 @@
   border: 1px solid #e1e1e1;
   border-radius: 6px;
   padding: 0px;
-  margin-top: 34px;
+  margin-top: 10px;
   margin-left: 965px;
 }
 ::ng-deep .p-paginator .p-dropdown {
@@ -89,7 +89,7 @@
 //scrollable height
 ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
   position: relative;
-  min-height: 300px !important;
+  min-height: 330px !important;
 }
 
 ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
@@ -340,7 +340,7 @@
     border: 1px solid #e1e1e1;
     border-radius: 6px;
     padding: 0px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 458px;
   }
   ::ng-deep .p-paginator .p-dropdown {
@@ -413,7 +413,7 @@
     border: 1px solid #e1e1e1;
     border-radius: 6px;
     padding: 0px;
-    margin-top: 34px;
+    margin-top: 10px;
     margin-left: 0px;
   }
   ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
@@ -437,6 +437,11 @@
   }
 }
 
+@media (max-width: 586px) {
+  .p-datatable {
+    height: 50vh !important;
+  }
+}
 ::ng-deep .p-table {
   height: 400px;
 }

@@ -10,6 +10,9 @@
   padding: 13px;
   align-items: center;
 }
+::ng-deep .p-button-label {
+  font-weight: 400 !important;
+}
 .user {
   font-family: "Poppins";
   font-weight: 500;
@@ -40,7 +43,7 @@ input {
 
 .options {
   display: flex;
-
+  align-items: flex-start;
   flex-direction: column;
 }
 
@@ -51,10 +54,8 @@ input {
   font-family: "Poppins";
   width: 124px;
   height: 30px;
-  font-weight: 500;
+  font-weight: 100 !important;
   font-size: 13px;
-  line-height: 100%;
-  letter-spacing: 0%;
   border-radius: 6px;
   border-width: 1px;
   border-color: #2e629f;
@@ -67,10 +68,8 @@ input {
   font-family: "Poppins";
   width: 124px;
   height: 30px;
-  font-weight: 500;
+  font-weight: 100 !important;
   font-size: 13px;
-  line-height: 100%;
-  letter-spacing: 0%;
   border-radius: 6px;
   border-width: 1px;
   border-color: #2e629f;
@@ -78,6 +77,7 @@ input {
 .buttons-div {
   grid-row: 2;
   grid-column: 4;
+  align-self: flex-end;
   height: 100%;
   display: flex;
   justify-content: end;
@@ -152,8 +152,6 @@ input {
     width: 100%;
   }
   .buttons-div {
-    grid-row: 2;
-    grid-column: 4;
     height: 100%;
     display: flex;
     justify-content: center;

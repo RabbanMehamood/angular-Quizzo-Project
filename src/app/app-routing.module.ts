@@ -11,6 +11,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { blockLoginGuard } from './core/block-login.guard';
 import { blockUserLoginpageGuard } from './core/block-user-loginpage.guard';
 import { WildcardComponent } from './pages/wildcard/wildcard.component';
+import { QuestionFormComponent } from './dashboard/add-manage/components/question-form/question-form.component';
 
 const routes: Routes = [
   { path: 'notfound', component: NotfoundComponent },

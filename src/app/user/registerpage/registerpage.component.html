@@ -73,10 +73,17 @@
             name="value"
           />
         </div>
+        <div *ngIf="registerform.get('qualification')?.invalid && submitted">
+          <small
+            *ngIf="registerform.get('email')?.errors?.['required']"
+            style="color: red"
+            >Please put your qualification</small
+          >
+        </div>
       </div>
       <div class="buttons-div">
         <p-button label="Cancel" class="primary" (onClick)="onReset()" />
-        <p-button type="Submit" label="Save" />
+        <p-button type="Submit" label="Register" />
       </div>
     </div>
   </form>

@@ -11,11 +11,11 @@
 }
 
 .admin-login-div {
-  width: 432px;
-  height: 615px;
+  width: 532px;
+  height: 715px;
   border-radius: 24px;
   border-width: 1px;
-  background-color: aliceblue;
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,7 +61,7 @@ h2 {
 }
 .adminp {
   font-family: "Poppins";
-  font-weight: 400;
+  font-weight: 500;
   font-size: 15px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -73,7 +73,7 @@ h2 {
 
 .admin-signin > p {
   font-family: "Poppins";
-  font-weight: 400;
+  font-weight: 500;
   font-size: 15px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -82,7 +82,7 @@ h2 {
 
 .username-div {
   text-align: left;
-  margin-top: 4px;
+  margin: 30px 0px;
 }
 label {
   font-family: "Poppins";
@@ -93,7 +93,7 @@ label {
 }
 input {
   padding-left: 15px;
-  width: 382px;
+  width: 462px;
   margin-top: 10px;
   height: 55px;
   border-radius: 10px;
@@ -103,7 +103,7 @@ input {
   color: black;
 }
 ::ng-deep .p-password .p-inputtext {
-  width: 382px;
+  width: 462px;
   margin-top: 10px;
   height: 55px;
   border-radius: 10px;
@@ -114,7 +114,7 @@ input {
 }
 
 ::ng-deep .p-button {
-  width: 382px;
+  width: 462px;
   height: 50px;
   border-radius: 10px;
   border-width: 1px;
@@ -123,7 +123,7 @@ input {
 }
 
 ::ng-deep .p-inputtext {
-  width: 382px;
+  width: 462px;
   margin-top: 10px;
   height: 55px;
   border-radius: 10px;
@@ -214,7 +214,7 @@ a {
 
   .adminp {
     font-family: "Poppins";
-    font-weight: 400;
+    font-weight: 500;
     font-size: 12px;
     line-height: 100%;
     letter-spacing: 0%;
@@ -226,7 +226,7 @@ a {
 
   .admin-signin > p {
     font-family: "Poppins";
-    font-weight: 400;
+    font-weight: 500 !important;
     font-size: 15px;
     line-height: 100%;
     letter-spacing: 0%;
@@ -315,7 +315,7 @@ a {
     height: 585px;
     border-radius: 24px;
     border-width: 1px;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     align-items: center;

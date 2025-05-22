@@ -22,6 +22,7 @@ textarea {
   height: 84px;
   margin-top: 5px;
   margin-bottom: 10px;
+  color: black;
   border-radius: 6px;
   border: 1px solid #cdcdce;
   background: #f1f1f1;
@@ -30,6 +31,7 @@ textarea {
 input {
   background-color: #f1f1f1;
   height: 35px;
+  color: black;
   width: 95%;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -45,6 +47,7 @@ input {
 
 .buttons-div :first-child::ng-deep.p-button {
   color: #2e629f;
+  width: 124px;
   background-color: rgb(255, 255, 255);
   font-family: "Poppins";
   height: 30px;
@@ -60,6 +63,7 @@ input {
 
 .buttons-div :nth-child(2)::ng-deep.p-button {
   color: rgb(255, 255, 255);
+  width: 124px;
   background-color: #2e629f;
   font-family: "Poppins";
   height: 30px;

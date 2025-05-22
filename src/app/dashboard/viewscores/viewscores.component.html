@@ -1,5 +1,6 @@
 <div class="view-scores-style">
   <div class="card-view">
+    <span style="margin: 10px 15px; display: inline-block">User Scores</span>
     <p-table
       #dt
       [value]="users"
@@ -8,7 +9,7 @@
       [first]="first"
       [paginatorPosition]="'bottom'"
       [tableStyle]="{ 'min-width': '40rem' }"
-      [scrollHeight]="'calc(100vh - 170px)'"
+      [scrollHeight]="'calc(100vh - 350px)'"
       scrollable="true"
       (onPage)="onPageChange($event)"
       [responsiveLayout]="'scroll'"

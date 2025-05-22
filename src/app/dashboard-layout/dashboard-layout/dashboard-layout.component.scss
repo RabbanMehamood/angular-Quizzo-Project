@@ -41,6 +41,9 @@ p {
   padding: 10px 0px;
   padding-left: 30px;
 }
+::ng-deep .p-badge {
+  font-weight: 400;
+}
 .sidebar-css {
   padding-top: 25px;
   width: 330px;
@@ -49,7 +52,7 @@ p {
 }
 span {
   font-family: "Poppins";
-  font-weight: 400;
+  font-weight: 300;
   font-size: 15px;
   line-height: 100%;
   letter-spacing: 0%;

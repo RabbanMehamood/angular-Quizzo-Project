@@ -30,6 +30,11 @@ export class DashboardLayoutComponent implements OnInit {
     });
   }
   confirmLogout(event: Event) {
+    // this.getNotifications.getQuestionFormStatus()
+    console.log('logout button clicked');
+    // this.getNotifications.questionFormStatus.subscribe((value) => {
+    //   console.log('questionStatus', value);
+    // });
     this.confirmationService.confirm({
       target: event.target as HTMLElement,
       message: 'Are you sure you want to log out?',

@@ -37,5 +37,6 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     ConfirmDialogModule,
     ConfirmPopupModule,
   ],
+  providers: [QuestionFormComponent],
 })
 export class AddManageModule {}

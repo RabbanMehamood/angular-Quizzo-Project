@@ -9,6 +9,8 @@ import { QuestionsapiService } from '../../services/questionsapi.service';
 import { StateService } from '../../services/state.service';
 import { MessageService } from 'primeng/api';
 import { NotificationServiceService } from '../../../../dashboard-layout/notification-service.service';
+import { Observable } from 'rxjs/internal/Observable';
+import { IDeactivateComponent } from '../../services/questionGuard.service';
 
 @Component({
   selector: 'app-question-form',
@@ -17,7 +19,7 @@ import { NotificationServiceService } from '../../../../dashboard-layout/notific
   standalone: false,
   providers: [MessageService],
 })
-export class QuestionFormComponent implements OnInit {
+export class QuestionFormComponent implements OnInit, IDeactivateComponent {
   isEditable: boolean = false;
   counter: number = 0;
   editQuestionId: any;
@@ -60,7 +62,9 @@ export class QuestionFormComponent implements OnInit {
     private messageService: MessageService,
     private sendNotification: NotificationServiceService
   ) {}
+  // send questionform status
 
+  // ngoninit method.
   ngOnInit(): void {
     this.questionApiService.getQuestionsList().subscribe({
       next: (res: any) => {
@@ -70,6 +74,8 @@ export class QuestionFormComponent implements OnInit {
       },
     });
     this._editQuestion();
+    // this.sendNotification.questionFormStatus.subscribe((message) => {     this.sendNotification.questionFormStatus.next(this.questionform.valid)
+    // })
   }
 
   /**
@@ -100,6 +106,7 @@ export class QuestionFormComponent implements OnInit {
     if (this.questionform.invalid) {
       return;
     }
+
     const formOptions = this.questionform.value;
     const options = [
       formOptions.optionA?.trim().toLowerCase(),
@@ -119,7 +126,9 @@ export class QuestionFormComponent implements OnInit {
       return;
     }
     const correctAnswer = options.some(
-      (option) => option.trim() === this.questionform.value.correctAnswer.trim().toLowerCase()
+      (option) =>
+        option.trim() ===
+        this.questionform.value.correctAnswer.trim().toLowerCase()
     );
     if (!correctAnswer) {
       this.messageService.add({
@@ -214,5 +223,19 @@ export class QuestionFormComponent implements OnInit {
     this.submitted = false;
     this.questionform.reset();
     this.isEditable = false;
+  }
+
+  canExit(): Observable<boolean> | Promise<boolean> | boolean {
+    if (
+      this.questionform.value.questionText ||
+      this.questionform.value.optionA ||
+      this.questionform.value.optionB
+    ) {
+      return confirm(
+        'You have unsaved changes in question from, Do you want to navigate away?'
+      );
+    } else {
+      return true;
+    }
   }
 }

@@ -26,4 +26,15 @@ export class NotificationServiceService {
     this.changesObject.deleted.push(`Question${questionId} is Deleted`);
     this.notifications.next(this.changesObject);
   }
+  // subject and observable for the form status
+
+  questionFormStatus = new Subject<boolean>();
+  questionFormStatusMessage = this.questionFormStatus.asObservable();
+
+  sendQuestionFormStatus(value: boolean) {
+    this.questionFormStatus.next(value);
+  }
+  getQuestionFormStatus() {
+    this.questionFormStatus.next(true);
+  }
 }

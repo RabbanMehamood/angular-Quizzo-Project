@@ -2,6 +2,7 @@
   border: 1px solid #e1e1e1;
   box-shadow: 0px 4px 4px 0px #00000040;
   border-radius: 6px;
+  background-color: white;
   margin: 12px;
   width: 1310px;
   height: 715px;
@@ -17,7 +18,7 @@
   text-align: center;
   border-radius: 6px;
   position: absolute;
-  right: 56px;
+  right: 48px;
   background-color: white;
 }
 :ng-deep .p-paginator-right-content {
@@ -36,7 +37,7 @@
   text-align: center;
   border-radius: 6px;
   position: absolute;
-  right: -85px;
+  right: -90px;
   font-weight: 400 !important;
 }
 
@@ -75,13 +76,14 @@ p-component-overlay-enter-animation animation {
   height: 30px;
   display: flex;
   align-content: center;
+  background-color: white;
   justify-content: center;
   flex-wrap: wrap;
   border: 1px solid #e1e1e1;
   border-radius: 6px;
   padding: 0px;
-  margin-top: 40px;
-  margin-left: 930px;
+  margin-top: 20px;
+  margin-left: 933px;
 }
 ::ng-deep .p-paginator .p-dropdown {
   margin-left: 0rem;
@@ -254,7 +256,7 @@ p-component-overlay-enter-animation animation {
     border: 1px solid #e1e1e1;
     border-radius: 6px;
     padding: 0px;
-    margin-top: 114px;
+    margin-top: 65px;
     margin-left: 230px;
   }
   ::ng-deep .p-paginator .p-dropdown {
@@ -375,7 +377,7 @@ p-component-overlay-enter-animation animation {
     border: 1px solid #e1e1e1;
     border-radius: 6px;
     padding: 0px;
-    margin-top: 60px;
+    margin-top: 25px;
     margin-left: 430px;
   }
   ::ng-deep .p-paginator .p-dropdown {
@@ -419,7 +421,7 @@ p-component-overlay-enter-animation animation {
     height: 84vh;
   }
   .view-scores-style {
-    width: 37% !important;
+    width: 43% !important;
     height: 95% !important;
     margin: 8px !important;
     padding: 8px;
@@ -448,13 +450,13 @@ p-component-overlay-enter-animation animation {
     right: -10px;
     font-weight: 400 !important;
   }
-  ::ng-deep .view-scores-style {
-    width: 38% !important;
-    height: 95% !important;
-    margin: 8px !important;
-    padding: 8px;
-    overflow-x: auto;
-  }
+  // ::ng-deep .view-scores-style {
+  //   width: 38% !important;
+  //   height: 95% !important;
+  //   margin: 8px !important;
+  //   padding: 8px;
+  //   overflow-x: auto;
+  // }
   ::ng-deep .p-paginator.p-paginator-pages.p-paginator-page {
     min-width: 1.2rem !important;
     height: 2.5rem !important;
@@ -489,7 +491,7 @@ p-component-overlay-enter-animation animation {
     width: 66% !important;
     justify-content: center !important;
     margin-left: 0 !important;
-    margin-top: 155px !important;
+    margin-top: 28px !important;
     padding: 8px;
     border: none !important;
   }
