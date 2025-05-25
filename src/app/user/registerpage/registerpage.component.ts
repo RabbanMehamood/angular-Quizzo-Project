@@ -60,6 +60,7 @@ export class RegisterpageComponent {
   onSubmit(): void {
     this.submitted = true;
     if (this.registerform.invalid) return;
+    
 
     this.userObject = {
       id: this.generatedId,

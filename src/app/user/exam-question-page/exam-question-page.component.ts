@@ -42,6 +42,33 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
     localStorage.setItem('currentPath', `${this.router.url}`);
     // this.startTime = Date.now();
     this.loadQuestions();
+    const lockKey = 'exam-tab-lock';
+    const currentTabId = crypto.randomUUID(); // Unique ID for this tab
+
+    // Check if another tab is already using the exam
+    const existingLock = localStorage.getItem(lockKey);
+
+    if (existingLock && existingLock !== currentTabId) {
+      // Another tab has the lock → Block access
+      alert('Exam is already open in another tab. Only one tab is allowed.');
+      this.router.navigate(['']); // Redirect or show message
+      return;
+    }
+
+    // No other tab has it → Set lock for this tab
+    localStorage.setItem(lockKey, currentTabId);
+    sessionStorage.setItem(
+      'examSession',
+      JSON.stringify({ sessionId: currentTabId })
+    );
+
+    // Clean up on tab close
+    window.addEventListener('beforeunload', () => {
+      const currentLock = localStorage.getItem(lockKey);
+      if (currentLock === currentTabId) {
+        localStorage.removeItem(lockKey);
+      }
+    });
   }
 
   ngOnDestroy(): void {

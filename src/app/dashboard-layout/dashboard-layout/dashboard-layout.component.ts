@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { DarkmodeService } from '../../auth/services/darkmode.service';
+
 import { Sidebar, SidebarModule } from 'primeng/sidebar';
 import { NotificationServiceService } from '../notification-service.service';
 
@@ -20,7 +20,7 @@ export class DashboardLayoutComponent implements OnInit {
     private _auth: AuthService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private darkModeStatus: DarkmodeService,
+
     private getNotifications: NotificationServiceService
   ) {}
   ngOnInit(): void {

@@ -241,6 +241,17 @@
     transition: box-shadow 0.2s !important;
     border-radius: 0px !important;
   }
+  .page-input-style {
+    width: 35px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    right: 34px;
+    background-color: #00000000;
+  }
   ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
     background: #4a90e2 !important;
     border-color: #eff6ff !important;
@@ -347,6 +358,17 @@
     margin-left: 0rem;
     margin-right: 0rem;
     height: 3rem;
+  }
+  .page-input-style {
+    width: 35px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    right: 37px;
+    background-color: #00000000;
   }
   ::ng-deep .p-dropdown {
     background: #ffffff;

@@ -1,3 +1,8 @@
+::ng-deep .p-paginator-right-content {
+  margin-left: 0px;
+  position: absolute;
+}
+
 .view-scores-style {
   border: 1px solid #e1e1e1;
   box-shadow: 0px 4px 4px 0px #00000040;
@@ -6,6 +11,9 @@
   margin: 12px;
   width: 1310px;
   height: 715px;
+}
+::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  background-color: white;
 }
 ::ng-deep .p-component {
   font-size: 13px !important;
@@ -18,7 +26,7 @@
   text-align: center;
   border-radius: 6px;
   position: absolute;
-  right: 48px;
+  right: -140px;
   background-color: white;
 }
 :ng-deep .p-paginator-right-content {
@@ -37,7 +45,7 @@
   text-align: center;
   border-radius: 6px;
   position: absolute;
-  right: -90px;
+  right: -179px;
   font-weight: 400 !important;
 }
 
@@ -51,6 +59,7 @@
 }
 ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
   text-align: left;
+  background-color: white;
   border: 1px solid #e5e7eb;
   border-width: 0 0 1px 0;
   padding: 0rem 1rem;
@@ -83,7 +92,7 @@ p-component-overlay-enter-animation animation {
   border-radius: 6px;
   padding: 0px;
   margin-top: 20px;
-  margin-left: 933px;
+  margin-left: 980px;
 }
 ::ng-deep .p-paginator .p-dropdown {
   margin-left: 0rem;
@@ -245,7 +254,29 @@ p-component-overlay-enter-animation animation {
     font-size: 13px;
     padding: 0px 5px;
   }
-
+  .page-input-style {
+    width: 35px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    right: -53px;
+    background-color: white;
+  }
+  .go-input-style {
+    padding: 0px !important;
+    width: 35px;
+    font-family: "Poppins" !important;
+    height: 30px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    right: -89px;
+    font-weight: 400 !important;
+  }
   //paginator style overriding
   ::ng-deep .p-paginator-bottom.p-paginator.p-component {
     width: fit-content;
@@ -257,7 +288,7 @@ p-component-overlay-enter-animation animation {
     border-radius: 6px;
     padding: 0px;
     margin-top: 65px;
-    margin-left: 230px;
+    margin-left: 310px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -362,9 +393,32 @@ p-component-overlay-enter-animation animation {
     width: 800px;
     height: 750px;
   }
+  .page-input-style {
+    width: 35px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    right: -53px;
+    background-color: white;
+  }
   ::ng-deep .p-datatable-scrollable > .p-datatable-wrapper {
     position: relative;
     min-height: 650px !important;
+  }
+  .go-input-style {
+    padding: 0px !important;
+    width: 35px;
+    font-family: "Poppins" !important;
+    height: 30px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    right: -89px;
+    font-weight: 400 !important;
   }
 
   //paginator styling
@@ -378,7 +432,7 @@ p-component-overlay-enter-animation animation {
     border-radius: 6px;
     padding: 0px;
     margin-top: 25px;
-    margin-left: 430px;
+    margin-left: 496px;
   }
   ::ng-deep .p-paginator .p-dropdown {
     margin-left: 0rem;
@@ -435,7 +489,7 @@ p-component-overlay-enter-animation animation {
     text-align: center;
     border-radius: 6px;
     position: absolute;
-    right: 30px;
+    right: -150px;
     background-color: white;
   }
   .go-input-style {
@@ -447,7 +501,7 @@ p-component-overlay-enter-animation animation {
     text-align: center;
     border-radius: 6px;
     position: absolute;
-    right: -10px;
+    right: -197px;
     font-weight: 400 !important;
   }
   // ::ng-deep .view-scores-style {
@@ -489,9 +543,9 @@ p-component-overlay-enter-animation animation {
   /* Paginator repositioning */
   ::ng-deep .p-paginator-bottom.p-paginator.p-component {
     width: 66% !important;
-    justify-content: center !important;
+    justify-content: space-around !important;
     margin-left: 0 !important;
-    margin-top: 28px !important;
+    margin-top: 159px !important;
     padding: 8px;
     border: none !important;
   }

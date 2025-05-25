@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, input, OnInit, Input } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from '../auth/services/auth.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-layout',
@@ -10,6 +11,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   providers: [ConfirmationService, MessageService],
 })
 export class UserLayoutComponent implements OnInit {
+  username: string = '';
   steps = [
     {
       title: 'Register',
@@ -39,8 +41,21 @@ export class UserLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.setItem('currentPath', `${this.router.url}`);
-    const url = this.router.url;
-    this.currentUrl = url;
+    this.username = localStorage.getItem('username');
+
+    this.updateSteps(this.router.url); // initial step update
+
+    // Listen to route changes
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.updateSteps(event.urlAfterRedirects);
+        this.username = localStorage.getItem('username');
+      });
+  }
+
+  updateSteps(url: string): void {
+    this.steps.forEach((step) => (step.is_active = false)); // reset all
 
     if (url === this.steps[0].relatedRoute) {
       this.steps[0].is_active = true;

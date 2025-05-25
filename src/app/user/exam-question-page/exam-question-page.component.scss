@@ -1,10 +1,13 @@
 .exam-page-div {
   margin: 0px;
   flex: 1;
+  gap: 25px;
   display: flex;
   justify-content: center;
 }
-
+::ng-deep .p-button-label {
+  font-weight: 400;
+}
 /* Make the radio box square like a checkbox */
 ::ng-deep .p-radiobutton-box {
   border-radius: 2px; /* square corners */
@@ -202,6 +205,7 @@ form {
   justify-content: space-between;
   border: 1px solid #e1e1e1;
   box-shadow: 0px 4px 4px 0px #00000040;
+
   margin-bottom: 5px;
 }
 

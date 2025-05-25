@@ -15,7 +15,7 @@ import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
-
+import { ConfirmationService } from 'primeng/api';
 @NgModule({
   declarations: [
     AddManageComponent,
@@ -37,6 +37,6 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     ConfirmDialogModule,
     ConfirmPopupModule,
   ],
-  providers: [QuestionFormComponent],
+  providers: [ConfirmationService],
 })
 export class AddManageModule {}

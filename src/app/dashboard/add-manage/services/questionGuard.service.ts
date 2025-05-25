@@ -1,34 +1,16 @@
-import { Injectable, inject } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanDeactivate,
-  GuardResult,
-  MaybeAsync,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+// questionGuard.service.ts
+import { Injectable } from '@angular/core';
+import { CanDeactivate } from '@angular/router';
+import { CanComponentDeactivate } from './canDeactivate.guard';
 import { Observable } from 'rxjs';
-import { QuestionFormComponent } from '../components/question-form/question-form.component';
 
-export interface IDeactivateComponent{
-  canExit: () => boolean | Observable<boolean> | Promise<boolean>;
-}
-
-@Injectable({
-  providedIn: 'root',
-})
-export class QuestionGuardService
-  implements CanDeactivate<IDeactivateComponent>
+@Injectable({ providedIn: 'root' })
+export class QuestionFormCanDeactivateGuard
+  implements CanDeactivate<CanComponentDeactivate>
 {
-  router: Router = inject(Router);
-
-  constructor() {}
   canDeactivate(
-    component: IDeactivateComponent,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState: RouterStateSnapshot
-  ): MaybeAsync<GuardResult> {
-    return component.canExit();
+    component: CanComponentDeactivate
+  ): boolean | Observable<boolean> {
+    return component.canExit ? component.canExit() : true;
   }
 }

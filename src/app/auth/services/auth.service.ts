@@ -46,6 +46,7 @@ export class AuthService {
         localStorage.removeItem('userRole');
         localStorage.removeItem('password');
         localStorage.setItem('userId', value.id);
+        localStorage.setItem('username', value.name);
         // or 'User', etc.
         // this.setAuthenticated(true);
         // if (res.loginType === 'user') {

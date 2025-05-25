@@ -151,6 +151,20 @@ a {
   position: relative;
   top: -5px;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .admin-login-div {
+    width: 500px;
+    height: 635px;
+    border-radius: 24px;
+    border-width: 1px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+  }
+}
 @media (max-width: 576px) {
   .admin-page-css {
     background-image: url("../../../../../public/8d617e53523f92156749f20eced274505921e476.png");
@@ -162,6 +176,11 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .username-div {
+    text-align: left;
+    margin: 10px 0px;
   }
 
   .admin-login-div {

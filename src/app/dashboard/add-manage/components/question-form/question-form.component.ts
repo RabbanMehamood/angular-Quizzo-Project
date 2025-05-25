@@ -9,8 +9,7 @@ import { QuestionsapiService } from '../../services/questionsapi.service';
 import { StateService } from '../../services/state.service';
 import { MessageService } from 'primeng/api';
 import { NotificationServiceService } from '../../../../dashboard-layout/notification-service.service';
-import { Observable } from 'rxjs/internal/Observable';
-import { IDeactivateComponent } from '../../services/questionGuard.service';
+import { CanComponentDeactivate } from '../../services/canDeactivate.guard';
 
 @Component({
   selector: 'app-question-form',
@@ -19,7 +18,7 @@ import { IDeactivateComponent } from '../../services/questionGuard.service';
   standalone: false,
   providers: [MessageService],
 })
-export class QuestionFormComponent implements OnInit, IDeactivateComponent {
+export class QuestionFormComponent implements OnInit {
   isEditable: boolean = false;
   counter: number = 0;
   editQuestionId: any;
@@ -56,7 +55,6 @@ export class QuestionFormComponent implements OnInit, IDeactivateComponent {
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private questionApiService: QuestionsapiService,
     private readonly _stateService: StateService,
     private messageService: MessageService,
@@ -225,17 +223,11 @@ export class QuestionFormComponent implements OnInit, IDeactivateComponent {
     this.isEditable = false;
   }
 
-  canExit(): Observable<boolean> | Promise<boolean> | boolean {
-    if (
-      this.questionform.value.questionText ||
-      this.questionform.value.optionA ||
-      this.questionform.value.optionB
-    ) {
-      return confirm(
-        'You have unsaved changes in question from, Do you want to navigate away?'
-      );
-    } else {
-      return true;
+  canExit(): boolean {
+    // Unsaved changes check
+    if (this.questionform.dirty && !this.submitted) {
+      return confirm('You have unsaved changes. Leave the page?');
     }
+    return true;
   }
 }
