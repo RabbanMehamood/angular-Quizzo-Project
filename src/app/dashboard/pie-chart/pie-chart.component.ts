@@ -24,7 +24,7 @@ export class PieChartComponent implements OnInit {
     'Poor (<50%)',
     'Fail (<35%)',
   ];
-  categoryCounts = [90, 70, 50, 40, 30];
+  categoryCounts = [80, 70, 50, 40, 30];
   categoryUsers: Record<string, string[]> = {
     'Excellent (90–100%)': [],
     'Good (70–89%)': [],
@@ -102,11 +102,11 @@ export class PieChartComponent implements OnInit {
     };
 
     this.options = {
-      cutout: '50%', // Donut size
+      cutout: '50%', 
       plugins: {
         tooltip: {
-          backgroundColor: '#eefeff', // Tooltip background (dark gray)
-          titleColor: '#000000', // Title text color (e.g., "Excellent (90–100%)")
+          backgroundColor: '#eefeff', // Tooltip 
+          titleColor: '#000000', // Title text
           bodyColor: '#333333',
           borderColor: '#aaa', // Optional: border around tooltip
           borderWidth: 1,

@@ -1,6 +1,25 @@
 <div class="view-scores-style">
   <div class="card-view">
     <span style="margin: 10px 15px; display: inline-block">User Scores</span>
+    <span><input type="text" [(ngModel)]="searchValue" /></span>
+    <button (click)="getSearchValue(searchValue)" style="margin-right: 5px">
+      Search
+    </button>
+    <button (click)="sortScore()" style="margin-right: 5px">
+      Sort Score Wise
+    </button>
+    <button (click)="sortAgeAesc()" style="margin-right: 5px">
+      Sort Age Wise Aesc
+    </button>
+    <button (click)="sortAgeDesc()" style="margin-right: 5px">
+      Sort Age Wise Desc
+    </button>
+    <button (click)="sortNameA()" style="margin-right: 5px">
+      Sort Name A
+    </button>
+    <button (click)="sortNameZ()" style="margin-right: 5px">
+      Sort Name Z
+    </button>
     <p-table
       #dt
       [value]="users"

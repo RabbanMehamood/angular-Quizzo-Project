@@ -13,7 +13,6 @@ export class AuthService {
 
   loginAdmin(value: any): boolean {
     const { username, password } = value;
-
     if (username === 'Admin' && password === 'quizzoito') {
       localStorage.setItem('userRole', 'Admin');
       localStorage.setItem('password', 'quizzoito');
@@ -24,11 +23,7 @@ export class AuthService {
   }
 
   logoutAsAdmin() {
-    // alert('removed local storage key and values');
     localStorage.clear();
-    // localStorage.removeItem('userRole');
-    // localStorage.removeItem('password');
-    // localStorage.removeItem('userId');
     this._router.navigate(['']);
   }
 
@@ -47,14 +42,11 @@ export class AuthService {
         localStorage.removeItem('password');
         localStorage.setItem('userId', value.id);
         localStorage.setItem('username', value.name);
-        // or 'User', etc.
-        // this.setAuthenticated(true);
-        // if (res.loginType === 'user') {
-        //   this.redirectToUser();
-        // } else {
-        //   default
-        //   this.redirectToAdmin();
-        // }
+        const currentTabId = crypto.randomUUID();
+        sessionStorage.setItem(
+          'examSessionTabId',
+          JSON.stringify({ currentTabId })
+        );
       },
       complete() {},
       error(err) {
@@ -74,6 +66,7 @@ export class AuthService {
   redirectToUser() {
     this._router.navigate(['/user']);
   }
+
   isAdminAuthenticated(): boolean {
     return !!localStorage.getItem('userRole');
   }

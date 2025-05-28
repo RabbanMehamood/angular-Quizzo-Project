@@ -8,11 +8,11 @@
 ::ng-deep .p-button-label {
   font-weight: 400;
 }
-/* Make the radio box square like a checkbox */
+/* radio button square style */
 ::ng-deep .p-radiobutton-box {
-  border-radius: 2px; /* square corners */
-  background-color: transparent; /* background will change when selected */
-  border: 2px solid #194f72; /* border to simulate checkbox */
+  border-radius: 2px;
+  background-color: transparent;
+  border: 2px solid #194f72; 
   width: 20px;
   height: 20px;
 }

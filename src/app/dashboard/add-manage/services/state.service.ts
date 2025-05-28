@@ -11,6 +11,9 @@ export class StateService {
   private updatemessage = new Subject<boolean>();
   updateMsg$ = this.updatemessage.asObservable();
 
+  questionFormTouched = new BehaviorSubject<boolean>(false);
+  questionFormTouchedMessage$ = this.questionFormTouched.asObservable();
+
   // bEHAVIOUR SUBJECT TAKES EXPECTED ARGUMENT ATLEAST 1
   // private messageSource2 = new BehaviorSubject<string>('9089');
   // message2$ = this.messageSource.asObservable();

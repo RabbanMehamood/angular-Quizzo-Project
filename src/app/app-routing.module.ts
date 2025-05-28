@@ -11,15 +11,19 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { blockLoginGuard } from './core/block-login.guard';
 import { blockUserLoginpageGuard } from './core/block-user-loginpage.guard';
 import { WildcardComponent } from './pages/wildcard/wildcard.component';
+import { QuestionFormCanDeactivateGuard } from './dashboard/add-manage/services/questionGuard.service';
 
 const routes: Routes = [
-  { path: 'notfound', component: NotfoundComponent },
   {
     path: '',
     component: WelcomeComponent,
     canActivate: [blockLoginGuard, blockUserLoginpageGuard],
   },
-  { path: 'login', component: LoginComponent, canActivate: [blockLoginGuard] },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [blockLoginGuard],
+  },
   {
     path: 'auth',
     canActivate: [loginAuthGuard],
@@ -28,6 +32,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardLayoutComponent,
+
     data: {
       title: 'dashboard',
     },

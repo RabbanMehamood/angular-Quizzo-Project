@@ -3,12 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddManageComponent } from './add-manage.component';
 import { QuestionFormCanDeactivateGuard } from './services/questionGuard.service';
 
-
 const routes: Routes = [
   {
     path: '',
     component: AddManageComponent,
-    canDeactivate: [QuestionFormCanDeactivateGuard],
+    // canDeactivate: [QuestionFormCanDeactivateGuard],
   },
 ];
 

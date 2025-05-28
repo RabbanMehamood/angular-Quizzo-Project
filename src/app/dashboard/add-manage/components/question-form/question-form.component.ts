@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionsapiService } from '../../services/questionsapi.service';
 import { StateService } from '../../services/state.service';
 import { MessageService } from 'primeng/api';
 import { NotificationServiceService } from '../../../../dashboard-layout/notification-service.service';
-import { CanComponentDeactivate } from '../../services/canDeactivate.guard';
 
 @Component({
   selector: 'app-question-form',
@@ -23,6 +17,7 @@ export class QuestionFormComponent implements OnInit {
   counter: number = 0;
   editQuestionId: any;
   formValid: boolean = true;
+
   questionform: FormGroup = new FormGroup({
     id: new FormControl(''),
     questionText: new FormControl('', [
@@ -49,17 +44,27 @@ export class QuestionFormComponent implements OnInit {
       Validators.required,
       Validators.minLength(2),
     ]),
-    timerInSeconds: new FormControl(20, [Validators.required]),
+    timerInSeconds: new FormControl(Number, [Validators.required]),
   });
-
+  checkDirty() {
+    console.log(this.questionform.dirty);
+    this._stateService.questionFormTouched.next(this.questionform.dirty);
+  }
   submitted = false;
 
   constructor(
     private questionApiService: QuestionsapiService,
     private readonly _stateService: StateService,
     private messageService: MessageService,
-    private sendNotification: NotificationServiceService
-  ) {}
+    private sendNotification: NotificationServiceService,
+    private questionFormTouch: StateService
+  ) {
+    // if (this.questionform.touched) {
+    //   alert();
+    //   // console.log(this.questionform.dirty);
+    //   // this.questionFormTouch.questionFormTouched.next(true);
+    // }
+  }
   // send questionform status
 
   // ngoninit method.
@@ -74,6 +79,13 @@ export class QuestionFormComponent implements OnInit {
     this._editQuestion();
     // this.sendNotification.questionFormStatus.subscribe((message) => {     this.sendNotification.questionFormStatus.next(this.questionform.valid)
     // })
+    this.questionform.valueChanges.subscribe((values) => {
+      const anyFieldHasValue = Object.values(values).some(
+        (val) => val && val.toString().trim().length > 0
+      );
+      this._stateService.questionFormTouched.next(anyFieldHasValue);
+    });
+    console.log([this.questionform.dirty]);
   }
 
   /**

@@ -18,7 +18,6 @@ import {
   providers: [MessageService],
 })
 export class LoginComponent implements OnInit {
-  //instance creation using contructor method.
   constructor(
     private formBuilder: FormBuilder,
     private readonly _auth: AuthService,
@@ -38,7 +37,7 @@ export class LoginComponent implements OnInit {
     console.log(localStorage.getItem('currentPath'));
     this.loginform = this.formBuilder.group({
       username: [
-        '',
+        'Admin',
         [
           Validators.required,
           Validators.minLength(5),
@@ -46,7 +45,7 @@ export class LoginComponent implements OnInit {
         ],
       ],
       password: [
-        '',
+        'quizzoito',
         [
           Validators.required,
           Validators.minLength(6),
