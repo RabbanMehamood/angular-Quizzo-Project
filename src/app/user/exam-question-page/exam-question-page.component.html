@@ -14,6 +14,7 @@
                 [value]="currentQuestion.optionA"
                 (onClick)="selectedRadioButton(currentQuestion, $event)"
                 variant="filled"
+                [disabled]="currentQuestion.timerInSeconds === 0"
               />
               <label class="ml-2 py-4">
                 {{ currentQuestion.optionA }}
@@ -123,7 +124,7 @@
           }"
         >
           <li
-            *ngFor="let question of questions; let i = index"
+            *ngFor="let question of questionsInformation; let i = index"
             class="question-status-style"
             [ngStyle]="{
               backgroundColor:
@@ -155,6 +156,11 @@
               </ng-template>
               <ng-template ngSwitchCase="skipped"
                 ><span style="font-style: italic">skipped</span></ng-template
+              >
+              <ng-template ngSwitchCase="unAnswered"
+                ><span style="font-style: italic; color: red"
+                  >Not Answered(Timeout)</span
+                ></ng-template
               >
               <ng-template ngSwitchDefault> </ng-template>
             </div>

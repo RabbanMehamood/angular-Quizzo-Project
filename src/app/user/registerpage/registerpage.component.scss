@@ -1,7 +1,7 @@
 .register-form-style {
   width: 550px;
   display: inline-table;
-  height: 485px;
+  height: auto;
   border-radius: 6px;
   border-width: 1px;
   border: 1px solid #e1e1e1;
@@ -81,14 +81,14 @@ input {
   height: 100%;
   display: flex;
   justify-content: end;
-
   position: relative;
   top: 15px;
+  margin-bottom: 30px;
 }
 @media (min-width: 577px) and (max-width: 768px) {
   .register-form-style {
     width: 420px;
-    height: 430px;
+    height: auto;
     border-radius: 6px;
     border-width: 1px;
     border: 1px solid #e1e1e1;
@@ -126,7 +126,7 @@ input {
   }
   .register-form-style {
     width: 280px;
-    height: 400px;
+    height: auto;
     border-radius: 6px;
     border-width: 1px;
     border: 1px solid #e1e1e1;
@@ -157,5 +157,6 @@ input {
     justify-content: center;
     position: relative;
     top: 10px;
+    margin-bottom:20px;
   }
 }

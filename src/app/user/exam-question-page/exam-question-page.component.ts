@@ -9,13 +9,13 @@ import { UserupdateserviceService } from '../services/userupdateservice.service'
   styleUrls: ['./exam-question-page.component.scss'],
 })
 export class ExamQuestionPageComponent implements OnInit, OnDestroy {
-  
   startTime: number = 0;
   totalTimeSpent: number = 0;
   userId: number;
   // questions array got from the api, and current index of the question, and countdown timer
   // and formatted time for the countdown timer
   questions: any[] = [];
+  questionsInformation: any[] = [];
   currentIndex = 0;
   countdown: number = 0;
   formattedTime: string = '00:00';
@@ -53,8 +53,10 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
     this.questionsapiService.getQuestionsList().subscribe((response) => {
       this.questions = response.map((q: any) => ({
         ...q,
-        questionStatus: 'untouched', // Added new key value pair for question status checking 
+        questionStatus: 'untouched', // Added new key value pair for question status checking
       }));
+      this.questionsInformation = this.questions;
+      console.log(this.questions);
       localStorage.setItem('totalQuestions', `${this.questions.length}`);
       this.startTimer();
       this.totalScore = this.questions.length * 2;
@@ -65,7 +67,8 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
 
   startTimer() {
     this.clearTimer();
-    const time = this.currentQuestion?.timerInSeconds || 30;
+    const time = this.currentQuestion?.timerInSeconds;
+
     this.countdown = time;
     this.formattedTime = this.formatTime(this.countdown);
     this.updateProgressRing();
@@ -104,6 +107,11 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
 
   autoNext() {
     if (this.currentIndex < this.questions.length - 1) {
+      this.questions[this.currentIndex].timerInSeconds = 0;
+      // this.questions.splice(this.currentIndex,1)
+      // delete this.questions[this.currentIndex];
+      this.questionsInformation[this.currentIndex].questionStatus =
+        'unAnswered';
       this.currentIndex++;
       this.startTimer();
     } else {
@@ -113,6 +121,7 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
 
   next() {
     if (this.currentIndex < this.questions.length - 1) {
+      this.questions[this.currentIndex].timerInSeconds = this.countdown;
       this.currentIndex++;
       this.startTimer();
     }
@@ -120,6 +129,7 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
 
   prev() {
     if (this.currentIndex > 0) {
+      this.questions[this.currentIndex].timerInSeconds = this.countdown;
       this.currentIndex--;
       this.startTimer();
     }

@@ -5,12 +5,24 @@ import {
   FormGroup,
   FormControl,
   Validators,
+  ValidatorFn,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewusersService } from '../../dashboard/viewscores/services/viewusers.service';
 import { ApiService } from '../../auth/services/api.service';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../../auth/services/auth.service';
+
+function customEmailValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!control.value) {
+      return null;
+    }
+    const isValid = emailRegex.test(control.value);
+    return isValid ? null : { customEmail: true };
+  };
+}
 
 @Component({
   selector: 'app-registerpage',
@@ -48,7 +60,10 @@ export class RegisterpageComponent {
     this.registerform = this.formBuilder.group({
       name: ['', [Validators.required]],
       age: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [Validators.required, Validators.email, customEmailValidator()],
+      ],
       qualification: ['', [Validators.required]],
     });
   }
@@ -60,7 +75,6 @@ export class RegisterpageComponent {
   onSubmit(): void {
     this.submitted = true;
     if (this.registerform.invalid) return;
-    
 
     this.userObject = {
       id: this.generatedId,
