@@ -28,6 +28,7 @@
                 [value]="currentQuestion.optionB"
                 (onClick)="selectedRadioButton(currentQuestion, $event)"
                 variant="filled"
+                [disabled]="currentQuestion.timerInSeconds === 0"
               />
               <label class="ml-2 py-4">
                 {{ currentQuestion.optionB }}
@@ -41,6 +42,7 @@
                 [value]="currentQuestion.optionC"
                 (onClick)="selectedRadioButton(currentQuestion, $event)"
                 variant="filled"
+                [disabled]="currentQuestion.timerInSeconds === 0"
               />
               <label class="ml-2 py-4">
                 {{ currentQuestion.optionC }}
@@ -54,6 +56,7 @@
                 [value]="currentQuestion.optionD"
                 (onClick)="selectedRadioButton(currentQuestion, $event)"
                 variant="filled"
+                [disabled]="currentQuestion.timerInSeconds === 0"
               />
               <label class="ml-2 py-4">
                 {{ currentQuestion.optionD }}
@@ -130,8 +133,10 @@
               backgroundColor:
                 question.questionStatus === 'answered'
                   ? '#c6e4d6'
-                  : question.questionStatus === 'skipped'
+                  : question.questionStatus === 'unskip'
                   ? '#ffe0d5'
+                  : question.questionStatus === 'unAnswered'
+                  ? '#D3D3D3'
                   : '#ffffff'
             }"
           >
@@ -154,12 +159,14 @@
                   ></i
                 ></span>
               </ng-template>
-              <ng-template ngSwitchCase="skipped"
-                ><span style="font-style: italic">skipped</span></ng-template
+              <ng-template ngSwitchCase="unskip"
+                ><button (click)="unskip(question.id)">
+                  unskip
+                </button></ng-template
               >
               <ng-template ngSwitchCase="unAnswered"
-                ><span style="font-style: italic; color: red"
-                  >Not Answered(Timeout)</span
+                ><span style="font-style: italic; color: red; font-size: 12px"
+                  >(Timeout)</span
                 ></ng-template
               >
               <ng-template ngSwitchDefault> </ng-template>

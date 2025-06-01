@@ -5,6 +5,7 @@ import { Subject, BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class NotificationServiceService {
+ 
   changesObject: any = { added: [], edited: [], deleted: [] };
   private notifications = new BehaviorSubject<object>(this.changesObject);
   notificationsMessage = this.notifications.asObservable();
@@ -37,4 +38,13 @@ export class NotificationServiceService {
   getQuestionFormStatus() {
     this.questionFormStatus.next(true);
   }
+
+  isDarkMode = new BehaviorSubject<boolean>(false);
+  isDarkMode$ = this.isDarkMode.asObservable()
+
+  toggleChartTextColor() {
+    this.isDarkMode.next(!this.isDarkMode.value)
+  }
+  
+
 }

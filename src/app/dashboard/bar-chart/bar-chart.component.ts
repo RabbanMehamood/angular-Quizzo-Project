@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ViewusersService } from '../viewscores/services/viewusers.service';
 import { Router } from '@angular/router';
+import { NotificationServiceService } from '../../dashboard-layout/notification-service.service';
 
 @Component({
   selector: 'app-bar-chart',
@@ -17,6 +18,11 @@ export class BarChartComponent implements OnInit {
   // instance using inject method, calling in ngonit when ever components gets called using lazy loading and loaded.
   viewUserScoresService = inject(ViewusersService);
   router = inject(Router);
+
+  //CHARTLABEL IN DARK MODE SUBSCRIPTION
+  darkModeService = inject(NotificationServiceService);
+  barLabelColor: string = '#000000';
+
   ngOnInit() {
     localStorage.setItem('currentPath', `${this.router.url}`);
     this.viewUserScoresService.getUsers().subscribe((res) => {
@@ -26,6 +32,17 @@ export class BarChartComponent implements OnInit {
       this.userscorelist = this.users.map((user) => user.score);
       console.log({ label: this.label, userscorelist: this.userscorelist });
       this.setData();
+    });
+    //darkMode subscription
+    this.darkModeService.isDarkMode$.subscribe((booleanVal) => {
+      console.log('chartLabelDarkValue', booleanVal);
+      if (booleanVal) {
+        this.barLabelColor = '#ffffff';
+        this.setData();
+      } else {
+        this.barLabelColor = '#000000';
+        this.setData();
+      }
     });
   }
 
@@ -55,14 +72,14 @@ export class BarChartComponent implements OnInit {
       plugins: {
         legend: {
           labels: {
-            color: '#5c5c5c',
+            color: this.barLabelColor,
           },
         },
       },
       scales: {
         x: {
           ticks: {
-            color: '#5c5c5c',
+            color: this.barLabelColor,
             font: {
               weight: 500,
             },
@@ -75,7 +92,7 @@ export class BarChartComponent implements OnInit {
         },
         y: {
           ticks: {
-            color: '#5c5c5c',
+            color: this.barLabelColor,
           },
           grid: {
             display: false,

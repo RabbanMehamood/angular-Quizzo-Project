@@ -39,6 +39,9 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
       this.questionFormTouched = touched;
     });
   }
+
+
+  //logout button click methods
   confirmLogout(event: Event): void {
     if (this.questionFormTouched) {
       // If form is dirty
@@ -94,6 +97,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
   toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     console.log('Dark Mode activated');
+    this.getNotifications.toggleChartTextColor()
   }
 
   ngOnDestroy(): void {

@@ -2,21 +2,24 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ViewusersService } from '../viewscores/services/viewusers.service';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Router } from '@angular/router';
+import { NotificationServiceService } from '../../dashboard-layout/notification-service.service';
+
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrl: './pie-chart.component.scss',
 })
 export class PieChartComponent implements OnInit {
-  plugins = [ChartDataLabels]; // Pass this to <p-chart>
+  plugins = [ChartDataLabels];
   data: any;
-  label = [];
-  userscorelist = [];
   options: any;
-  // users: any[] = [];
   users: any = [];
-  // instance using inject method, calling in ngonit when ever components gets called using lazy loading and loaded.
+  darkModeService = inject(NotificationServiceService);
   viewUserScoresService = inject(ViewusersService);
+  router = inject(Router);
+  usersLength: number;
+  barLabelColor: string = '#000000';
+
   categories = [
     'Excellent (90–100%)',
     'Good (70–89%)',
@@ -24,7 +27,9 @@ export class PieChartComponent implements OnInit {
     'Poor (<50%)',
     'Fail (<35%)',
   ];
-  categoryCounts = [80, 70, 50, 40, 30];
+
+  // Initialize counts to zero
+  categoryCounts = [0, 0, 0, 0, 0];
   categoryUsers: Record<string, string[]> = {
     'Excellent (90–100%)': [],
     'Good (70–89%)': [],
@@ -33,10 +38,35 @@ export class PieChartComponent implements OnInit {
     'Fail (<35%)': [],
   };
 
+  ngOnInit() {
+    localStorage.setItem('currentPath', `${this.router.url}`);
+
+    this.viewUserScoresService.getUsers().subscribe((res) => {
+      this.users = res;
+      this.usersLength = res.length;
+      this.populateChartData(this.users);
+      this.setData();
+    });
+
+    // Dark mode subscription to update label colors dynamically
+    this.darkModeService.isDarkMode$.subscribe((isDarkMode) => {
+      this.barLabelColor = isDarkMode ? '#ffffff' : '#000000';
+      this.setData(); // Refresh chart options with updated colors
+    });
+  }
+
   populateChartData(userdata: any[]) {
+    this.categoryCounts = [0, 0, 0, 0, 0];
+    this.categoryUsers = {
+      'Excellent (90–100%)': [],
+      'Good (70–89%)': [],
+      'Average (50–69%)': [],
+      'Poor (<50%)': [],
+      'Fail (<35%)': [],
+    };
+
     for (const user of userdata) {
       const { name, score } = user;
-      // console.log({ name });
 
       if (score >= 90) {
         this.categoryCounts[0]++;
@@ -54,63 +84,80 @@ export class PieChartComponent implements OnInit {
         this.categoryCounts[4]++;
         this.categoryUsers[this.categories[4]].push(name);
       }
-      // } else if (score <= 34) {
-      //
-      // }
     }
-    console.log(this.categoryCounts, this.categoryUsers);
   }
-  router = inject(Router);
-  ngOnInit() {
-    localStorage.setItem('currentPath', `${this.router.url}`);
-    this.viewUserScoresService.getUsers().subscribe((res) => {
-      this.users = res;
 
-      this.setData();
-      this.populateChartData(this.users);
-      // console.log({ label: this.label, userscorelist: this.userscorelist });
-
-      // console.log(res);
-      this.label = this.users.map((user) => user.name);
-    });
-  }
   setData() {
     const documentStyle = getComputedStyle(document.documentElement);
-    documentStyle.getPropertyValue('--text-color');
+
+    const backgroundColors = [
+      documentStyle.getPropertyValue('--blue-800'),
+      documentStyle.getPropertyValue('--orange-500'),
+      documentStyle.getPropertyValue('--teal-500'),
+      documentStyle.getPropertyValue('--violet-500'),
+      documentStyle.getPropertyValue('--lime-500'),
+    ];
+
+    const hoverBackgroundColors = [
+      documentStyle.getPropertyValue('--blue-400'),
+      documentStyle.getPropertyValue('--orange-400'),
+      documentStyle.getPropertyValue('--teal-400'),
+      documentStyle.getPropertyValue('--violet-500'),
+      documentStyle.getPropertyValue('--lime-500'),
+    ];
+
+    // Filter out categories with zero counts
+    const filteredCategories: string[] = [];
+    const filteredCounts: number[] = [];
+    const filteredBackgroundColors: string[] = [];
+    const filteredHoverColors: string[] = [];
+
+    for (let i = 0; i < this.categories.length; i++) {
+      if (this.categoryCounts[i] > 0) {
+        filteredCategories.push(this.categories[i]);
+        filteredCounts.push(this.categoryCounts[i]);
+        filteredBackgroundColors.push(backgroundColors[i]);
+        filteredHoverColors.push(hoverBackgroundColors[i]);
+      }
+    }
 
     this.data = {
-      labels: this.categories,
+      labels: filteredCategories,
       datasets: [
         {
-          data: this.categoryCounts,
-          backgroundColor: [
-            documentStyle.getPropertyValue('--blue-800'),
-            documentStyle.getPropertyValue('--orange-500'),
-            documentStyle.getPropertyValue('--teal-500'),
-            documentStyle.getPropertyValue('--violet-500'),
-            documentStyle.getPropertyValue('--lime-500'),
-          ],
-          hoverBackgroundColor: [
-            documentStyle.getPropertyValue('--blue-400'),
-            documentStyle.getPropertyValue('--orange-400'),
-            documentStyle.getPropertyValue('--teal-400'),
-            documentStyle.getPropertyValue('--violet-500'),
-            documentStyle.getPropertyValue('--lime-500'),
-          ],
+          data: filteredCounts,
+          backgroundColor: filteredBackgroundColors,
+          hoverBackgroundColor: filteredHoverColors,
         },
       ],
     };
 
     this.options = {
-      cutout: '50%', 
+      cutout: '50%',
       plugins: {
+        datalabels: {
+          color: '#ffffff',
+          font: {
+            weight: 'bold',
+            size: 14,
+          },
+          formatter: (value: number) => value,
+          anchor: 'center',
+          align: 'center',
+        },
         tooltip: {
-          backgroundColor: '#eefeff', // Tooltip 
-          titleColor: '#000000', // Title text
-          bodyColor: '#333333',
-          borderColor: '#aaa', // Optional: border around tooltip
+          position: 'nearest',
+          xAlign: 'bottom',
+          yAligh: 'right',
+          caretSize: 12,
+          caretPadding: 10,
+          backgroundColor: '#ffffff',
+          titleColor: '#000000',
+          bodyColor: 'black',
+          borderColor: '#aaa',
           borderWidth: 1,
           bodyFont: {
+            color: 'white',
             size: 13,
             weight: 'normal',
           },
@@ -119,8 +166,6 @@ export class PieChartComponent implements OnInit {
           callbacks: {
             label: (context: any) => {
               const label = context.label;
-              console.log({ label });
-
               const users = this.categoryUsers[label] || [];
               return [...users];
             },
@@ -128,10 +173,14 @@ export class PieChartComponent implements OnInit {
         },
         legend: {
           position: 'bottom',
+          labels: {
+            color: this.barLabelColor,
+          },
         },
         title: {
           display: true,
           text: 'Score Distribution',
+          color: this.barLabelColor,
         },
       },
     };

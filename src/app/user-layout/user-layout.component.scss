@@ -82,10 +82,12 @@ p {
   flex-direction: column;
   align-items: center;
 }
-
+//Timer circle
 .circlew {
-  width: 43px;
-  height: 43px;
+  // width: 2.835rem;
+  // height: 2.835rem;
+  width: 1.2cm;
+  height: 1.2cm;
   background: #ffffff;
   color: #41a676;
   border: 1px solid #41a676;
@@ -95,11 +97,12 @@ p {
   align-items: center;
   line-height: 30px;
   font-weight: bold;
-  margin: auto;
 }
+
+//stepper green background circle
 .circleg {
-  width: 43px;
-  height: 43px;
+  width: 1.2cm;
+  height: 1.2cm;
   background: #41a676;
   color: #ffffff;
   border: 1px solid #41a676;
@@ -107,13 +110,11 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 30px;
   font-weight: bold;
-  margin: auto;
 }
 .outer-circle {
-  width: 50px;
-  height: 50px;
+  width: 1.433cm;
+  height: 1.433cm;
   background-color: #ffffff;
   border: 1px solid #41a676;
   border-radius: 50%;
@@ -121,6 +122,7 @@ p {
   z-index: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .title {
   font-weight: bold;

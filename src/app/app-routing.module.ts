@@ -17,12 +17,12 @@ const routes: Routes = [
   {
     path: '',
     component: WelcomeComponent,
-    canActivate: [blockLoginGuard, blockUserLoginpageGuard],
+    // canActivate: [blockLoginGuard, blockUserLoginpageGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [blockLoginGuard],
+    // canActivate: [blockLoginGuard],
   },
   {
     path: 'auth',

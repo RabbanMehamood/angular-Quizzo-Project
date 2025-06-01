@@ -53,7 +53,8 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
     this.questionsapiService.getQuestionsList().subscribe((response) => {
       this.questions = response.map((q: any) => ({
         ...q,
-        questionStatus: 'untouched', // Added new key value pair for question status checking
+        questionStatus: 'untouched',
+        skipped: false, // Added new key value pair for question status checking
       }));
       this.questionsInformation = this.questions;
       console.log(this.questions);
@@ -105,50 +106,75 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
     if (this.interval) clearInterval(this.interval);
   }
 
+
   autoNext() {
-    if (this.currentIndex < this.questions.length - 1) {
+    let nextIndex = this.currentIndex + 1;
+    while (
+      nextIndex < this.questions.length &&
+      this.questions[nextIndex].skipped === true
+    ) {
+      nextIndex++;
+    }
+
+    if (nextIndex < this.questions.length) {
       this.questions[this.currentIndex].timerInSeconds = 0;
-      // this.questions.splice(this.currentIndex,1)
-      // delete this.questions[this.currentIndex];
       this.questionsInformation[this.currentIndex].questionStatus =
         'unAnswered';
-      this.currentIndex++;
+      this.currentIndex = nextIndex;
       this.startTimer();
     } else {
-      console.log('End of questions');
+      console.log('End of unskipped questions');
     }
   }
 
   next() {
-    if (this.currentIndex < this.questions.length - 1) {
-      this.questions[this.currentIndex].timerInSeconds = this.countdown;
-      this.currentIndex++;
+    this.questions[this.currentIndex].timerInSeconds = this.countdown;
+    let nextIndex = this.currentIndex + 1;
+    while (
+      nextIndex < this.questions.length &&
+      this.questions[nextIndex].skipped === true
+    ) {
+      nextIndex++;
+    }
+    if (nextIndex < this.questions.length) {
+      this.currentIndex = nextIndex;
       this.startTimer();
+    } else {
+      console.log('No more unskipped questions ahead');
     }
   }
 
   prev() {
-    if (this.currentIndex > 0) {
-      this.questions[this.currentIndex].timerInSeconds = this.countdown;
-      this.currentIndex--;
+    this.questions[this.currentIndex].timerInSeconds = this.countdown;
+    let prevIndex = this.currentIndex - 1;
+    while (prevIndex >= 0 && this.questions[prevIndex].skipped === true) {
+      prevIndex--;
+    }
+    if (prevIndex >= 0) {
+      this.currentIndex = prevIndex;
       this.startTimer();
+    } else {
+      console.log('No more unskipped questions behind');
     }
   }
 
   skip() {
     const currentQuestion = this.currentQuestion;
+    this.questions[this.currentIndex].timerInSeconds = this.countdown;
     if (currentQuestion.questionStatus !== 'answered') {
-      currentQuestion.questionStatus = 'skipped';
+      currentQuestion.questionStatus = 'unskip';
+      this.questions[this.currentIndex].skipped = true;
+      console.log(this.questions[this.currentIndex]);
+      console.log(this.questions);
       this.skipped++;
     }
     this.next();
   }
 
-  // skip() {
-  //   this.next();
-  //   this.skipped = this.skipped + 1;
-  //   this.startTimer();
-  // }
+  unskip(id) {
+    this.questions[id - 1].skipped = false;
+    this.questions[id - 1].questionStatus = 'untouched';
+  }
 
   submit() {
     this.totalTimeSpent = Math.floor((Date.now() - this.startTime) / 1000);

@@ -87,7 +87,7 @@ export class RegisterpageComponent {
       severity: 'success',
       summary: 'Registered',
       detail: 'Registration successful, redirecting to exam page...',
-      life: 3000, // Show for 2 seconds
+      life: 1000,
     });
 
     setTimeout(() => {

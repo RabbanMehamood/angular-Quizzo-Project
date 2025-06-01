@@ -61,7 +61,6 @@ export class QuizSummaryTableComponent implements OnInit {
 
   goToPage() {
     const targetPage = this.goToPageNumber;
-
     if (targetPage >= 1 && targetPage <= this.maxPage) {
       this.first = (targetPage - 1) * this.rows;
     } else {

@@ -17,6 +17,7 @@ export class QuestionFormComponent implements OnInit {
   counter: number = 0;
   editQuestionId: any;
   formValid: boolean = true;
+  questionObjectFromTable: string = '';
 
   questionform: FormGroup = new FormGroup({
     id: new FormControl(''),
@@ -58,13 +59,7 @@ export class QuestionFormComponent implements OnInit {
     private messageService: MessageService,
     private sendNotification: NotificationServiceService,
     private questionFormTouch: StateService
-  ) {
-    // if (this.questionform.touched) {
-    //   alert();
-    //   // console.log(this.questionform.dirty);
-    //   // this.questionFormTouch.questionFormTouched.next(true);
-    // }
-  }
+  ) {}
   // send questionform status
 
   // ngoninit method.
@@ -77,14 +72,27 @@ export class QuestionFormComponent implements OnInit {
       },
     });
     this._editQuestion();
-    // this.sendNotification.questionFormStatus.subscribe((message) => {     this.sendNotification.questionFormStatus.next(this.questionform.valid)
-    // })
     this.questionform.valueChanges.subscribe((values) => {
-      const anyFieldHasValue = Object.values(values).some(
-        (val) => val && val.toString().trim().length > 0
+      console.log(
+        this.questionObjectFromTable === JSON.stringify(this.questionform.value)
       );
-      this._stateService.questionFormTouched.next(anyFieldHasValue);
+      if (
+        !(
+          this.questionObjectFromTable ===
+          JSON.stringify(this.questionform.value)
+        )
+      ) {
+        this._stateService.questionFormTouched.next(false);
+      } else {
+        this._stateService.questionFormTouched.next(true);
+      }
+
+      // const anyFieldHasValue = Object.values(values).some(
+      //   (val) => val && val.toString().trim().length > 0
+      // );
+      // this._stateService.questionFormTouched.next(anyFieldHasValue);
     });
+
     console.log([this.questionform.dirty]);
   }
 
@@ -106,6 +114,9 @@ export class QuestionFormComponent implements OnInit {
             timerInSeconds: question.timerInSeconds,
           });
           this.isEditable = true;
+          this.questionObjectFromTable = JSON.stringify(question);
+          console.log('question to edit', this.questionObjectFromTable);
+          console.log(JSON.parse(this.questionObjectFromTable));
         }
       },
     });

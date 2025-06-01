@@ -31,6 +31,7 @@ export class AddManageComponent implements OnInit, CanComponentDeactivate {
         this.questionFormComponent &&
         this.questionFormComponent.questionform.dirty &&
         !this.questionFormComponent.submitted
+        
       ) {
         this.confirmationService.confirm({
           key: 'confirmInProgressForm',

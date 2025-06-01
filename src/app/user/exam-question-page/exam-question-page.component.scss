@@ -12,7 +12,7 @@
 ::ng-deep .p-radiobutton-box {
   border-radius: 2px;
   background-color: transparent;
-  border: 2px solid #194f72; 
+  border: 2px solid #194f72;
   width: 20px;
   height: 20px;
 }
@@ -210,12 +210,15 @@ form {
 }
 
 .question-div-scroll {
-  overflow-y: scroll;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-
+.question-div-scroll ::-webkit-scrollbar {
+  display: block; /* Chrome, Safari, Opera */
+  width: 8px; /* optional styling */
+}
 .countdown-ring {
   width: 120px;
   height: 120px;
@@ -558,6 +561,6 @@ circle {
     justify-content: space-between;
     border: 1px solid #e1e1e1;
     box-shadow: 0px 4px 4px 0px #00000040;
-    margin-bottom: 5px;
+    margin-top: 10px;
   }
 }

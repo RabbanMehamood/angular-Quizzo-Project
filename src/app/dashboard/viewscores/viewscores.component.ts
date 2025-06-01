@@ -26,11 +26,8 @@ export class ViewscoresComponent implements OnInit {
     if (searchValue === '') {
       this.viewUserScoresService.getUsers().subscribe((res) => {
         this.users = res;
-
-        // Calculate pagination values
         this.totalRecords = this.users.length;
         this.maxPage = Math.ceil(this.totalRecords / this.rows);
-
         console.log('Fetched Users:', res);
       });
     } else {

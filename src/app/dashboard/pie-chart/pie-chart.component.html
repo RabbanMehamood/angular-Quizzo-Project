@@ -1,11 +1,13 @@
 <div class="pie-chart-div">
   <div class="heading">User Vs Score</div>
+  <span>Total No Of Students: {{ usersLength }}</span>
   <div class="card flex justify-content-center">
     <p-chart
       type="doughnut"
       [data]="data"
       [options]="options"
       [plugins]="['ChartDataLabels']"
+      [responsive]="true"
     />
   </div>
 </div>
