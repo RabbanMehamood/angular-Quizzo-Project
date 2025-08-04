@@ -1,6 +1,6 @@
 .quiz-summary-style {
   background-color: #ffffff;
-  height: 50vh;
+  height: 52vh;
   width: 1310px;
   border-radius: 6px;
   border-width: 1px;
@@ -53,7 +53,8 @@
   border: 1px solid #e1e1e1;
   border-radius: 6px;
   padding: 0px;
-  margin-left: 965px;
+  margin-top: 10px;
+  margin-left: 905px;
 }
 ::ng-deep .p-paginator .p-dropdown {
   margin-left: 0rem;
@@ -64,7 +65,7 @@
   background: #ffffff;
   border: 1px solid #d1d5db;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s,
-  box-shadow 0.2s;
+    box-shadow 0.2s;
   border-radius: 6px;
 }
 

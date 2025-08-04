@@ -36,6 +36,7 @@
     >
       <ng-template pTemplate="header">
         <tr>
+          <th style="width: 5%">Id</th>
           <th style="width: 20%">Name</th>
           <th style="width: 10%">Age</th>
           <th style="width: 20%">Email</th>
@@ -48,6 +49,7 @@
 
       <ng-template pTemplate="body" let-user>
         <tr>
+          <td>{{user.id}}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.age }}</td>
           <td>{{ user.email }}</td>
