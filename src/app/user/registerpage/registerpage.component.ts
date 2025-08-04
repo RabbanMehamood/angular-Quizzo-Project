@@ -77,7 +77,7 @@ export class RegisterpageComponent {
     if (this.registerform.invalid) return;
 
     this.userObject = {
-      id: this.generatedId,
+      id: this.generatedId.toString(),
       ...this.registerform.value,
     };
 

@@ -106,7 +106,6 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
     if (this.interval) clearInterval(this.interval);
   }
 
-
   autoNext() {
     let nextIndex = this.currentIndex + 1;
     while (
@@ -179,9 +178,10 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
   submit() {
     this.totalTimeSpent = Math.floor((Date.now() - this.startTime) / 1000);
     this.score = this.correctAnswers * 2;
+    let submit_time = new Date().toISOString();
     console.log(this.answered, this.skipped, this.score, this.totalScore);
     this.userScoreUpdateService
-      .updateUserScore(this.userId, this.score)
+      .updateUserScore(this.userId, this.score, submit_time)
       .subscribe({
         next: (response) => {
           console.log('Update successful', response);
@@ -195,6 +195,7 @@ export class ExamQuestionPageComponent implements OnInit, OnDestroy {
     localStorage.setItem('correctAnswers', `${this.correctAnswers}`);
     this.router.navigate(['user-layout/congrats-page']);
   }
+
   get currentQuestion() {
     return this.questions[this.currentIndex];
   }

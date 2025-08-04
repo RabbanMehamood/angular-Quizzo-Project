@@ -5,10 +5,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserupdateserviceService {
-  private apiUrl = 'http://localhost:8080/users/submit';
+  private apiUrl = 'http://localhost:8080/users';
   constructor(private http: HttpClient) {}
 
-  updateUserScore(userId: number, score: number, data?: any): Observable<any> {
-    return this.http.put(this.apiUrl + '/' + userId + '/' + score, data);
+  updateUserScore(
+    userId: number,
+    score: number,
+    submit_time: any
+  ): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${userId}`, {
+      score,
+      submissionTime: submit_time,
+    });
   }
 }
