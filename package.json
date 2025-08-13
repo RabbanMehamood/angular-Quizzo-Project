@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "concurrently \"ng serve\" \"npm run json-server\"",
     "json-server": "json-server --watch quizzodb.json --port 8080",
-    "build": "ng build",
+    "build": "ng build --output public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
